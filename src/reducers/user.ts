@@ -25,10 +25,9 @@ const reducer: Reducer<IState, Action> = (
 ): IState => {
   switch (type) {
     case chnageUserName().type:
-      return {
-        ...state,
-        name: payload,
-      };
+      return produce(state, (draft) => {
+        draft.name = payload;
+      });
     default:
       return state;
   }

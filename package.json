@@ -29,6 +29,7 @@
     "immer": "^9.0.12",
     "react": "^18.0.0-rc.0",
     "react-dom": "^18.0.0-rc.0",
+    "react-hook-form": "^7.27.1",
     "react-query": "^3.34.16",
     "react-router-dom": "^6.2.1",
     "styled-components": "^5.3.3",

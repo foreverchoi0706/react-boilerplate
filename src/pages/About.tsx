@@ -1,8 +1,23 @@
 import React from "react";
 import Layout from "@/Layout";
+import useSelector from "@/hooks/useSelector";
+import useDispatch from "@/hooks/useDispatch";
+import { chnageUserName } from "@/reducers/user";
 
 const About = () => {
-  return <Layout>About</Layout>;
+  const { name } = useSelector((root) => root.user);
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(chnageUserName("KIM"));
+  };
+
+  return (
+    <Layout>
+      {name} <button onClick={handleClick}>BUTTON</button>
+    </Layout>
+  );
 };
 
 export default About;

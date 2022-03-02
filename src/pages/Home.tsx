@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
+import React, { FC } from "react";
+import { useQuery } from "react-query";
 import Layout from "@/Layout";
-import useSelector from "@/hooks/useSelector";
-import useDispatch from "@/hooks/useDispatch";
-import { chnageUserName } from "@/reducers/user";
 
-const Home = () => {
-  const { name } = useSelector((root) => root.user);
+const Temp: FC = () => {
+  const { data } = useQuery(["test"], async () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("hi");
+      }, 3000);
+    });
+  });
+  return <div>{data}</div>;
+};
 
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(chnageUserName("KIM"));
-  };
-
+const Home: FC = () => {
   return (
-    <Layout>
-      {name}
-      <button onClick={handleClick}>BUTTON</button>
+    <Layout fallback={<div>1</div>}>
+      <Temp />
     </Layout>
   );
 };

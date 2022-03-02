@@ -5,16 +5,16 @@ interface IState {
   isLoginFormOpen: boolean;
 }
 
+export const ui: IState = {
+  isLoginFormOpen: false,
+};
+
 const IS_LOGIN_FORM_OPEN = "IS_LOGIN_FORM_OPEN" as const;
 
 export const isLoginFormOpen = (payload: boolean) => ({
   type: IS_LOGIN_FORM_OPEN,
   payload,
 });
-
-export const ui: IState = {
-  isLoginFormOpen: false,
-};
 
 const reducer: Reducer<IState, Action> = (
   state = ui,

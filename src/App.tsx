@@ -5,19 +5,23 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Reset } from "styled-reset";
 import theme from "@/theme";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
 import ContextProvider from "@/components/ContextProvider";
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
-import Home from "@/pages/Home";
-import About from "@/pages/About";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 
 const GlobalStgyle = createGlobalStyle`
     #root {
       font-family: Arial, Helvetica, sans-serif;
-      max-width: 1200px; 
-      margin: 0 auto;
     }
     #modal {}
 `;
@@ -37,10 +41,10 @@ const App = () => {
               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />
-            <ReactQueryDevtools />
           </BrowserRouter>
         </ContextProvider>
       </ThemeProvider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 };

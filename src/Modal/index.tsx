@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
-import * as Styled from "@/Modal/styled";
+import * as Styled from "./styled";
 
 interface IProps {
   children: ReactNode;
