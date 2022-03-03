@@ -1,6 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
+const glob = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const config = {
@@ -41,6 +43,11 @@ const config = {
     }),
     new HtmlWebpackPlugin({ template: "./public/index.html", hash: true }),
     new CleanWebpackPlugin(),
+    new PurgecssPlugin({
+      paths: glob.sync(`${path.resolve(__dirname, "src")}/**/*`, {
+        nodir: true,
+      }),
+    }),
   ],
   devServer: {
     port: 3000,

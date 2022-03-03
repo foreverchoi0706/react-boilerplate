@@ -19,9 +19,12 @@ export const queryClient = new QueryClient({
   },
 });
 
-const GlobalStgyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     #root {
-      font-family: Arial, Helvetica, sans-serif;
+      *{
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+   
     }
     #modal {}
 `;
@@ -32,7 +35,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <ContextProvider>
           <BrowserRouter>
-            <GlobalStgyle />
+            <GlobalStyle />
             <Reset />
             <Header />
             <Routes>

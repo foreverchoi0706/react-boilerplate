@@ -2,8 +2,8 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import useDispatch from "@/hooks/useDispatch";
 import useSelector from "@/hooks/useSelector";
-import { chnageUserName } from "@/reducers/user";
-import * as Styled from "./styled";
+import { changeUserName } from "@/reducers/user";
+import * as S from "./styled";
 
 const Header = () => {
   console.log("HEADER");
@@ -13,20 +13,20 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <Styled.Header>
+    <S.Header>
       <ul>
         <Link to="/">HOME</Link>
         <Link to="/about">ABOUT</Link>
         <button
           onClick={() => {
-            dispatch(chnageUserName("KIM"));
+            dispatch(changeUserName("KIM"));
           }}
         >
           TEST
         </button>
         <h3>환영합니다 {name}님!</h3>
       </ul>
-    </Styled.Header>
+    </S.Header>
   );
 };
 

@@ -1,6 +1,7 @@
 import produce from "immer";
 import { Reducer } from "react";
 import { Action } from "./root";
+import createAction from "@/libs/createAction";
 
 interface IState {
   isSignIned: boolean;
@@ -14,17 +15,16 @@ export const user: IState = {
   name: "CHOI",
 };
 
-export const chnageUserName = (payload?: string): Action => ({
-  type: "CHANGE_USER_NAME",
-  payload,
-});
+const CHANGE_USER_NAME = "CHANGE_USER_NAME";
+
+export const changeUserName = createAction<string>(CHANGE_USER_NAME);
 
 const reducer: Reducer<IState, Action> = (
   state = user,
   { type, payload }
 ): IState => {
   switch (type) {
-    case chnageUserName().type:
+    case CHANGE_USER_NAME:
       return produce(state, (draft) => {
         draft.name = payload;
       });

@@ -1,31 +1,31 @@
 import React, { FC, ReactNode, Suspense, memo } from "react";
 import { Navigate } from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
-import * as Styled from "./styled";
+import * as S from "./styled";
 
 interface IProps {
   children: ReactNode;
-  requrieAuth?: boolean;
-  fill?: boolean;
   fallback?: NonNullable<ReactNode> | null;
+  securited?: boolean;
+  filled?: boolean;
 }
 
 const Layout: FC<IProps> = ({
   children,
-  requrieAuth = false,
-  fill = false,
   fallback = null,
+  securited = false,
+  filled = false,
 }) => {
   const { isAuthed } = useSelector((root) => root.user);
 
-  if (requrieAuth && !isAuthed) {
+  if (securited && !isAuthed) {
     return <Navigate to="/" />;
   }
 
   return (
-    <Styled.Wrapper fill={fill}>
+    <S.Wrapper isFilled={filled}>
       <Suspense fallback={fallback}>{children}</Suspense>
-    </Styled.Wrapper>
+    </S.Wrapper>
   );
 };
 

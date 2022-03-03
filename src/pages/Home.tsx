@@ -15,7 +15,7 @@ const Temp: FC = () => {
 
 const Home: FC = () => {
   return (
-    <Layout fallback={<div>1</div>}>
+    <Layout filled fallback={<div>LOADING...</div>}>
       <Temp />
     </Layout>
   );

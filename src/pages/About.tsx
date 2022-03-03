@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "@/Layout";
 import useSelector from "@/hooks/useSelector";
 import useDispatch from "@/hooks/useDispatch";
-import { chnageUserName } from "@/reducers/user";
+import { changeUserName } from "@/reducers/user";
 
 const About = () => {
   const { name } = useSelector((root) => root.user);
@@ -10,7 +10,7 @@ const About = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(chnageUserName("KIM"));
+    dispatch(changeUserName("KIM"));
   };
 
   return (

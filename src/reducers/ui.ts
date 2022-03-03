@@ -1,3 +1,4 @@
+import createAction from "@/libs/createAction";
 import { Reducer } from "react";
 import { Action } from "./root";
 
@@ -9,18 +10,17 @@ export const ui: IState = {
   isLoginFormOpen: false,
 };
 
-const IS_LOGIN_FORM_OPEN = "IS_LOGIN_FORM_OPEN" as const;
+const OPEN_SIGNIN_FORM = "OPEN_SIGNIN_FORM";
 
-export const isLoginFormOpen = (payload: boolean) => ({
-  type: IS_LOGIN_FORM_OPEN,
-  payload,
-});
+export const openSigninForm = createAction<boolean>(OPEN_SIGNIN_FORM);
 
 const reducer: Reducer<IState, Action> = (
   state = ui,
   { type, payload }
 ): IState => {
   switch (type) {
+    case OPEN_SIGNIN_FORM:
+      return state;
     default:
       return state;
   }

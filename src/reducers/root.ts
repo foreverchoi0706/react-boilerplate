@@ -13,11 +13,11 @@ export interface Action {
 }
 export type IRootState = ReturnType<() => typeof rootState>;
 
-const rootReducer: Reducer<IRootState, Action> = ({ user, ui }, action) => {
+const reducer: Reducer<IRootState, Action> = ({ user, ui }, action) => {
   return {
     user: userReducer(user, action),
     ui: uiReducer(ui, action),
   };
 };
 
-export default rootReducer;
+export default reducer;

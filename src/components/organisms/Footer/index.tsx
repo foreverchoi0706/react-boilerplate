@@ -1,8 +1,8 @@
 import React, { memo } from "react";
-import * as Styled from "./styled";
+import * as S from "./styled";
 
 const Footer = () => {
-  return <Styled.Footer>Footer</Styled.Footer>;
+  return <S.Footer>Footer</S.Footer>;
 };
 
 export default memo(Footer);
