@@ -10,7 +10,7 @@ export const ui: IState = {
   isLoginFormOpen: false,
 };
 
-const OPEN_SIGNIN_FORM = "OPEN_SIGNIN_FORM";
+const OPEN_SIGNIN_FORM = "OPEN_SIGNIN_FORM" as const;
 
 export const openSigninForm = createAction<boolean>(OPEN_SIGNIN_FORM);
 

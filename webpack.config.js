@@ -8,7 +8,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const config = {
   name: "react-boilerplate",
   stats: "none",
-  mode: "production",
   devtool: "inline-source-map",
   entry: path.resolve(__dirname, "src/index.ts"),
   output: {
@@ -37,10 +36,6 @@ const config = {
     },
   },
   plugins: [
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: "development",
-      DEBUG: false,
-    }),
     new HtmlWebpackPlugin({ template: "./public/index.html", hash: true }),
     new CleanWebpackPlugin(),
     new PurgecssPlugin({

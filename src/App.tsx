@@ -20,16 +20,23 @@ export const queryClient = new QueryClient({
 });
 
 const GlobalStyle = createGlobalStyle`
+ 
     #root {
       *{
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Jua', sans-serif;
       }
    
     }
-    #modal {}
+    #modal {
+      *{
+        font-family: 'Jua', sans-serif;
+      }
+    }
 `;
 
 const App = () => {
+  console.log(process.env.NODE_ENV);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

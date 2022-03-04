@@ -15,7 +15,7 @@ export const user: IState = {
   name: "CHOI",
 };
 
-const CHANGE_USER_NAME = "CHANGE_USER_NAME";
+const CHANGE_USER_NAME = "CHANGE_USER_NAME" as const;
 
 export const changeUserName = createAction<string>(CHANGE_USER_NAME);
 
