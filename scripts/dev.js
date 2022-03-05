@@ -1,12 +1,14 @@
 const webpack = require("webpack");
-const webpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("../webpack.config");
+const webpackDevServer = require("webpack-dev-server");
 
-webpackConfig.mode = "development";
+const MODE = "development";
+
+webpackConfig.mode = MODE;
 
 webpackConfig.plugins = webpackConfig.plugins.concat(
   new webpack.EnvironmentPlugin({
-    NODE_ENV: "development",
+    NODE_ENV: MODE,
   })
 );
 

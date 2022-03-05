@@ -1,6 +1,6 @@
-import produce from "immer";
 import { Reducer } from "react";
-import { Action } from "./root";
+import produce from "immer";
+import { Action } from "@/reducers/root";
 import createAction from "@/libs/createAction";
 
 interface IState {

@@ -1,11 +1,13 @@
 const webpack = require("webpack");
 const webpackConfig = require("../webpack.config");
 
-webpackConfig.mode = "production";
+const MODE = "production";
+
+webpackConfig.mode = MODE;
 
 webpackConfig.plugins = webpackConfig.plugins.concat(
   new webpack.EnvironmentPlugin({
-    NODE_ENV: "production",
+    NODE_ENV: MODE,
   })
 );
 
