@@ -5,9 +5,12 @@ export const Header = styled.header(
     background-color: lightgray;
     max-width: 1200px;
     margin: 0 auto;
-    ul {
-      display: flex;
-      justify-content: space-between;
-    }
+  `
+);
+
+export const Gnb = styled.ul(
+  () => css`
+    display: flex;
+    justify-content: space-between;
   `
 );

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useQuery } from "react-query";
-import Layout from "@/Layout";
+import Layout from "@/components/Layout";
 
 const Temp: FC = () => {
   const { data } = useQuery(["test"], async () => {
