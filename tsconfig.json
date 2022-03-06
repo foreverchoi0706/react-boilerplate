@@ -5,6 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "strict": false,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]

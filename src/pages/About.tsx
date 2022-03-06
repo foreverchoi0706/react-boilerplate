@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Layout from "@/components/Layout";
 import useSelector from "@/hooks/useSelector";
 import useDispatch from "@/hooks/useDispatch";
 import { changeUserName } from "@/reducers/user";
-import * as Button from "@/components/common/atoms/Button";
+import Button from "@/components/common/atoms/Button";
 
 const About = () => {
   const { name } = useSelector((root) => root.user);
 
+  console.log(name);
+
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     dispatch(changeUserName("KIM"));
-  };
+  }, []);
 
   return (
     <Layout>
       {name}
-      <Button.Primary onClick={handleClick} disabled>
-        BUTTON
-      </Button.Primary>
+      <Button.Primary onClick={handleClick}>BUTTON</Button.Primary>
     </Layout>
   );
 };

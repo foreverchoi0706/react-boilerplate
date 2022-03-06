@@ -5,5 +5,6 @@ export const Footer = styled.footer(
     background-color: lightgray;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 15px;
   `
 );

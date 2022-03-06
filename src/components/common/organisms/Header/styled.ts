@@ -5,6 +5,7 @@ export const Header = styled.header(
     background-color: lightgray;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 15px;
   `
 );
 

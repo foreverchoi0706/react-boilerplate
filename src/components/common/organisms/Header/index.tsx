@@ -18,7 +18,7 @@ const Header = () => {
           <Link to="/about">ABOUT</Link>
         </li>
         <li>
-          <h3>환영합니다 {name}님!</h3>
+          <h3>환영합니다, {name}님!</h3>
         </li>
       </S.Gnb>
     </S.Header>
