@@ -1,9 +1,10 @@
 import {useQuery} from "react-query";
 
 const useListQuery = () => {
-  const { data } = useQuery([""], () => {});
+    const {data} = useQuery([""], () => {
+    });
 
-  return { data };
+    return {data};
 };
 
 export default useListQuery;

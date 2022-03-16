@@ -1,27 +1,29 @@
-import React, {ChangeEventHandler, FC, memo, MouseEventHandler, ReactNode} from "react";
+import React, {FC, memo, ReactNode} from "react";
 import {useFormContext, Validate} from "react-hook-form";
 import Input from "@/components/common/atoms/Input";
+import Styled from "./styled";
 
 interface IProps {
     name: string;
     value: string;
-    label: ReactNode | string;
+    text: ReactNode | string;
+    defaultChecked?: boolean;
     tooltip?: ReactNode | string;
-    onClick?: MouseEventHandler<HTMLInputElement>;
-    onChange?: ChangeEventHandler<HTMLInputElement>;
     validate?: Validate<any> | Record<string, Validate<any>>;
 }
 
-const FormInputRadio: FC<IProps> = ({name, value, label}) => {
+const FormInputRadio: FC<IProps> = ({name, value, text, defaultChecked}) => {
 
-    console.log("FormInputRadio");
+    const {watch, register, formState: {errors}} = useFormContext();
 
-    const {register, formState: {errors}} = useFormContext();
-
-    return <div>
-        <Input.Radio type="radio" value={value}  {...register(name)}/>
-        <label>{label}</label>
-    </div>;
+    const checked = watch()[name];
+    return (
+        <Styled.Label checked={value === checked}>
+            <Input.Radio type="radio" value={value} {...register(name)}
+                         defaultChecked={defaultChecked}/>
+            {text}
+        </Styled.Label>
+    );
 };
 
 export default memo(FormInputRadio);

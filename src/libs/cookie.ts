@@ -1,3 +1,5 @@
-export const getCookie = (name: string) => {};
+export const getCookie = (name: string) => {
+};
 
-export const setCookie = (string: number, value: string, ms: number) => {};
+export const setCookie = (string: number, value: string, ms: number) => {
+};

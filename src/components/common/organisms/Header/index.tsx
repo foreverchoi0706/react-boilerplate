@@ -4,25 +4,25 @@ import useSelector from "@/hooks/useSelector";
 import * as S from "./styled";
 
 const Header = () => {
-  console.log("HEADER");
+    const {name} = useSelector((root) => root.user);
 
-  const { name } = useSelector((root) => root.user);
+    console.log(name);
 
-  return (
-    <S.Header>
-      <S.Gnb>
-        <li>
-          <Link to="/">HOME</Link>
-        </li>
-        <li>
-          <Link to="/about">ABOUT</Link>
-        </li>
-        <li>
-          <h3>환영합니다, {name}님!</h3>
-        </li>
-      </S.Gnb>
-    </S.Header>
-  );
+    return (
+        <S.Header>
+            <S.Gnb>
+                <li>
+                    <Link to="/">HOME</Link>
+                </li>
+                <li>
+                    <Link to="/about">ABOUT</Link>
+                </li>
+                <li>
+                    <h3>환영합니다, {name}님!</h3>
+                </li>
+            </S.Gnb>
+        </S.Header>
+    );
 };
 
 export default memo(Header);

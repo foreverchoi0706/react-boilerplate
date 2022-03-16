@@ -7,14 +7,14 @@ const MODE = "development";
 webpackConfig.mode = MODE;
 
 webpackConfig.plugins = webpackConfig.plugins.concat(
-  new webpack.EnvironmentPlugin({
-    NODE_ENV: MODE,
-  })
+    new webpack.EnvironmentPlugin({
+        NODE_ENV: MODE,
+    })
 );
 
 const compiler = webpack(webpackConfig);
 
-const devServerOptions = { ...webpackConfig.devServer, open: true };
+const devServerOptions = {...webpackConfig.devServer, open: true};
 
 const server = new webpackDevServer(devServerOptions, compiler);
 

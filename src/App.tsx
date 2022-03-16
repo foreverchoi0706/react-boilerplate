@@ -12,46 +12,46 @@ import Header from "@/components/common/organisms/Header";
 import Footer from "@/components/common/organisms/Footer";
 
 export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      suspense: true,
+    defaultOptions: {
+        queries: {
+            suspense: true,
+        },
     },
-  },
 });
 
 const GlobalStyle = createGlobalStyle`
-  body{
-    *{
+  body {
+    * {
       font-family: 'Jua', sans-serif;
       letter-spacing: 0.5px;
-      font-size:  16px;
+      font-size: 16px;
     }
   }
 `;
 
 const App = () => {
-  console.log(process.env.NODE_ENV);
+    console.log(process.env.NODE_ENV);
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <ContextProvider>
-          <BrowserRouter>
-            <GlobalStyle />
-            <Reset />
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/*" element={<Navigate to="/" />} />
-            </Routes>
-            <Footer />
-          </BrowserRouter>
-        </ContextProvider>
-      </ThemeProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+                <ContextProvider>
+                    <BrowserRouter>
+                        <GlobalStyle/>
+                        <Reset/>
+                        <Header/>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/about" element={<About/>}/>
+                            <Route path="/*" element={<Navigate to="/"/>}/>
+                        </Routes>
+                        <Footer/>
+                    </BrowserRouter>
+                </ContextProvider>
+            </ThemeProvider>
+            <ReactQueryDevtools/>
+        </QueryClientProvider>
+    );
 };
 
 export default App;

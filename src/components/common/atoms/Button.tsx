@@ -3,7 +3,7 @@ import styled, {css} from "styled-components";
 const Button = {
     Primary: styled.button<{ disabled?: boolean }>(
         ({disabled}) => css`
-          color: green;
+          color: skyblue;
           background-color: ${disabled ? "lightgray" : "white"};
           border: 1px solid lightgray;
           border-radius: 5px;

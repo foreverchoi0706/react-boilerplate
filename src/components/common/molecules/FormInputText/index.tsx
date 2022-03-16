@@ -1,6 +1,7 @@
 import React, {ChangeEventHandler, FC, memo, MouseEventHandler} from "react";
 import {useFormContext, Validate} from "react-hook-form";
 import Input from "@/components/common/atoms/Input";
+import Styled from "./styled";
 
 interface IProps {
     name: string;
@@ -20,11 +21,8 @@ const FormInputText: FC<IProps> =
      }) => {
         const {register, formState: {errors}} = useFormContext();
 
-
-        console.log("FormInputText");
-
         return (
-            <div>
+            <Styled.Label>
                 <Input.Text
                     placeholder={placeholder}
                     type="text"
@@ -37,8 +35,8 @@ const FormInputText: FC<IProps> =
                         },
                     })}
                 />
-                <span>{errors[name] && errors[name].message}</span>
-            </div>
+                {errors[name] && <Styled.Em>{errors[name].message}</Styled.Em>}
+            </Styled.Label>
         );
     };
 

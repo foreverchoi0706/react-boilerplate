@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 
 export const Header = styled.header(
-  () => css`
+    () => css`
     background-color: lightgray;
     max-width: 1200px;
     margin: 0 auto;
@@ -10,7 +10,7 @@ export const Header = styled.header(
 );
 
 export const Gnb = styled.ul(
-  () => css`
+    () => css`
     display: flex;
     justify-content: space-between;
   `

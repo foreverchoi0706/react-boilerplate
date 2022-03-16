@@ -1,14 +1,7 @@
-import React, {
-    ChangeEventHandler,
-    FC,
-    HTMLInputTypeAttribute,
-    memo,
-    MouseEventHandler,
-    useCallback,
-    useState
-} from "react";
+import React, {ChangeEventHandler, FC, memo, MouseEventHandler} from "react";
 import {useFormContext, Validate} from "react-hook-form";
 import Input from "@/components/common/atoms/Input";
+import Styled from "./styled";
 
 interface IProps {
     name: string;
@@ -30,19 +23,11 @@ const FormInputPassword: FC<IProps> = ({
         formState: {errors},
     } = useFormContext();
 
-    console.log("FormInputPassword");
-
-    const [inputType, setInputType] = useState<HTMLInputTypeAttribute>("password");
-
-    const handleClick = useCallback(() => {
-        setInputType(inputType === "text" ? "password" : "text");
-    }, [inputType]);
-
     return (
-        <div>
-            <Input.Text
+        <Styled.Label>
+            <Input.Password
                 placeholder={placeholder}
-                type={inputType}
+                type="password"
                 {...register(name, {
                     validate: {
                         ...validate,
@@ -52,16 +37,8 @@ const FormInputPassword: FC<IProps> = ({
                     },
                 })}
             />
-            <span>
-                {inputType === "password" ? (
-                    <div onClick={handleClick}>보기</div>
-                ) : (
-                    <div onClick={handleClick}>안보기</div>
-                )}
-
-      </span>
-            <span>{errors[name] && errors[name].message}</span>
-        </div>
+            {errors[name] && <em>errors[name].message</em>}
+        </Styled.Label>
     );
 };
 

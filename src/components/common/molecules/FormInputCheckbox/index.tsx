@@ -1,27 +1,27 @@
-import React, {ChangeEventHandler, FC, memo, MouseEventHandler, ReactNode} from "react";
+import React, {FC, memo, ReactNode} from "react";
 import Input from "@/components/common/atoms/Input";
 import {useFormContext, Validate} from "react-hook-form";
+import Styled from "./styled";
 
 interface IProps {
     name: string,
-    label: ReactNode | string;
-    checked: boolean;
-    onClick?: MouseEventHandler<HTMLInputElement>;
-    onChange?: ChangeEventHandler<HTMLInputElement>;
+    text: ReactNode | string;
     validate?: Validate<any> | Record<string, Validate<any>>;
 }
 
-const FormInputCheckbox: FC<IProps> = ({name, label, checked, onClick}, onChange) => {
+const FormInputCheckbox: FC<IProps> = ({name, text}) => {
 
-    console.log("FormInputCheckbox");
+        const {watch, register, formState: {errors}} = useFormContext();
 
-    const {register, formState: {errors}} = useFormContext();
+        const checked = watch()[name];
 
-    return <div>
-        <Input.Checkbox type="checkbox" onClick={onClick} onChange={onChange} {...register(name)}
-        />
-        <label>{label}</label>
-    </div>;
-};
+        return <Styled.Label checked={checked}>
+            <Input.Checkbox type="checkbox"  {...register(name)}
+            />
+            {text}
+            {errors[name] && <em>{errors[name].message}</em>}
+        </Styled.Label>;
+    }
+;
 
 export default memo(FormInputCheckbox);
