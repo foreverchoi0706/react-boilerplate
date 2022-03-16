@@ -1,6 +1,6 @@
-import { Reducer } from "react";
+import {Reducer} from "react";
 import createAction from "@/libs/createAction";
-import { Action } from "@/reducers/root";
+import {Action} from "@/reducers/root";
 
 interface IState {
   isLoginFormOpen: boolean;

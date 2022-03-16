@@ -1,6 +1,6 @@
-import { Reducer } from "react";
-import userReducer, { user } from "@/reducers/user";
-import uiReducer, { ui } from "@/reducers/ui";
+import {Reducer} from "react";
+import userReducer, {user} from "@/reducers/user";
+import uiReducer, {ui} from "@/reducers/ui";
 
 export interface Action {
   type: string;

@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import { Link } from "react-router-dom";
+import React, {memo} from "react";
+import {Link} from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
 import * as S from "./styled";
 

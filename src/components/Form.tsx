@@ -1,10 +1,5 @@
-import React, { FC, ReactNode } from "react";
-import {
-  FormProvider,
-  SubmitHandler,
-  FieldValues,
-  useForm,
-} from "react-hook-form";
+import React, {FC, ReactNode} from "react";
+import {FieldValues, FormProvider, SubmitHandler, useForm,} from "react-hook-form";
 
 interface IProps {
   children: ReactNode;

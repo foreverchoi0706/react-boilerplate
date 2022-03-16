@@ -1,5 +1,5 @@
-import React, { FC, ReactNode } from "react";
-import { createPortal } from "react-dom";
+import React, {FC, ReactNode} from "react";
+import {createPortal} from "react-dom";
 import * as S from "./styled";
 
 interface IProps {

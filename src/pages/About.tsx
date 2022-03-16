@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import React, {useCallback} from "react";
 import Layout from "@/components/Layout";
 import useSelector from "@/hooks/useSelector";
 import useDispatch from "@/hooks/useDispatch";
-import { changeUserName } from "@/reducers/user";
+import {changeUserName} from "@/reducers/user";
 import Button from "@/components/common/atoms/Button";
 
 const About = () => {

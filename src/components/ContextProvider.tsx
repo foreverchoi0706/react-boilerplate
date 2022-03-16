@@ -1,11 +1,5 @@
-import React, {
-  FC,
-  createContext,
-  useReducer,
-  ReactNode,
-  Dispatch,
-} from "react";
-import rootReducer, { Action, IRootState, rootState } from "@/reducers/root";
+import React, {createContext, Dispatch, FC, ReactNode, useReducer,} from "react";
+import rootReducer, {Action, IRootState, rootState} from "@/reducers/root";
 
 interface IContext {
   root: IRootState;

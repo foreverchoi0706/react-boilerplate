@@ -1,5 +1,5 @@
-import React, { FC, ReactNode, Suspense, memo } from "react";
-import { Navigate } from "react-router-dom";
+import React, {FC, ReactNode, Suspense} from "react";
+import {Navigate} from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
 import * as S from "./styled";
 

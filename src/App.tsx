@@ -1,9 +1,9 @@
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Reset } from "styled-reset";
+import {QueryClient, QueryClientProvider} from "react-query";
+import {ReactQueryDevtools} from "react-query/devtools";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {createGlobalStyle, ThemeProvider} from "styled-components";
+import {Reset} from "styled-reset";
 import theme from "@/theme";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
