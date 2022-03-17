@@ -2,11 +2,7 @@ import styled, {css} from "styled-components";
 
 const Input = {
     Text: styled.input(() => css`
-      border: none;
-      border-bottom: 1px solid lightgray;
-      outline: none;
-    `),
-    Password: styled.input(() => css`
+      width: 100%;
       border: none;
       border-bottom: 1px solid lightgray;
       outline: none;

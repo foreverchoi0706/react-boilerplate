@@ -3,11 +3,12 @@ import styled, {css} from "styled-components";
 const Styled = {
     Label: styled.label<{ checked: boolean }>(({checked}) => css`
       position: relative;
-      vertical-align: center;
       cursor: pointer;
 
       &:before {
-        display: inline-block;
+        position: absolute;
+        left: 0;
+        bottom: -3px;
         content: '';
         width: 20px;
         height: 20px;
@@ -17,14 +18,17 @@ const Styled = {
       &:after {
         position: absolute;
         left: 5px;
-        bottom: 8px;
-        display: inline-block;
+        bottom: 2px;
         content: '';
         width: 12px;
         height: 12px;
         background-color: ${checked ? "skyblue" : "lightgray"};
       }
     `),
+
+    Span: styled.span(() => css`
+      margin-left: 20px;
+    `)
 };
 
 export default Styled;

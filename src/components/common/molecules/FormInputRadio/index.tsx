@@ -7,21 +7,21 @@ interface IProps {
     name: string;
     value: string;
     text: ReactNode | string;
-    defaultChecked?: boolean;
     tooltip?: ReactNode | string;
-    validate?: Validate<any> | Record<string, Validate<any>>;
+    validate?: Validate<string | boolean> | Record<string, Validate<string | boolean>>;
 }
 
-const FormInputRadio: FC<IProps> = ({name, value, text, defaultChecked}) => {
+const FormInputRadio: FC<IProps> = ({name, value, text}) => {
 
-    const {watch, register, formState: {errors}} = useFormContext();
+    const {watch, register} = useFormContext();
 
     const checked = watch()[name];
+
     return (
         <Styled.Label checked={value === checked}>
             <Input.Radio type="radio" value={value} {...register(name)}
-                         defaultChecked={defaultChecked}/>
-            {text}
+            />
+            <Styled.Span>{text}</Styled.Span>
         </Styled.Label>
     );
 };

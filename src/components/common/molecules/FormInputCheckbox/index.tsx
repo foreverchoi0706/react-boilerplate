@@ -16,9 +16,8 @@ const FormInputCheckbox: FC<IProps> = ({name, text}) => {
         const checked = watch()[name];
 
         return <Styled.Label checked={checked}>
-            <Input.Checkbox type="checkbox"  {...register(name)}
-            />
-            {text}
+            <Input.Checkbox type="checkbox"  {...register(name)}/>
+            <Styled.Span>{text}</Styled.Span>
             {errors[name] && <em>{errors[name].message}</em>}
         </Styled.Label>;
     }

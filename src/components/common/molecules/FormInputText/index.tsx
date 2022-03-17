@@ -1,39 +1,32 @@
-import React, {ChangeEventHandler, FC, memo, MouseEventHandler} from "react";
-import {useFormContext, Validate} from "react-hook-form";
+import React, {FC, memo} from "react";
+import {useFormContext} from "react-hook-form";
+import {RegisterOptions} from "react-hook-form/dist/types/validator";
 import Input from "@/components/common/atoms/Input";
 import Styled from "./styled";
 
-interface IProps {
+
+interface IProps extends RegisterOptions {
     name: string;
-    placeholder?: string;
-    required?: string;
-    onClick?: MouseEventHandler<HTMLInputElement>;
-    onChange?: ChangeEventHandler<HTMLInputElement>;
-    validate?: Validate<any> | Record<string, Validate<any>>;
+    type: "text" | "password";
+    placeholder: string;
 }
 
 const FormInputText: FC<IProps> =
     ({
          name,
+         type,
          placeholder,
-         validate,
-         required,
+         ...validate
      }) => {
         const {register, formState: {errors}} = useFormContext();
 
         return (
             <Styled.Label>
+                <span>아이디</span>
                 <Input.Text
                     placeholder={placeholder}
-                    type="text"
-                    {...register(name, {
-                        validate: {
-                            ...validate,
-                            required: (value: string) => {
-                                return value ? true : required;
-                            },
-                        },
-                    })}
+                    type={type}
+                    {...register(name, validate)}
                 />
                 {errors[name] && <Styled.Em>{errors[name].message}</Styled.Em>}
             </Styled.Label>
