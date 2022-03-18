@@ -1,6 +1,6 @@
 import React, {FC, ReactNode} from "react";
 import {createPortal} from "react-dom";
-import * as S from "./styled";
+import Styled from "./styled";
 
 interface IProps {
     children: ReactNode;
@@ -9,7 +9,7 @@ interface IProps {
 const modal = document.querySelector("#modal");
 
 const Modal: FC<IProps> = ({children}) => {
-    return createPortal(<S.Wrapper>{children}</S.Wrapper>, modal);
+    return createPortal(<Styled.Wrapper>{children}</Styled.Wrapper>, modal);
 };
 
 export default Modal;
