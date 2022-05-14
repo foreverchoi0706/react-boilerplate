@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 
 const Styled = {
-    Wrapper: styled.div(
+  Modal: styled.div(
         () => css`
           width: 100%;
           height: 100vh;

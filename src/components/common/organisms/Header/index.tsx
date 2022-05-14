@@ -1,27 +1,40 @@
-import React, {memo} from "react";
+import React, {memo, useState} from "react";
 import {Link} from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
-import * as S from "./styled";
+import * as Styled from "./styled";
+import Modal from "@/components/Modal";
 
 const Header = () => {
     const {name} = useSelector((root) => root.user);
 
-    console.log(name);
+    
+    const [isOpen,setIsOpen] = useState<boolean>(false); 
+
+    const handleCloseModal = () => {
+        setIsOpen((preState)=> !preState)
+    }
+
 
     return (
-        <S.Header>
-            <S.Gnb>
+        <Styled.Header>
+            {isOpen && <Modal handleCloseModal={handleCloseModal}>
+                dasds
+                </Modal>}
+            <Styled.Gnb>
                 <li>
                     <Link to="/">HOME</Link>
                 </li>
                 <li>
                     <Link to="/about">ABOUT</Link>
                 </li>
+                <li onClick={handleCloseModal}>
+                    <h3>MODAL</h3>
+                </li>
                 <li>
                     <h3>환영합니다, {name}님!</h3>
                 </li>
-            </S.Gnb>
-        </S.Header>
+            </Styled.Gnb>
+        </Styled.Header>
     );
 };
 

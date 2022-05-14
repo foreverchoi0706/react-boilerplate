@@ -1,15 +1,17 @@
-import React, {FC, ReactNode} from "react";
-import {createPortal} from "react-dom";
+import React, {FC, PropsWithChildren} from "react";
+import Portal from "@/components/Portal";
 import Styled from "./styled";
 
 interface IProps {
-    children: ReactNode;
+    handleCloseModal : () => void
 }
 
-const modal = document.querySelector("#modal");
-
-const Modal: FC<IProps> = ({children}) => {
-    return createPortal(<Styled.Wrapper>{children}</Styled.Wrapper>, modal);
+const Modal: FC<PropsWithChildren<IProps>> = ({children,handleCloseModal}) => {
+    return (
+    <Portal>
+        <Styled.Modal onClick={handleCloseModal}>{children}</Styled.Modal>
+    </Portal>
+    )
 };
 
 export default Modal;
