@@ -9,8 +9,8 @@ import Home from "@/pages/Home";
 // import About from "@/pages/About";
 import GlobalStyle from "@/components/GlobalStyle";
 import ContextProvider from "@/components/ContextProvider";
-import Header from "@/components/common/organisms/Header";
-import Footer from "@/components/common/organisms/Footer";
+import Header from "@/components/ui/organisms/Header";
+import Footer from "@/components/ui/organisms/Footer";
 
 const About = lazy(() => import("@/pages/About"));
 
