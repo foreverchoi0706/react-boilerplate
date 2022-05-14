@@ -1,10 +1,10 @@
 import React, {FC} from "react";
 import {FieldValues} from "react-hook-form";
 import Form from "@/components/Form";
-import FormInputText from "@/components/common/molecules/FormInputText";
-import FormInputRadio from "@/components/common/molecules/FormInputRadio";
-import FormInputCheckbox from "@/components/common/molecules/FormInputCheckbox";
-import Button from "@/components/common/atoms/Button";
+import FormInputText from "@/components/ui/molecules/FormInputText";
+import FormInputRadio from "@/components/ui/molecules/FormInputRadio";
+import FormInputCheckbox from "@/components/ui/molecules/FormInputCheckbox";
+import Button from "@/components/ui/atoms/Button";
 import Styled from "./styled";
 
 const defaultValues: FieldValues = {

@@ -1,6 +1,6 @@
 import React, {FC, memo, ReactNode} from "react";
 import {useFormContext, Validate} from "react-hook-form";
-import Input from "@/components/common/atoms/Input";
+import Input from "@/components/ui/atoms/Input";
 import Styled from "./styled";
 
 interface IProps {

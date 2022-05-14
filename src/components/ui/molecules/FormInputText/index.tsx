@@ -1,7 +1,7 @@
 import React, {FC, memo} from "react";
 import {useFormContext} from "react-hook-form";
 import {RegisterOptions} from "react-hook-form/dist/types/validator";
-import Input from "@/components/common/atoms/Input";
+import Input from "@/components/ui/atoms/Input";
 import Styled from "./styled";
 
 

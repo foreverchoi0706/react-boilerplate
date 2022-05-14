@@ -1,19 +1,17 @@
 import React, {memo, useState} from "react";
 import {Link} from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
+import Modal from "@/components/ui/organisms/Modal";
 import * as Styled from "./styled";
-import Modal from "@/components/Modal";
 
 const Header = () => {
     const {name} = useSelector((root) => root.user);
 
-    
     const [isOpen,setIsOpen] = useState<boolean>(false); 
 
     const handleCloseModal = () => {
         setIsOpen((preState)=> !preState)
     }
-
 
     return (
         <Styled.Header>
