@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {FieldValues} from "react-hook-form";
-import Form from "@/components/Form";
+import FormProvider from "@/components/FormProvider";
 import FormInputText from "@/components/ui/molecules/FormInputText";
 import FormInputRadio from "@/components/ui/molecules/FormInputRadio";
 import FormInputCheckbox from "@/components/ui/molecules/FormInputCheckbox";
@@ -20,7 +20,7 @@ const FormLogin: FC = () => {
     };
 
     return <Styled.Wrapper>
-        <Form onSubmit={handleSubmit} defaultValues={defaultValues}>
+        <FormProvider onSubmit={handleSubmit} defaultValues={defaultValues}>
             <FormInputText
                 name="id"
                 type="text"
@@ -37,7 +37,7 @@ const FormLogin: FC = () => {
                 <FormInputCheckbox name="checkbox2" text="checkbox2"/>
             </Styled.RadioWrapper>
             <Button.Primary type="submit">SUBMIT</Button.Primary>
-        </Form>
+        </FormProvider>
     </Styled.Wrapper>;
 };
 

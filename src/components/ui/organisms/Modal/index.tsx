@@ -1,5 +1,6 @@
-import React, {FC, PropsWithChildren} from "react";
-import Portal from "@/components/Portal";
+import React, {FC, PropsWithChildren, useEffect, useRef} from "react";
+import { useLocation } from "react-router-dom";
+import PortalProvider from "@/components/PortalProvider";
 import Styled from "./styled";
 
 interface IProps {
@@ -7,10 +8,22 @@ interface IProps {
 }
 
 const Modal: FC<PropsWithChildren<IProps>> = ({children,handleCloseModal}) => {
+    const isFirstRender = useRef<boolean>(true);
+
+    const {pathname} = useLocation();
+
+    useEffect(()=> {
+        if(isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        handleCloseModal();
+    },[pathname]);
+
     return (
-    <Portal>
+    <PortalProvider>
         <Styled.Modal onClick={handleCloseModal}>{children}</Styled.Modal>
-    </Portal>
+    </PortalProvider>
     )
 };
 
