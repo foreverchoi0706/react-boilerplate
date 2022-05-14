@@ -1,7 +1,7 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const Styled = {
-    Label: styled.label<{ checked: boolean }>(({checked}) => css`
+  Label: styled.label<{ checked: boolean }>(({ checked }) => css`
       position: relative;
       cursor: pointer;
 
@@ -28,7 +28,7 @@ const Styled = {
       }
     `),
 
-    Span: styled.span(() => css`
+  Span: styled.span(() => css`
       margin-left: 20px;
     `)
 };

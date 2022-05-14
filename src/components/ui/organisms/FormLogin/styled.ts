@@ -1,10 +1,12 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const Styled = {
-    Wrapper: styled.div(() => css`
+  FormLogin: styled.div(() => css`
+      background-color: white;
       display: flex;
       justify-content: center;
-      padding: 20px 0;
+      padding: 30px;
+      border-radius: 5px;
 
       form {
         display: flex;
@@ -13,7 +15,7 @@ const Styled = {
         width: 300px;
       }
     `),
-    RadioWrapper: styled.div(() => css`
+  RadioContainer: styled.div(() => css`
       display: flex;
       gap: 20px;
     `)

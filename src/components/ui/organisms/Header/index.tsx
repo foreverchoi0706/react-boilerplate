@@ -1,22 +1,23 @@
-import React, {memo, useState} from "react";
+import React, {memo, MouseEvent, MouseEventHandler, useState} from "react";
 import {Link} from "react-router-dom";
 import useSelector from "@/hooks/useSelector";
 import Modal from "@/components/ui/organisms/Modal";
-import * as Styled from "./styled";
+import Styled from "./styled";
+import FormLogin from "../FormLogin";
 
 const Header = () => {
     const {name} = useSelector((root) => root.user);
 
     const [isOpen,setIsOpen] = useState<boolean>(false); 
 
-    const handleCloseModal = () => {
+    const handleCloseModal  = () => {        
         setIsOpen((preState)=> !preState)
     }
 
     return (
         <Styled.Header>
             {isOpen && <Modal handleCloseModal={handleCloseModal}>
-                dasds
+                <FormLogin/>
                 </Modal>}
             <Styled.Gnb>
                 <li>

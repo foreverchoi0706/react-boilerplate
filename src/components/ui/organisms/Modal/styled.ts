@@ -1,8 +1,8 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const Styled = {
   Modal: styled.div(
-        () => css`
+    () => css`
           width: 100%;
           height: 100vh;
           background: rgba(0, 0, 0, 0.4);
@@ -14,7 +14,7 @@ const Styled = {
           justify-content: center;
           align-items: center;
         `
-    ),
+  ),
 };
 
 export default Styled;

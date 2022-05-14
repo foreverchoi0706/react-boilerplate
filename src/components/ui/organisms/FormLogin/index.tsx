@@ -19,7 +19,7 @@ const FormLogin: FC = () => {
         console.log(fieldValue);
     };
 
-    return <Styled.Wrapper>
+    return <Styled.FormLogin>
         <FormProvider onSubmit={handleSubmit} defaultValues={defaultValues}>
             <FormInputText
                 name="id"
@@ -28,17 +28,17 @@ const FormLogin: FC = () => {
                 required="ID를 입력해주세요."
             />
             <FormInputText name="pw" type="password" placeholder="pw" required="PW를 입력해주세요."/>
-            <Styled.RadioWrapper>
+            <Styled.RadioContainer>
                 <FormInputRadio name="radio" value="on" text="test"/>
                 <FormInputRadio name="radio" value="off" text="test2"/>
-            </Styled.RadioWrapper>
-            <Styled.RadioWrapper>
+            </Styled.RadioContainer>
+            <Styled.RadioContainer>
                 <FormInputCheckbox name="checkbox1" text="checkbox1"/>
                 <FormInputCheckbox name="checkbox2" text="checkbox2"/>
-            </Styled.RadioWrapper>
+            </Styled.RadioContainer>
             <Button.Primary type="submit">SUBMIT</Button.Primary>
         </FormProvider>
-    </Styled.Wrapper>;
+    </Styled.FormLogin>;
 };
 
 export default FormLogin;

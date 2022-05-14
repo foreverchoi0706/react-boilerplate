@@ -1,10 +1,10 @@
-import React, {FC, PropsWithChildren, useEffect, useRef} from "react";
+import React, { FC, PropsWithChildren, useEffect, useRef} from "react";
 import { useLocation } from "react-router-dom";
 import PortalProvider from "@/components/PortalProvider";
 import Styled from "./styled";
 
 interface IProps {
-    handleCloseModal : () => void
+    handleCloseModal : ()=>void
 }
 
 const Modal: FC<PropsWithChildren<IProps>> = ({children,handleCloseModal}) => {
