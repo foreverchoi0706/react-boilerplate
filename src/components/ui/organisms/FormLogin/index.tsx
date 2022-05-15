@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import {FieldValues} from "react-hook-form";
+import React, { FC } from "react";
+import { FieldValues } from "react-hook-form";
 import FormProvider from "@/components/FormProvider";
 import FormInputText from "@/components/ui/molecules/FormInputText";
 import FormInputRadio from "@/components/ui/molecules/FormInputRadio";
@@ -27,14 +27,14 @@ const FormLogin: FC = () => {
                 placeholder="ID를 입력해주세요."
                 required="ID를 입력해주세요."
             />
-            <FormInputText name="pw" type="password" placeholder="pw" required="PW를 입력해주세요."/>
+            <FormInputText name="pw" type="password" placeholder="pw" required="PW를 입력해주세요." />
             <Styled.RadioContainer>
-                <FormInputRadio name="radio" value="on" text="test"/>
-                <FormInputRadio name="radio" value="off" text="test2"/>
+                <FormInputRadio name="radio" value="on" text="test" />
+                <FormInputRadio name="radio" value="off" text="test2" />
             </Styled.RadioContainer>
             <Styled.RadioContainer>
-                <FormInputCheckbox name="checkbox1" text="checkbox1"/>
-                <FormInputCheckbox name="checkbox2" text="checkbox2"/>
+                <FormInputCheckbox name="checkbox1" text="checkbox1" />
+                <FormInputCheckbox name="checkbox2" text="checkbox2" />
             </Styled.RadioContainer>
             <Button.Primary type="submit">SUBMIT</Button.Primary>
         </FormProvider>

@@ -1,4 +1,4 @@
-import {DefaultTheme} from "styled-components";
+import { DefaultTheme } from "styled-components";
 
 const getMediaQuery = (maxWidth: number): string => `
     @media (max-width: ${maxWidth}px)

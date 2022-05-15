@@ -1,5 +1,5 @@
-import React, {FC, memo, ReactNode} from "react";
-import {useFormContext, Validate} from "react-hook-form";
+import React, { FC, memo, ReactNode } from "react";
+import { useFormContext, Validate } from "react-hook-form";
 import Input from "@/components/ui/atoms/Input";
 import Styled from "./styled";
 
@@ -11,9 +11,9 @@ interface IProps {
     validate?: Validate<string | boolean> | Record<string, Validate<string | boolean>>;
 }
 
-const FormInputRadio: FC<IProps> = ({name, value, text}) => {
+const FormInputRadio: FC<IProps> = ({ name, value, text }) => {
 
-    const {watch, register} = useFormContext();
+    const { watch, register } = useFormContext();
 
     const checked = watch()[name];
 

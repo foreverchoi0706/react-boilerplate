@@ -1,12 +1,12 @@
-import React, {FC, PropsWithChildren, useEffect} from "react";
-import {FieldValues, FormProvider, SubmitHandler, useForm,} from "react-hook-form";
+import React, { FC, PropsWithChildren, useEffect } from "react";
+import { FieldValues, FormProvider, SubmitHandler, useForm, } from "react-hook-form";
 
 interface IProps {
     onSubmit: SubmitHandler<FieldValues>;
     defaultValues?: FieldValues;
 }
 
-const Form: FC<PropsWithChildren<IProps>> = ({ children, onSubmit, defaultValues}) => {
+const Form: FC<PropsWithChildren<IProps>> = ({ children, onSubmit, defaultValues }) => {
     const methods = useForm<typeof defaultValues>({
         defaultValues
     });

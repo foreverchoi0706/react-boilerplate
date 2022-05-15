@@ -1,9 +1,9 @@
-import React, {lazy, Suspense} from "react";
-import {QueryClient, QueryClientProvider} from "react-query";
-import {ReactQueryDevtools} from "react-query/devtools";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import {ThemeProvider} from "styled-components";
-import {Reset} from "styled-reset";
+import React, { lazy, Suspense } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { Reset } from "styled-reset";
 import theme from "@/theme";
 import Home from "@/pages/Home";
 // import About from "@/pages/About";
@@ -30,19 +30,19 @@ const App = () => {
             <ThemeProvider theme={theme}>
                 <ContextProvider>
                     <BrowserRouter>
-                        <GlobalStyle/>
-                        <Reset/>
-                        <Header/>
+                        <GlobalStyle />
+                        <Reset />
+                        <Header />
                         <Routes>
-                            <Route path="/" element={<Home/>}/>
-                            <Route path="/about" element={<Suspense fallback={<div>loading...</div>}><About/></Suspense>}/>
-                            <Route path="/*" element={<Navigate to="/"/>}/>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<Suspense fallback={<div>loading...</div>}><About /></Suspense>} />
+                            <Route path="/*" element={<Navigate to="/" />} />
                         </Routes>
-                        <Footer/>
+                        <Footer />
                     </BrowserRouter>
                 </ContextProvider>
             </ThemeProvider>
-            <ReactQueryDevtools/>
+            <ReactQueryDevtools />
         </QueryClientProvider>
     );
 };

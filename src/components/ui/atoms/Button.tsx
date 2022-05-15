@@ -1,8 +1,8 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = {
-    Primary: styled.button<{ disabled?: boolean }>(
-        ({disabled}) => css`
+  Primary: styled.button<{ disabled?: boolean }>(
+    ({ disabled }) => css`
           color: skyblue;
           background-color: ${disabled ? "lightgray" : "white"};
           border: 1px solid lightgray;
@@ -14,7 +14,7 @@ const Button = {
             background-color: lightgray;
           }
         `
-    ),
+  ),
 };
 
 export default Button;
