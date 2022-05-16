@@ -21,6 +21,7 @@ const Header = () => {
                         HEADER
                     </Styled.FilterHeader>
                     <Styled.Section>
+                        시작~
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, eius velit aliquid vero provident officia animi fugit earum incidunt cumque ipsam deserunt possimus consequuntur accusamus exercitationem minus at quae laudantium!
                         Itaque, dolore magnam? Expedita libero ullam id nam laborum, saepe possimus similique voluptatibus! Doloribus iste laborum officiis veniam neque reprehenderit quibusdam aliquid eos ipsam dignissimos, ipsa qui placeat deleniti autem?
                         Quaerat doloremque, amet voluptas maiores ab enim consequatur odit laudantium libero omnis similique nesciunt, hic cupiditate culpa quas accusantium! Possimus praesentium similique omnis aliquam fugiat reiciendis soluta tempore cumque eligendi!
@@ -91,6 +92,7 @@ const Header = () => {
                         Perspiciatis vitae suscipit veritatis voluptatibus neque aliquam, natus quae magni iusto sunt possimus assumenda officia omnis minima? Id neque omnis, nemo nisi fuga velit porro aliquid! Harum, quis fugiat! Nesciunt?
                         Tempore ratione quam eum debitis unde, quisquam ex repudiandae doloribus sed sit error nulla corrupti dolorum at! Consequatur harum modi impedit illum, excepturi alias quo ratione architecto mollitia tempore minus!
                         Mollitia quos sequi aspernatur ullam eos voluptatem tenetur necessitatibus a magni amet officiis temporibus animi perspiciatis earum praesentium nemo id inventore nesciunt consectetur alias illo aliquam, excepturi eveniet? Sunt, nisi?
+                        끝!
                     </Styled.Section>
                     <Styled.BtnContainer>
                         <button>A</button>
