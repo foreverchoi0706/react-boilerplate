@@ -6,6 +6,7 @@ import FormInputRadio from "@/components/ui/molecules/FormInputRadio";
 import FormInputCheckbox from "@/components/ui/molecules/FormInputCheckbox";
 import Button from "@/components/ui/atoms/Button";
 import Styled from "./styled";
+import useUserStore from "@/hooks/stores/useUserStore";
 
 const defaultValues: FieldValues = {
     id: "",
@@ -15,8 +16,11 @@ const defaultValues: FieldValues = {
 };
 
 const FormLogin: FC = () => {
+    const setIsAuthed = useUserStore(user => user.setIsAuthed);
+
     const handleSubmit = (fieldValue: FieldValues) => {
         console.log(fieldValue);
+        setIsAuthed(true);
     };
 
     return <Styled.FormLogin>

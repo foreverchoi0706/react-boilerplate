@@ -13,7 +13,7 @@ const Form: FC<PropsWithChildren<IProps>> = ({ children, onSubmit, defaultValues
 
     useEffect(() => {
         if (methods.formState.errors) {
-            console.log(methods.formState.errors);
+            console.error(methods.formState.errors);
         }
     }, [methods.formState.errors]);
 

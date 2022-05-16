@@ -1,3 +1,3 @@
 export default {
-    plugins: ["babel-plugin-styled-components"]
-  }
+    plugins: ["@babel/preset-react","babel-plugin-styled-components"]
+}
