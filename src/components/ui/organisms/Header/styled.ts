@@ -30,30 +30,38 @@ const Styled = {
   FilterHeader: styled.header(() => css`
     height: 73px;
     width: 100%;
-    position: fixed;
-    top: 0;
     border-bottom: 1px solid red;
+    @media (max-width : 768px) {
+      position: fixed;
+      top: 0;
+    }
   `),
 
   Section: styled.section(() => css`
     overflow-y : auto;
- 
-    height :  calc(100% - 120px - 146px);
-    max-height: calc(100% - 120px - 146px);
+     width: 100%;
+    height :  calc(100%  - 146px);
+    max-height: calc(100%  - 146px);
     @media (max-width : 768px) {
       position: fixed;
-    top: 73px;
-         width: 100%;
-         height :  calc(100%   - 146px);
-        max-height: calc(100%  - 146px);
+      top: 73px;
+     
+    }
+  `),
+
+
+
+  FilterFooter: styled.footer(() => css`
+    border-top: 1px solid red;
+    width: 100%;
+  
+    @media (max-width : 768px) {
+      position: fixed;
+      bottom: 0;
     }
   `),
 
   BtnContainer: styled.div(() => css`
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-     border-top: 1px solid red;
     display: flex;
     height: 73px;
     gap: 8px;

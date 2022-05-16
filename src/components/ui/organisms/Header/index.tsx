@@ -94,10 +94,13 @@ const Header = () => {
                         Mollitia quos sequi aspernatur ullam eos voluptatem tenetur necessitatibus a magni amet officiis temporibus animi perspiciatis earum praesentium nemo id inventore nesciunt consectetur alias illo aliquam, excepturi eveniet? Sunt, nisi?
                         끝!
                     </Styled.Section>
-                    <Styled.BtnContainer>
-                        <button>A</button>
-                        <button>B</button>
-                    </Styled.BtnContainer>
+                    <Styled.FilterFooter>
+                        <Styled.BtnContainer>
+                            <button>A</button>
+                            <button>B</button>
+                        </Styled.BtnContainer>
+                    </Styled.FilterFooter>
+
                 </Styled.Filter>
             </Modal>}
             <Styled.Gnb>
