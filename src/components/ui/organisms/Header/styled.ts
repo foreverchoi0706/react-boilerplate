@@ -47,7 +47,7 @@ const Styled = {
   `),
 
   BtnContainer: styled.div(() => css`
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
      border-top: 1px solid red;
