@@ -25,10 +25,12 @@ const Styled = {
          max-height: 100%;
       }
   `),
+
   FilterHeader: styled.header(() => css`
     height: 73px;
     border-bottom: 1px solid red;
   `),
+
   Section: styled.section(() => css`
     overflow-y : auto;
     height :  calc(100vh - 120px - 146px);
@@ -36,9 +38,13 @@ const Styled = {
     @media (max-width : 768px) {
          width: 100%;
          height :  calc(100vh   - 146px);
-    max-height: calc(100vh  - 146px);
+        max-height: calc(100vh  - 146px);
+      @supports (-webkit-touch-callout: none) {
+         height: -webkit-fill-available; 
+        }
       }
   `),
+
   BtnContainer: styled.div(() => css`
    border-top: 1px solid red;
     display: flex;
