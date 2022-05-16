@@ -16,10 +16,14 @@ const Styled = {
   Filter: styled.div(() => css`
       background-color: white;
       border-radius: 5px;
-    
       width: 768px;
       height : calc(100vh - 120px);
       max-height : calc(100vh - 120px);
+      @media (max-width : 768px) {
+         width: 100%;
+         height: 100%;
+         max-height: 100%;
+      }
   `),
   FilterHeader: styled.header(() => css`
     height: 73px;
@@ -29,6 +33,11 @@ const Styled = {
     overflow-y : auto;
     height :  calc(100vh - 120px - 146px);
     max-height: calc(100vh - 120px - 146px);
+    @media (max-width : 768px) {
+         width: 100%;
+         height :  calc(100vh   - 146px);
+    max-height: calc(100vh  - 146px);
+      }
   `),
   BtnContainer: styled.div(() => css`
    border-top: 1px solid red;
