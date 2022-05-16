@@ -14,6 +14,7 @@ const Styled = {
     justify-content: space-between;
   `),
   Filter: styled.div(() => css`
+     position: relative;
       background-color: white;
       border-radius: 5px;
       width: 768px;
@@ -28,6 +29,9 @@ const Styled = {
 
   FilterHeader: styled.header(() => css`
     height: 73px;
+    width: 100%;
+    position: absolute;
+    top: 0;
     border-bottom: 1px solid red;
   `),
 
@@ -43,7 +47,10 @@ const Styled = {
   `),
 
   BtnContainer: styled.div(() => css`
-   border-top: 1px solid red;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+     border-top: 1px solid red;
     display: flex;
     height: 73px;
     gap: 8px;
