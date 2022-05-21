@@ -1,14 +1,12 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import useUiStore from "hooks/stores/useUiStore";
-import Styled from "./styled";
-import useUserStore from "hooks/stores/useUserStore";
 import shallow from "zustand/shallow";
+import useUiStore from "hooks/stores/useUiStore";
+import useUserStore from "hooks/stores/useUserStore";
+import Styled from "./styled";
 
 const Header: FC = memo(() => {
     const isLogined = useUserStore((state) => state.isLogined, shallow);
-
-    console.log(isLogined);
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
@@ -23,7 +21,9 @@ const Header: FC = memo(() => {
                 "환영합니다" :
                 <button onClick={() => {
                     setIsLoginModalOpen(true);
-                }}>로그인/회원가입</button>
+                }}>
+                    로그인/회원가입
+                </button>
             }
         </Styled.Header>
     );

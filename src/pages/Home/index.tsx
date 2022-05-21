@@ -7,11 +7,7 @@ import CardList from "components/ui/organisms/CardList";
 const items = new Array(20).fill("").map((_, index) => index);
 
 const Home = memo(() => {
-
-    const { data } = useQuery(["home"], getAccountInfo);
-
-
-    console.log(data);
+    useQuery(["home"], getAccountInfo);
 
     return (
         <main>
