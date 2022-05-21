@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 
 const Styled = {
-    Footer: styled.footer(() => css`
-        padding: 20px 0;
+    Banner: styled.div(() => css`
+    height: 400px;
+    background-color: lightcoral;
     `)
-}
+};
 
 export default Styled;

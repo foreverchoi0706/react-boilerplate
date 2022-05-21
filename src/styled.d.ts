@@ -2,7 +2,7 @@ import "styled-components";
 
 declare module "styled-components" {
     export interface DefaultTheme {
-        breakPoint: {
+        media: {
             pc: string;
             tablet: string;
             mobile: string;

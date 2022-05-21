@@ -5,7 +5,7 @@ const getMediaQuery = (maxWidth: number): string => `
 `;
 
 const theme: DefaultTheme = {
-    breakPoint: {
+    media: {
         pc: "",
         tablet: getMediaQuery(1080),
         mobile: getMediaQuery(680),

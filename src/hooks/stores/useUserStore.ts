@@ -1,19 +1,26 @@
 import create, { SetState } from "zustand";
+import { setCookie, isExistCookie } from "libs/cookieController";
 
 interface IUser {
-    isAuthed: boolean;
+    isLogined: boolean;
     name: string;
     age: number;
-    setIsAuthed: (isAuthed: boolean) => void;
+    setIsLogined: (isLogined: boolean) => void;
     setName: (name: string) => void;
     setAge: (age: number) => void;
 }
 
 const store = (set: SetState<IUser>) => ({
-    isAuthed: false,
+    isLogined: isExistCookie("isLogined"),
     name: "",
     age: 0,
-    setIsAuthed: (isAuthed: boolean) => set((state) => ({ ...state, isAuthed, })),
+    setIsLogined: (isLogined: boolean) => set((state) => {
+        setCookie("isLogined", "true", 86400000);
+        return {
+            ...state,
+            isLogined,
+        }
+    }),
     setName: (name: string) => set((state) => ({ ...state, name, })),
     setAge: (age: number) => set((state) => ({ ...state, age, }))
 })

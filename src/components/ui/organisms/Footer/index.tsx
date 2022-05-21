@@ -1,8 +1,8 @@
-import React, { memo } from "react";
+import { FC, memo } from "react";
 import Styled from "./styled";
 
-const Footer = () => {
-    return <Styled.Footer>Footer</Styled.Footer>;
-};
+const Footer: FC = () => {
+    return <Styled.Footer>FOOTER</Styled.Footer>
+}
 
 export default memo(Footer);
