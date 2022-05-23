@@ -12,7 +12,7 @@ const appear = keyframes`
 `
 
 const Styled = {
-    FormLogin: styled.div(() => css`
+    FormLogin: styled.div(({ theme }) => css`
         position: relative;
         width: 320px;
         padding: 20px;
@@ -20,6 +20,12 @@ const Styled = {
         border-radius: 5px;
         background: white;
         animation: ${appear} 0.5s linear;
+        ${theme.media.tablet}{
+            width: 100%;
+            height: 100%;
+            animation: none;
+            border-radius : 0;
+        }
     `),
     Header: styled.header(() => css`
       text-align: center;

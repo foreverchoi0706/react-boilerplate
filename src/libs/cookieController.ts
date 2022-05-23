@@ -19,6 +19,10 @@ export const setCookie = (name: string, value: string, ms: number): void => {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+export const delCookie = (name: string): void => {
+    alert(name);
+    document.cookie = "name=isLogined; max-age=0";
+}
 
 export const isExistCookie = (name: string): boolean => {
     return Boolean(getCookie(name));

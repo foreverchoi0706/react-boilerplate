@@ -4,9 +4,10 @@ import shallow from "zustand/shallow";
 import useUiStore from "hooks/stores/useUiStore";
 import useUserStore from "hooks/stores/useUserStore";
 import Styled from "./styled";
+import { delCookie } from "libs/cookieController";
 
 const Header: FC = memo(() => {
-    const isLogined = useUserStore((state) => state.isLogined, shallow);
+    const [isLogined, setIsLogined] = useUserStore(({ isLogined, setIsLogined }) => [isLogined, setIsLogined], shallow);
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
@@ -18,11 +19,16 @@ const Header: FC = memo(() => {
                 </Link>
             </Styled.LogoWrap>
             {isLogined ?
-                "환영합니다" :
+                <button onClick={() => {
+                    setIsLogined(false);
+                    delCookie("isLogined");
+                }}>
+                    로그아웃
+                </button> :
                 <button onClick={() => {
                     setIsLoginModalOpen(true);
                 }}>
-                    로그인/회원가입
+                    로그인
                 </button>
             }
         </Styled.Header>

@@ -11,12 +11,6 @@ const Form: FC<PropsWithChildren<IProps>> = ({ children, onSubmit, defaultValues
         defaultValues
     });
 
-    // useEffect(() => {
-    //     if (methods.formState.errors) {
-    //         console.log(methods.formState.errors);
-    //     }
-    // }, [methods.formState.errors]);
-
     return (
         <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)} autoComplete="off">

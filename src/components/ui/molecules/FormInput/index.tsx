@@ -9,7 +9,7 @@ interface IProps extends RegisterOptions {
     label?: string;
     name: string;
     type: "text" | "password";
-    placeholder: string;
+    placeholder?: string;
     full?: boolean
 }
 

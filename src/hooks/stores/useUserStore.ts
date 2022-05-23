@@ -1,22 +1,26 @@
 import create, { SetState } from "zustand";
 import { isExistCookie } from "libs/cookieController";
 
+interface IInfo {
+    name: string | null;
+    age: number | null;
+}
+
 interface IUser {
     isLogined: boolean;
-    name: string;
-    age: number;
+    info: IInfo | null;
     setIsLogined: (isLogined: boolean) => void;
-    setName: (name: string) => void;
-    setAge: (age: number) => void;
+    setInfo: (info: IInfo) => void;
 }
 
 const store = (set: SetState<IUser>) => ({
     isLogined: isExistCookie("isLogined"),
-    name: "",
-    age: 0,
+    info: {
+        name: null,
+        age: null
+    },
     setIsLogined: (isLogined: boolean) => set((state) => ({ ...state, isLogined, })),
-    setName: (name: string) => set((state) => ({ ...state, name, })),
-    setAge: (age: number) => set((state) => ({ ...state, age, }))
+    setInfo: (info: IInfo) => set((state) => ({ ...state, info }))
 })
 
 const useUserStore = create<IUser>(store);

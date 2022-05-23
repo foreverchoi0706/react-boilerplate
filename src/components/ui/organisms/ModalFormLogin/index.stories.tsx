@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRHF } from 'components/WithRHF';
+import { withRHF } from 'decorators/WithRHF';
 import Component from './index';
 
 export default {
