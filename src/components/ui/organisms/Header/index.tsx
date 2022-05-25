@@ -7,7 +7,7 @@ import useUserStore from "hooks/stores/useUserStore";
 import Styled from "./styled";
 
 const Header: FC = memo(() => {
-    const [isLogined, setIsLogined] = useUserStore(({ isLogined, setIsLogined }) => [isLogined, setIsLogined], shallow);
+    const [isLogined, setIsLogined, userinfo] = useUserStore(({ isLogined, setIsLogined, userinfo }) => [isLogined, setIsLogined, userinfo], shallow);
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
@@ -19,12 +19,16 @@ const Header: FC = memo(() => {
                 </Link>
             </Styled.LogoWrap>
             {isLogined ?
-                <button onClick={() => {
-                    setIsLogined(false);
-                    cookieController.delete("isLogined");
-                }}>
-                    로그아웃
-                </button> :
+                <>
+                    {userinfo.name}님 환영합니다.
+                    <button onClick={() => {
+                        setIsLogined(false);
+                        cookieController.delete("isLogined");
+                    }}>
+                        로그아웃
+                    </button>
+                </>
+                :
                 <button onClick={() => {
                     setIsLoginModalOpen(true);
                 }}>

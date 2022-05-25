@@ -14,7 +14,7 @@ const FormLogin: FC = () => {
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
-    const { mutate, isLoading, isSuccess } = useLogin();
+    const { mutate, isLoading } = useLogin();
 
     const handleClose = useCallback(() => {
         setIsLoginModalOpen(false);
@@ -23,12 +23,6 @@ const FormLogin: FC = () => {
     const handleSubmit = useCallback((fieldValues: FieldValues) => {
         mutate(fieldValues as ILoginInfo);
     }, []);
-
-    useEffect(() => {
-        if (isSuccess) {
-            handleClose();
-        }
-    }, [isSuccess])
 
     return (
         <Modal handleClose={handleClose}>

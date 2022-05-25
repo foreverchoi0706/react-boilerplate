@@ -1,5 +1,10 @@
 
 class CookieController {
+
+    constructor() {
+        console.log("CookieController init...");
+    }
+
     get = (name: string): string | null => {
         const nameEQ = name + "=";
         const ca = document.cookie.split(';');
@@ -12,11 +17,9 @@ class CookieController {
     }
 
     set = (name: string, value: string, ms: number): void => {
-        let expires = "";
         const date = new Date();
         date.setTime(date.getTime() + ms);
-        expires = "; expires=" + date.toUTCString();
-        console.log(name + "=" + (value || "") + expires + "; path=/");
+        const expires = "; expires=" + date.toUTCString();
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
     }
 
