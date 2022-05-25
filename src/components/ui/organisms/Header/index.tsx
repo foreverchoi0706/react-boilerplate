@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 import shallow from "zustand/shallow";
+import cookieController from "libs/cookieController";
 import useUiStore from "hooks/stores/useUiStore";
 import useUserStore from "hooks/stores/useUserStore";
 import Styled from "./styled";
-import { delCookie } from "libs/cookieController";
 
 const Header: FC = memo(() => {
     const [isLogined, setIsLogined] = useUserStore(({ isLogined, setIsLogined }) => [isLogined, setIsLogined], shallow);
@@ -21,7 +21,7 @@ const Header: FC = memo(() => {
             {isLogined ?
                 <button onClick={() => {
                     setIsLogined(false);
-                    delCookie("isLogined");
+                    cookieController.delete("isLogined");
                 }}>
                     로그아웃
                 </button> :

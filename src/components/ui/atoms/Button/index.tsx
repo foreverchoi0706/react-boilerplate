@@ -17,7 +17,7 @@ const Button = styled.button<IProps>(({
 }) => css`
     border: 1px solid black;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 10px;
     color: white;
     cursor: pointer;

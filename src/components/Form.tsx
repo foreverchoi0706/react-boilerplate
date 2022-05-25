@@ -3,11 +3,11 @@ import { FieldValues, FormProvider, SubmitHandler, useForm, } from "react-hook-f
 
 interface IProps {
     onSubmit: SubmitHandler<FieldValues>;
-    defaultValues: FieldValues;
+    defaultValues?: FieldValues;
 }
 
 const Form: FC<PropsWithChildren<IProps>> = ({ children, onSubmit, defaultValues }) => {
-    const methods = useForm<typeof defaultValues>({
+    const methods = useForm({
         defaultValues
     });
 

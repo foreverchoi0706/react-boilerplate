@@ -6,33 +6,28 @@ import Styled from "./styled";
 
 
 interface IProps extends RegisterOptions {
-    label: string;
+    label?: string;
     name: string;
-    type: "text" | "password";
-    placeholder?: string;
 }
 
 const FormInput: FC<IProps> =
     ({
         label,
         name,
-        type,
-        placeholder,
         ...rest
     }) => {
         const { register, formState: { errors } } = useFormContext();
 
         return (
-            <Styled.FormInput>
-                <Styled.Label htmlFor={name}>{rest.required && <em>*</em>} {label}</Styled.Label>
+            <Styled.FormInputCheckBox>
                 <Input
                     id={name}
-                    type={type}
-                    placeholder={placeholder}
+                    type="checkbox"
+                    required={errors[name]}
                     {...register(name, rest)}
                 />
-                {errors[name] && <Styled.ErrorMsg>{errors[name].message}</Styled.ErrorMsg>}
-            </Styled.FormInput>
+                <Styled.Label htmlFor={name}>{label} {rest.required && <em>(필수)</em>}</Styled.Label>
+            </Styled.FormInputCheckBox>
         );
     };
 

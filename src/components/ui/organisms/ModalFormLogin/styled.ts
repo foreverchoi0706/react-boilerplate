@@ -20,7 +20,7 @@ const Styled = {
         border-radius: 5px;
         background: white;
         animation: ${appear} 0.5s linear;
-        ${theme.media.tablet}{
+        ${theme.media.mobile}{
             width: 100%;
             height: 100%;
             animation: none;
@@ -29,11 +29,6 @@ const Styled = {
     `),
     Header: styled.header(() => css`
       text-align: center;
-    `),
-    ButtonWrap: styled.div(() => css`
-        position: absolute;
-        right: 0;
-        top: 0;
     `),
     FormInputWrap: styled.div(() => css`
         margin-bottom: 20px;

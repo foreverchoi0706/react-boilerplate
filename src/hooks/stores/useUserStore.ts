@@ -1,5 +1,5 @@
 import create, { SetState } from "zustand";
-import { isExistCookie } from "libs/cookieController";
+import cookieController from "libs/cookieController";
 
 interface IInfo {
     name: string | null;
@@ -14,7 +14,7 @@ interface IUser {
 }
 
 const store = (set: SetState<IUser>) => ({
-    isLogined: isExistCookie("isLogined"),
+    isLogined: cookieController.isExist("isLogined"),
     info: {
         name: null,
         age: null

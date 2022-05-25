@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "libs/cookieController";
+import cookieController from "libs/cookieController";
 
 const instance = axios.create();
 
@@ -7,7 +7,7 @@ instance.interceptors.request.use(
     (config) => {
         config.headers = {
             ...config.headers,
-            authorization: getCookie("isLogined") || "test",
+            authorization: cookieController.get("isLogined") || "test",
         }
         return config;
     },

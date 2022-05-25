@@ -9,15 +9,11 @@ const Input = styled.input(({ type }) => css`
     `}
 
     ${type === "checkbox" && css`
-        opacity: 0;
-        width: 0;
-        height: 0;
+        
     `}
 
     ${type === "radio" && css`
-        opacity: 0;
-        width: 0;
-        height: 0;
+      
     `}
 `);
 
