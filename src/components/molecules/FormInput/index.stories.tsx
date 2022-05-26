@@ -8,12 +8,12 @@ export default {
     decorators: [withRHF(false)]
 } as ComponentMeta<typeof Component>;
 
-const Template: ComponentStory<typeof Component> = (args) => {
-    return <div>
-        <Component {...args} />
-    </div>
-
-};
+const Template: ComponentStory<typeof Component> = (args) => <Component {...args} />
 
 export const Default = Template.bind({});
+Default.args = {
+    label: "Test",
+    name: "Test",
+    required: true,
+}
 

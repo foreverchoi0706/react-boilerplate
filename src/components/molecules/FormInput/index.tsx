@@ -1,33 +1,38 @@
 import { FC, memo } from "react";
 import { useFormContext } from "react-hook-form";
 import { RegisterOptions } from "react-hook-form/dist/types/validator";
-import Input from "components/ui/atoms/Input";
+import Input from "components/atoms/Input";
 import Styled from "./styled";
 
 
 interface IProps extends RegisterOptions {
-    label?: string;
+    label: string;
     name: string;
+    type: "text" | "password";
+    placeholder?: string;
 }
 
 const FormInput: FC<IProps> =
     ({
         label,
         name,
+        type,
+        placeholder,
         ...rest
     }) => {
         const { register, formState: { errors } } = useFormContext();
 
         return (
-            <Styled.FormInputCheckBox>
+            <Styled.FormInput>
+                <Styled.Label htmlFor={name}>{rest.required && <em>*</em>} {label}</Styled.Label>
                 <Input
                     id={name}
-                    type="checkbox"
-                    required={errors[name]}
+                    type={type}
+                    placeholder={placeholder}
                     {...register(name, rest)}
                 />
-                <Styled.Label htmlFor={name}>{label} {rest.required && <em>(필수)</em>}</Styled.Label>
-            </Styled.FormInputCheckBox>
+                {errors[name] && <Styled.ErrorMsg>{errors[name].message}</Styled.ErrorMsg>}
+            </Styled.FormInput>
         );
     };
 

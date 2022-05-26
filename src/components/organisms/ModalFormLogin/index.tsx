@@ -5,9 +5,9 @@ import useLogin from "hooks/mutations/useLogin";
 import useUiStore from "hooks/stores/useUiStore";
 import Form from "components/Form";
 import Modal from "components/Modal";
-import Button from "components/ui/atoms/Button";
-import FormInput from "components/ui/molecules/FormInput";
-import FormInputCheckbox from "components/ui/molecules/FormInputCheckbox";
+import Button from "components/atoms/Button";
+import FormInput from "components/molecules/FormInput";
+import FormInputCheckbox from "components/molecules/FormInputCheckbox";
 import Styled from "./styled"
 
 const FormLogin: FC = () => {

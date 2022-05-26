@@ -1,13 +1,16 @@
 import { FC, useEffect, PropsWithChildren, useCallback } from "react";
 import { createPortal } from "react-dom";
 
-const modal = document.querySelector("#modal") as Element;
-
 interface IProps {
     handleClose: () => void
 }
 
 const Modal: FC<PropsWithChildren<IProps>> = ({ children, handleClose }) => {
+
+    const modal = document.querySelector("#modal") as Element;
+
+    console.log(modal);
+
 
     const handleKeyDown = useCallback(({ key }: KeyboardEvent) => {
         if (key === "Escape") {

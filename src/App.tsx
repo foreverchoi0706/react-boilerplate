@@ -5,9 +5,9 @@ import useUiStore from "hooks/stores/useUiStore";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
 import Home from "pages/Home";
 import About from "pages/About";
-import Header from "components/ui/organisms/Header";
-import Footer from "components/ui/organisms/Footer";
-import ModalFormLogin from "components/ui/organisms/ModalFormLogin";
+import Header from "components/organisms/Header";
+import Footer from "components/organisms/Footer";
+import ModalFormLogin from "components/organisms/ModalFormLogin";
 
 
 const App: FC = memo(() => {
