@@ -2,10 +2,11 @@ import { useQuery } from "react-query";
 import shallow from "zustand/shallow";
 import { USER_INFO } from "keys/user";
 import useUserStore from "hooks/stores/useUserStore";
+import cookieController from "libs/cookieController";
 
 
 const useUserInfoQuery = () => {
-    const [isLogined, setUserInfo] = useUserStore(({ isLogined, setUserInfo }) => [isLogined, setUserInfo], shallow);
+    const [setIsLogined, setUserInfo] = useUserStore(({ setIsLogined, setUserInfo }) => [setIsLogined, setUserInfo], shallow);
 
     return useQuery([USER_INFO], () => {
         return new Promise(resolve => {
@@ -17,10 +18,11 @@ const useUserInfoQuery = () => {
             }, 50);
         })
     }, {
-        enabled: isLogined,
+        enabled: cookieController.isExist("isLogined"),
         refetchOnWindowFocus: false,
         onSuccess: (userInfo: IUserInfo) => {
             setUserInfo(userInfo);
+            setIsLogined(true);
         }
     })
 }

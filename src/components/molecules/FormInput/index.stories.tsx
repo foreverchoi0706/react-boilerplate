@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof Component> = (args) => <Component {...args
 
 export const Default = Template.bind({});
 Default.args = {
+    type: "text",
     label: "Test",
     name: "Test",
     required: true,

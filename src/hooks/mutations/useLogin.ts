@@ -1,7 +1,7 @@
 import { useMutation } from "react-query"
+import shallow from "zustand/shallow";
 import cookieController from "libs/cookieController";
 import useUserStore from "hooks/stores/useUserStore";
-import shallow from "zustand/shallow";
 import useUiStore from "hooks/stores/useUiStore";
 
 const useLogin = () => {
@@ -17,9 +17,9 @@ const useLogin = () => {
             }, 1000);
         })
     }, {
-        onSuccess: (_, loginInfo) => {
+        onSuccess: (_, { id }) => {
             setUserInfo({
-                name: loginInfo.id,
+                name: id,
                 age: 0,
             });
             setIsLogined(true);
