@@ -1,8 +1,11 @@
 import styled, { css } from "styled-components";
 
 const Styled = {
-    FormLogin: styled.div(() => css`
+    FormLogin: styled.div(({ theme }) => css`
         width: 600px;
+        ${theme.media.mobile}{
+            width: 100%;
+        }
     `),
     FormInputWrap: styled.div(() => css`
         margin-bottom: 20px;

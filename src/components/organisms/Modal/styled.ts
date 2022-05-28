@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 
 const Styled = {
-    Modal: styled.div(({ theme }) => css`
+    Modal: styled.div(() => css`
         width: 100%;
         height: 100%;
         position: fixed;
@@ -13,14 +13,9 @@ const Styled = {
         justify-content: center;
         align-items: center;
         background: rgba(0,0,0,0.6);
-        ${theme.media.mobile}{
-            width: 100%;
-            height: 100%;
-            animation: none;
-            border-radius : 0;
-        }
+      
     `),
-    ModalContents: styled.div<{ heightFull: boolean }>(({ heightFull }) => css`
+    ModalContents: styled.div<{ heightFull: boolean }>(({ theme, heightFull }) => css`
         background: #ffffff;
         padding: 20px;
         border-radius: 5px;
@@ -28,6 +23,12 @@ const Styled = {
             height : 100%;   
             border-radius: 0;
         `}
+        ${theme.media.mobile}{
+            width: 100%;
+            height: 100%;
+            animation: none;
+            border-radius : 0;
+        }
     `),
     ModalHeader: styled.header(() => css`
         position: relative;
