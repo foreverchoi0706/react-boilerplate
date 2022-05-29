@@ -3,7 +3,7 @@ import { withRHF } from 'decorators/WithRHF';
 import Component from './index';
 
 export default {
-    title: 'organisms/FormLogin',
+    title: 'organisms/Modal',
     component: Component,
     decorators: [withRHF(false)]
 } as ComponentMeta<typeof Component>;
@@ -11,3 +11,8 @@ export default {
 const Template: ComponentStory<typeof Component> = (args) => <Component {...args} />;
 
 export const Default = Template.bind({});
+
+Default.args = {
+    title: "MODAL TITLE",
+    disabledCloseButton: false
+}

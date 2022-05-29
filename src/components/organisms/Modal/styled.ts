@@ -17,8 +17,9 @@ const Styled = {
     `),
     ModalContents: styled.div<{ heightFull: boolean }>(({ theme, heightFull }) => css`
         background: #ffffff;
-        padding: 20px;
         border-radius: 5px;
+        padding: 20px;
+        min-width: 400px;
         ${heightFull && css`
             height : 100%;   
             border-radius: 0;

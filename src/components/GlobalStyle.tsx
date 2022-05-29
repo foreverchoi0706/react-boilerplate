@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = memo(createGlobalStyle`
     #root,#modal{
         * {
             box-sizing: border-box;
@@ -10,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
             text-decoration: none;
             color: black;
         }
+        button{
+            cursor: pointer;
+        }
     }
     #root{
         max-width: 1060px;
@@ -17,5 +21,6 @@ const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
     }
   
-`
+`);
+
 export default GlobalStyle;

@@ -8,24 +8,24 @@ import Modal from "components/organisms/Modal";
 import Button from "components/atoms/Button";
 import FormInput from "components/molecules/FormInput";
 import FormInputCheckbox from "components/molecules/FormInputCheckbox";
-import Styled from "./styled"
+import FormInputRadio from "components/molecules/FormInputRadio";
+import Styled from "./styled";
 
 const FormLogin: FC = () => {
-
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
     const { mutate, isLoading } = useLogin();
 
     const handleClose = useCallback(() => {
         setIsLoginModalOpen(false);
-    }, []);
+    }, [setIsLoginModalOpen]);
 
     const handleSubmit = useCallback((fieldValues: FieldValues) => {
         mutate(fieldValues as ILoginInfo);
-    }, []);
+    }, [mutate]);
 
     return (
-        <Modal onClose={handleClose} disabledCloseButton={!isLoading}>
+        <Modal title="로그인" onClose={handleClose} disabledCloseButton={!isLoading}>
             <Styled.FormLogin>
                 {isLoading ?
                     <h1>LOADING...</h1> :
@@ -38,6 +38,10 @@ const FormLogin: FC = () => {
                         </Styled.FormInputWrap>
                         <Styled.FormInputWrap>
                             <FormInputCheckbox label="개인정보 수집 동의" name="agreement" required="개인정보 수집 동의는 필수입니다." />
+                        </Styled.FormInputWrap>
+                        <Styled.FormInputWrap>
+                            <FormInputRadio label="남" name="gender" value="M" required="성별은 필수입니다." />
+                            <FormInputRadio label="여" name="gender" value="W" required="성별은 필수입니다." />
                         </Styled.FormInputWrap>
                         <Button type="submit" primary full>로그인</Button>
                     </Form>
