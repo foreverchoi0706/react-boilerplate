@@ -3,7 +3,7 @@ import "styled-components";
 declare module "styled-components" {
     export interface DefaultTheme {
         media: {
-            pc: string;
+            desktop: string;
             tablet: string;
             mobile: string;
             custom: (maxWidth: number) => string;

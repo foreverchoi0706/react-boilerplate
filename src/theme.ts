@@ -6,7 +6,7 @@ const getMediaQuery = (maxWidth: number): string => `
 
 const theme: DefaultTheme = {
     media: {
-        pc: "",
+        desktop: "",
         tablet: getMediaQuery(1080),
         mobile: getMediaQuery(680),
         custom: getMediaQuery,

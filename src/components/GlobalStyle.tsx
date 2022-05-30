@@ -11,7 +11,7 @@ const GlobalStyle = memo(createGlobalStyle`
             text-decoration: none;
             color: black;
         }
-        button{
+        button,a{
             cursor: pointer;
         }
     }

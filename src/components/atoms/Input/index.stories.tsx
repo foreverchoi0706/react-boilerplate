@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import useInput from 'hooks/useInput';
 import Component from './index';
 
 export default {
@@ -7,10 +6,7 @@ export default {
     component: Component,
 } as ComponentMeta<typeof Component>;
 
-const Template: ComponentStory<typeof Component> = (args) => {
-    const [state, handleChange] = useInput("");
-    return <Component {...args} value={state} onChange={handleChange} />
-};
+const Template: ComponentStory<typeof Component> = (args) => <Component {...args} />;
 
 export const Text = Template.bind({});
 
