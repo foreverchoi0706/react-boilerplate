@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useId } from "react";
 import { useFormContext } from "react-hook-form";
 import { RegisterOptions } from "react-hook-form/dist/types/validator";
 import Input from "components/atoms/Input";
@@ -20,16 +20,17 @@ const FormInput: FC<IProps> =
     }) => {
         const { register, formState: { errors } } = useFormContext();
 
+        const id = useId();
         return (
             <Styled.FormInputCheckBox>
                 <Input
-                    id={name}
+                    id={id}
                     type="radio"
                     value={value}
                     required={errors[name]}
                     {...register(name, rest)}
                 />
-                <Styled.Label htmlFor={name}>{label}</Styled.Label>
+                <Styled.Label htmlFor={id}>{label}</Styled.Label>
             </Styled.FormInputCheckBox>
         );
     };

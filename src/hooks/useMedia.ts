@@ -8,13 +8,9 @@ const useMedia = (maxWidth: number): boolean => {
         logicController.throttle(() => {
             if (state !== window.innerWidth) {
                 setState(window.innerWidth);
-                console.log("setState");
-
             }
-
-
         }, 1000);
-    }, []);
+    }, [state]);
 
 
     useEffect(() => {
