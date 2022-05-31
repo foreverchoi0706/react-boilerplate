@@ -5,7 +5,6 @@ export default {
     title: 'organisms/Header',
     component: Component,
     parameters: {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'fullscreen',
     },
 } as ComponentMeta<typeof Component>;

@@ -13,7 +13,7 @@ interface IProps extends RegisterOptions {
 }
 
 const FormInput: FC<IProps> =
-    ({
+    memo(({
         label,
         name,
         type,
@@ -35,6 +35,6 @@ const FormInput: FC<IProps> =
                 {errors[name] && <Styled.ErrorMsg>{errors[name].message}</Styled.ErrorMsg>}
             </Styled.FormInput>
         );
-    };
+    });
 
-export default memo(FormInput);
+export default FormInput

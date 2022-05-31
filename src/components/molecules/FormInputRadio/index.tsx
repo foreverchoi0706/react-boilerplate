@@ -6,13 +6,13 @@ import Styled from "./styled";
 
 
 interface IProps extends RegisterOptions {
-    label?: string;
+    label: string;
     name: string;
     value: string;
 }
 
-const FormInput: FC<IProps> =
-    ({
+const FormInputRadio: FC<IProps> =
+    memo(({
         label,
         name,
         value,
@@ -22,7 +22,7 @@ const FormInput: FC<IProps> =
 
         const id = useId();
         return (
-            <Styled.FormInputCheckBox>
+            <Styled.FormInputRadio>
                 <Input
                     id={id}
                     type="radio"
@@ -31,8 +31,8 @@ const FormInput: FC<IProps> =
                     {...register(name, rest)}
                 />
                 <Styled.Label htmlFor={id}>{label}</Styled.Label>
-            </Styled.FormInputCheckBox>
+            </Styled.FormInputRadio>
         );
-    };
+    });
 
-export default memo(FormInput);
+export default FormInputRadio;

@@ -10,8 +10,8 @@ interface IProps extends RegisterOptions {
     name: string;
 }
 
-const FormInput: FC<IProps> =
-    ({
+const FormInputCheckbox: FC<IProps> =
+    memo(({
         label,
         name,
         ...rest
@@ -31,6 +31,6 @@ const FormInput: FC<IProps> =
                 <Styled.Label htmlFor={id}>{label} {rest.required && <em>(필수)</em>}</Styled.Label>
             </Styled.FormInputCheckBox>
         );
-    };
+    });
 
-export default memo(FormInput);
+export default FormInputCheckbox;

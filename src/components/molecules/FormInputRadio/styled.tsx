@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const Styled = {
-  FormInputCheckBox: styled.div(() => css`
+  FormInputRadio: styled.div(() => css`
     display: flex;
   `),
   Label: styled.label(() => css`
