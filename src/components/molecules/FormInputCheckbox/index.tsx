@@ -6,7 +6,7 @@ import Styled from "./styled";
 
 
 interface IProps extends RegisterOptions {
-    label?: string;
+    label: string;
     name: string;
 }
 

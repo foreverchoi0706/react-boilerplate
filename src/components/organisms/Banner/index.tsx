@@ -4,7 +4,7 @@ import Styled from "./styled"
 const Banner: FC = () => {
     return (
         <Styled.Banner>
-            sad
+            BANNER
         </Styled.Banner>
     );
 };

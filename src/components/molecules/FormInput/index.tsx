@@ -9,6 +9,7 @@ interface IProps extends RegisterOptions {
     label: string;
     name: string;
     type: "text" | "password";
+    maxLength?: number;
     placeholder?: string;
 }
 
@@ -17,7 +18,8 @@ const FormInput: FC<IProps> =
         label,
         name,
         type,
-        placeholder,
+        maxLength = 20,
+        placeholder = "",
         ...rest
     }) => {
         const { register, formState: { errors } } = useFormContext();
@@ -29,6 +31,7 @@ const FormInput: FC<IProps> =
                 <Input
                     id={id}
                     type={type}
+                    maxLength={maxLength}
                     placeholder={placeholder}
                     {...register(name, rest)}
                 />
