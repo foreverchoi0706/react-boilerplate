@@ -20,9 +20,7 @@ const SearchFilter: FC = memo(() => {
 
     useEffect(() => {
         let searchParam = "";
-        for (const [key, value] of genderOptions) {
-            searchParam += `${key}=${value}&`
-        }
+        genderOptions.forEach((value, key) => searchParam += `${key}=${value}&`);
         navigate(`/?${searchParam}`);
     }, [genderOptions, navigate]);
 

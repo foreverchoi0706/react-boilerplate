@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 interface ISearchParam {
     [key: string]: string;
 }
 
 const useSeachParam = () => {
+    const { search } = useLocation();
+
     const [searchParams, setSearchParams] = useState<ISearchParam>();
 
     useEffect(() => {
-        const searchParams = new URLSearchParams(document.location.search);
+        const searchParams = new URLSearchParams(search);
         const keys = searchParams.keys();
         const obj: ISearchParam = {};
-
         searchParams.forEach(searchParam => {
-            const key = keys.next().value;
-            obj[String(key)] = searchParam;
+            obj[keys.next().value] = searchParam;
         });
         setSearchParams(obj);
-    }, [document.location.search]);
+    }, [search]);
 
     return searchParams
 }
