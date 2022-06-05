@@ -5,7 +5,7 @@ interface ISearchParam {
     [key: string]: string;
 }
 
-const useSeachParam = () => {
+const useSearchParam = () => {
     const { search } = useLocation();
 
     const [searchParams, setSearchParams] = useState<ISearchParam>();
@@ -20,7 +20,7 @@ const useSeachParam = () => {
         setSearchParams(obj);
     }, [search]);
 
-    return searchParams
+    return searchParams;
 }
 
-export default useSeachParam;
+export default useSearchParam;
