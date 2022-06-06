@@ -5,7 +5,7 @@ import useUserStore from "hooks/stores/useUserStore";
 import useUiStore from "hooks/stores/useUiStore";
 
 const useLogin = () => {
-    const [setIsLogined, setUserInfo] = useUserStore(({ setIsLogined, setUserInfo }) => [setIsLogined, setUserInfo], shallow);
+    const [setIsLogin, setUserInfo] = useUserStore(({ setIsLogin, setUserInfo }) => [setIsLogin, setUserInfo], shallow);
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
@@ -22,9 +22,9 @@ const useLogin = () => {
                 name: id,
                 age: 0,
             });
-            setIsLogined(true);
+            setIsLogin(true);
             setIsLoginModalOpen(false);
-            cookieController.set("isLogined", "true", 60 * 60 * 24 * 1000);
+            cookieController.set("isLogin", "true", 60 * 60 * 24 * 1000);
         },
     });
 }

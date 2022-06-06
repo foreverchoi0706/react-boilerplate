@@ -7,9 +7,9 @@ interface IUserInfo {
 
 interface IUserStore {
     userinfo: IUserInfo;
-    isLogined: boolean;
+    isLogin: boolean;
     setUserInfo: (info: IInfo) => void;
-    setIsLogined: (isLogined: boolean) => void;
+    setIsLogin: (isLogin: boolean) => void;
 }
 
 declare interface ILoginInfo {

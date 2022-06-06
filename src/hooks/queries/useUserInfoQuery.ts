@@ -6,7 +6,7 @@ import cookieController from "libs/cookieController";
 
 
 const useUserInfoQuery = () => {
-    const [setIsLogined, setUserInfo] = useUserStore(({ setIsLogined, setUserInfo }) => [setIsLogined, setUserInfo], shallow);
+    const [setIsLogin, setUserInfo] = useUserStore(({ setIsLogin, setUserInfo }) => [setIsLogin, setUserInfo], shallow);
 
     return useQuery([USER_INFO], () => {
         return new Promise(resolve => {
@@ -18,11 +18,11 @@ const useUserInfoQuery = () => {
             }, 50);
         })
     }, {
-        enabled: cookieController.isExist("isLogined"),
+        enabled: cookieController.isExist("isLogin"),
         refetchOnWindowFocus: false,
         onSuccess: (userInfo: IUserInfo) => {
             setUserInfo(userInfo);
-            setIsLogined(true);
+            setIsLogin(true);
         }
     })
 }

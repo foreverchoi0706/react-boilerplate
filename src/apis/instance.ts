@@ -7,7 +7,7 @@ instance.interceptors.request.use(
     (config) => {
         config.headers = {
             ...config.headers,
-            authorization: cookieController.get("isLogined") || "test",
+            authorization: cookieController.get("isLogin") || "test",
         }
         return config;
     },

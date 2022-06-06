@@ -5,9 +5,9 @@ const userStore = (set: SetState<IUserStore>) => ({
         name: null,
         age: null
     },
-    isLogined: false,
+    isLogin: false,
     setUserInfo: (userinfo: IUserInfo) => set((state) => ({ ...state, userinfo })),
-    setIsLogined: (isLogined: boolean) => set((state) => ({ ...state, isLogined, })),
+    setIsLogin: (isLogin: boolean) => set((state) => ({ ...state, isLogin, })),
 })
 
 const useUserStore = create<IUserStore>(userStore);

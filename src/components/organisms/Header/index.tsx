@@ -10,7 +10,9 @@ import Styled from "./styled";
 const Header: FC = memo(() => {
     const isMobile = useMedia(600);
 
-    const [isLogined, setIsLogined, userinfo] = useUserStore(({ isLogined, setIsLogined, userinfo }) => [isLogined, setIsLogined, userinfo], shallow);
+    console.log(isMobile);
+
+    const [isLogin, setIsLogin, userinfo] = useUserStore(({ isLogin, setIsLogin, userinfo }) => [isLogin, setIsLogin, userinfo], shallow);
 
     const setIsLoginModalOpen = useUiStore((state) => state.setIsLoginModalOpen, shallow);
 
@@ -24,22 +26,22 @@ const Header: FC = memo(() => {
             <Styled.Gnb>
                 <Link to="/">A</Link>
                 <Link to="/">B</Link>
-                {isLogined ?
+                {isLogin ?
                     <>
                         {userinfo.name}님 환영합니다.
-                        <a onClick={() => {
-                            setIsLogined(false);
-                            cookieController.delete("isLogined");
+                        <button onClick={() => {
+                            setIsLogin(false);
+                            cookieController.delete("isLogin");
                         }}>
                             로그아웃
-                        </a>
+                        </button>
                     </>
                     :
-                    <a onClick={() => {
+                    <button onClick={() => {
                         setIsLoginModalOpen(true);
                     }}>
                         로그인
-                    </a>
+                    </button>
                 }
             </Styled.Gnb>
         </Styled.Header>
