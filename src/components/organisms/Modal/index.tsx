@@ -5,13 +5,13 @@ import Styled from "./styled";
 interface IProps {
     title: string;
     onClose: () => void;
-    disabledCloseButton?: boolean;
+    showCloseButton?: boolean;
     heightFull?: boolean
 }
 
 const modal = document.querySelector("#modal") as Element;
 
-const Modal: FC<PropsWithChildren<IProps>> = memo(({ children, title, onClose, disabledCloseButton = false, heightFull = true }) => {
+const Modal: FC<PropsWithChildren<IProps>> = memo(({ children, title, onClose, showCloseButton = true, heightFull = true }) => {
     const handleKeyDown = useCallback(({ key }: KeyboardEvent) => {
         if (key === "Escape") {
             onClose();
@@ -28,15 +28,15 @@ const Modal: FC<PropsWithChildren<IProps>> = memo(({ children, title, onClose, d
     }, [handleKeyDown]);
 
     return createPortal(<Styled.Modal >
-        <Styled.ModalContents heightFull={heightFull}>
-            <Styled.ModalHeader >
+        <Styled.Contents heightFull={heightFull}>
+            <Styled.Header >
                 {title}
-                {disabledCloseButton && <Styled.ModalCloseButton onClick={onClose} >X</Styled.ModalCloseButton>}
-            </Styled.ModalHeader>
+                {showCloseButton && <Styled.CloseButton onClick={onClose} >X</Styled.CloseButton>}
+            </Styled.Header>
             <main>
                 {children}
             </main>
-        </Styled.ModalContents>
+        </Styled.Contents>
     </Styled.Modal >, modal);
 });
 

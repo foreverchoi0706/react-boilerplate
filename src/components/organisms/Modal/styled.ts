@@ -15,11 +15,11 @@ const Styled = {
         background: rgba(0,0,0,0.6);
       
     `),
-    ModalContents: styled.div<{ heightFull: boolean }>(({ theme, heightFull }) => css`
+    Contents: styled.div<{ heightFull: boolean }>(({ theme, heightFull }) => css`
         background: #ffffff;
         border-radius: 5px;
         padding: 20px;
-        min-width: 400px;
+        min-width: 360px;
         ${heightFull && css`
             height : 100%;   
             border-radius: 0;
@@ -31,14 +31,14 @@ const Styled = {
             border-radius : 0;
         }
     `),
-    ModalHeader: styled.header(() => css`
+    Header: styled.header(() => css`
         position: relative;
         text-align: center;
         border-bottom: 1px solid lightgray;
         padding-bottom: 24px;
         margin-bottom: 24px;
     `),
-    ModalCloseButton: styled.button(() => css`
+    CloseButton: styled.button(() => css`
         position: absolute;
         right: 0;
         font-weight: bold;

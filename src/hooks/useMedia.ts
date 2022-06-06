@@ -9,7 +9,7 @@ const useMedia = (maxWidth: number): boolean => {
             if (state !== window.innerWidth) {
                 setState(window.innerWidth);
             }
-        }, 1000);
+        }, 200);
     }, [state]);
 
 
@@ -20,7 +20,7 @@ const useMedia = (maxWidth: number): boolean => {
         }
     }, [handleResize]);
 
-    return state < maxWidth;
+    return state <= maxWidth;
 }
 
 export default useMedia;

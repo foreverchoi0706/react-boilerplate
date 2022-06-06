@@ -27,7 +27,7 @@ const FormLogin: FC = () => {
     }, [mutate]);
 
     return (
-        <Modal title="로그인" onClose={handleClose} disabledCloseButton={!isLoading}>
+        <Modal title="로그인" onClose={handleClose} showCloseButton={!isLoading}>
             <Styled.FormLogin>
                 {isLoading ?
                     <h1>LOADING...</h1> :
