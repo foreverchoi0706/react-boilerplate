@@ -2,6 +2,11 @@ import { memo } from "react";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = memo(createGlobalStyle`
+      html{
+        @supports (-webkit-touch-callout: none) {
+          height: -webkit-fill-available;
+        }
+      }
     #root,#modal{
         * {
             box-sizing: border-box;

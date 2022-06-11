@@ -13,9 +13,6 @@ const Styled = {
       justify-content: center;
       align-items: center;
       background: rgba(0, 0, 0, 0.6);
-      @supports (-webkit-touch-callout: none) {
-        height: -webkit-fill-available;
-      }
     `
   ),
   Contents: styled.div<{ heightFull: boolean }>(
