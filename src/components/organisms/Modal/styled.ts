@@ -13,6 +13,9 @@ const Styled = {
       justify-content: center;
       align-items: center;
       background: rgba(0, 0, 0, 0.6);
+      @supports (-webkit-touch-callout: none) {
+        height: -webkit-fill-available;
+      }
     `
   ),
   Contents: styled.div<{ heightFull: boolean }>(
@@ -25,12 +28,18 @@ const Styled = {
       css`
         height: 100%;
         border-radius: 0;
+        @supports (-webkit-touch-callout: none) {
+          height: -webkit-fill-available;
+        }
       `}
       ${theme.media.mobile} {
         width: 100%;
         height: 100%;
         animation: none;
         border-radius: 0;
+        @supports (-webkit-touch-callout: none) {
+          height: -webkit-fill-available;
+        }
       }
     `
   ),
