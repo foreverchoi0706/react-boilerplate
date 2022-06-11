@@ -4,24 +4,25 @@ import cookieController from "libs/cookieController";
 const instance = axios.create();
 
 instance.interceptors.request.use(
-    (config) => {
-        config.headers = {
-            ...config.headers,
-            authorization: cookieController.get("isLogin") || "test",
-        }
-        return config;
-    },
-    (error: any) => {
-        return Promise.reject(error);
-    }
+  (config) => {
+    config.headers = {
+      ...config.headers,
+      authorization: cookieController.get("isLogin") || "test",
+    };
+    return config;
+  },
+  (error: any) => {
+    return Promise.reject(error);
+  }
 );
 
 axios.interceptors.response.use(
-    (response) => {
-        return response;
-    },
-    (error: any) => {
-        return Promise.reject(error);
-    });
+  (response) => {
+    return response;
+  },
+  (error: any) => {
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

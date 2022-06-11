@@ -7,8 +7,8 @@ import theme from "theme";
 
 const queryClient = new QueryClient();
 
-const modal = document.createElement('div');
-modal.setAttribute('id', 'modal');
+const modal = document.createElement("div");
+modal.setAttribute("id", "modal");
 document.body.append(modal);
 
 export const decorators = [
@@ -33,4 +33,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
