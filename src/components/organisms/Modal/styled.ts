@@ -28,18 +28,12 @@ const Styled = {
       css`
         height: 100%;
         border-radius: 0;
-        @supports (-webkit-touch-callout: none) {
-          height: -webkit-fill-available;
-        }
       `}
       ${theme.media.mobile} {
         width: 100%;
         height: 100%;
         animation: none;
         border-radius: 0;
-        @supports (-webkit-touch-callout: none) {
-          height: -webkit-fill-available;
-        }
       }
     `
   ),
