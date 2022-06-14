@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-type TSize = "large" | "medium" | "small";
+type TSize = "lg" | "md" | "sm";
 
 export interface IProps {
   full?: boolean;
@@ -35,15 +35,15 @@ const Button = styled.button<IProps>(
       background-color: lightcoral;
     `}
     //size
-    ${size === "large" &&
+    ${size === "lg" &&
     css`
       font-size: 20px;
     `}
-    ${size === "medium" &&
+    ${size === "md" &&
     css`
       font-size: 16px;
     `}
-    ${size === "small" &&
+    ${size === "sm" &&
     css`
       font-size: 12px;
     `}

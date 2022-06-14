@@ -14,28 +14,27 @@ const Template: ComponentStory<typeof Component> = (args) => (
 );
 
 export const Primary = Template.bind({});
-
 Primary.args = {
   primary: true,
-  full: true,
+  full: false,
   text: "Button",
 };
 
 export const Lg = Template.bind({});
 Lg.args = {
-  size: "large",
+  size: "lg",
   text: "Button",
 };
 
 export const Md = Template.bind({});
 Md.args = {
-  size: "medium",
+  size: "md",
   text: "Button",
 };
 
 export const Sm = Template.bind({});
 Sm.args = {
-  size: "small",
+  size: "sm",
   text: "Button",
 };
 
