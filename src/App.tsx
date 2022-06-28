@@ -15,7 +15,7 @@ const App: FC = memo(() => {
     (state) => state.isLoginModalOpen,
     shallow
   );
-  console.log(1);
+  console.log(2);
   useUserInfoQuery();
 
   return (
