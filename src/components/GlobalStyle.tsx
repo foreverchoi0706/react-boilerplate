@@ -6,6 +6,7 @@ const GlobalStyle = memo(createGlobalStyle`
         @supports (-webkit-touch-callout: none) {
           height: -webkit-fill-available;
         }
+        font-family: "Noto Sans Adlam";
       }
     #root,#modal{
         * {
