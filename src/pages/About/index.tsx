@@ -22,10 +22,10 @@ export default function MultipleSelectCheckmarks() {
 
   const handleChange = ({ target: { value } }: any) => {
     const selectedAll = !value.length || value[value.length - 1] === "";
-    const items = selectedAll ? [""] : value.filter((item) => item !== "");
+    const items = selectedAll ? [""] : value.filter((item: any) => item !== "");
     // @ts-ignore
     const map = new Map(names);
-    const values = items.map((item) => map.get(item));
+    const values = items.map((item: any) => map.get(item));
     setSelectedItems(items);
     setValue("test", values);
   };
