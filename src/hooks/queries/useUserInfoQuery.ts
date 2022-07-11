@@ -2,7 +2,6 @@ import { useQuery } from "react-query";
 import shallow from "zustand/shallow";
 import { USER_INFO } from "keys/user";
 import useUserStore from "hooks/stores/useUserStore";
-import cookieController from "libs/cookieController";
 
 const useUserInfoQuery = () => {
   const [setIsLogin, setUserInfo] = useUserStore(
@@ -10,23 +9,24 @@ const useUserInfoQuery = () => {
     shallow
   );
 
-  return useQuery(
+  return useQuery<ILoginInfo>(
     [USER_INFO],
     () => {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve({
-            name: "JORDAN",
-            age: 10,
+            id: "JORDAN",
+            pw: "password",
+            agreement: false,
+            list: ["1", "2", "3", "4", "5"],
           });
-        }, 50);
+        }, 500);
       });
     },
     {
-      enabled: cookieController.isExist("isLogin"),
-      refetchOnWindowFocus: false,
-      onSuccess: (userInfo: IUserInfo) => {
-        setUserInfo(userInfo);
+      // enabled: cookieController.isExist("isLogin"),
+      onSuccess: (loginInfo: ILoginInfo) => {
+        setUserInfo(loginInfo);
         setIsLogin(true);
       },
     }

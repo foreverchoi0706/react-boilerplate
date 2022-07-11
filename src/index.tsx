@@ -7,7 +7,14 @@ import GlobalStyle from "components/GlobalStyle";
 import theme from "theme";
 import reportWebVitals from "./reportWebVitals";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

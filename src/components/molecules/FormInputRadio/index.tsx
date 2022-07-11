@@ -17,6 +17,7 @@ const FormInputRadio: FC<IProps> = memo(({ label, name, value, ...rest }) => {
   } = useFormContext();
 
   const id = useId();
+
   return (
     <Styled.FormInputRadio>
       <Input

@@ -12,7 +12,7 @@ interface IProps extends RegisterOptions {
   placeholder?: string;
 }
 
-const FormInput: FC<IProps> = memo(
+const RHFInput: FC<IProps> = memo(
   ({ label, name, type, maxLength = 20, placeholder = "", ...rest }) => {
     const {
       register,
@@ -40,4 +40,4 @@ const FormInput: FC<IProps> = memo(
   }
 );
 
-export default FormInput;
+export default RHFInput;

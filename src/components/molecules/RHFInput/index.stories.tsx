@@ -3,7 +3,7 @@ import { withRHF } from "decorators/WithRHF";
 import Component from "./index";
 
 export default {
-  title: "molecules/FormInput",
+  title: "molecules/RHFInput",
   component: Component,
   decorators: [withRHF(false)],
 } as ComponentMeta<typeof Component>;

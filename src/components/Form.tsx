@@ -1,14 +1,14 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
 import {
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
+  UseFormProps,
 } from "react-hook-form";
 
-interface IProps {
+interface IProps extends UseFormProps {
   onSubmit: SubmitHandler<FieldValues>;
-  defaultValues?: FieldValues;
 }
 
 const Form: FC<PropsWithChildren<IProps>> = ({
@@ -16,9 +16,13 @@ const Form: FC<PropsWithChildren<IProps>> = ({
   onSubmit,
   defaultValues,
 }) => {
-  const methods = useForm({
-    defaultValues,
-  });
+  const methods = useForm();
+
+  useEffect(() => {
+    if (defaultValues) {
+      methods.reset(defaultValues);
+    }
+  }, [defaultValues]);
 
   return (
     <FormProvider {...methods}>

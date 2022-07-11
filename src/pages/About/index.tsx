@@ -1,80 +1,60 @@
-import React, { ChangeEvent, useState } from "react";
-import { Controller, FieldValues, useForm } from "react-hook-form";
-import {
-  Button,
-  Checkbox,
-  InputLabel,
-  ListItemText,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
+import React, { useEffect } from "react";
+import DropDownMultipleItems from "components/molecules/DropDownMultipleItems";
+import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
+import { FieldValues, useForm } from "react-hook-form";
+import { Button } from "@material-ui/core";
 
-const names = [
-  ["사과", "APPLE"],
-  ["오렌지", "ORANGE"],
-  ["복숭아", "PITCH"],
-];
+const About = () => {
+  const { isLoading, data } = useUserInfoQuery();
 
-export default function MultipleSelectCheckmarks() {
-  const { control, setValue, handleSubmit } = useForm<FieldValues>();
+  const { reset, watch, handleSubmit, register, setValue } = useForm();
 
-  const [selectedItems, setSelectedItems] = useState<string[]>([""]);
+  const values = watch();
 
-  const handleChange = ({ target: { value } }: any) => {
-    const selectedAll = !value.length || value[value.length - 1] === "";
-    const items = selectedAll ? [""] : value.filter((item: any) => item !== "");
-    // @ts-ignore
-    const map = new Map(names);
-    const values = items.map((item: any) => map.get(item));
-    setSelectedItems(items);
-    setValue("test", values);
+  const handleClick = (selectedItem: string) => {
+    const list = values.list;
+    console.log(list, selectedItem);
+    console.log(list.filter((item: string) => item !== selectedItem));
+    setValue(
+      "list",
+      list.filter((item: string) => item !== selectedItem)
+    );
   };
 
   const onSubmit = (fieldValues: FieldValues) => {
     console.log(fieldValues);
   };
 
+  useEffect(() => {
+    reset(data);
+  }, [data]);
+
+  if (isLoading) return <div>LOADING...</div>;
+
   return (
-    <section>
+    <div>
+      <DropDownMultipleItems />
+
+      <hr />
+
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputLabel id="demo-multiple-checkbox-label">NAME</InputLabel>
-        <Controller
-          name="test"
-          control={control}
-          render={() => (
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              onChange={handleChange}
-              value={selectedItems}
-              variant="outlined"
-              renderValue={(selected: any) => selected.join(", ")}
+        <input {...register("id")} />
+        <input {...register("pw")} />
+
+        {values.list?.map((item: string) => (
+          <h1 key={item}>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() => handleClick(item)}
             >
-              <MenuItem value="">
-                <Checkbox
-                  color="primary"
-                  checked={selectedItems.some((item) => item === "")}
-                />
-                <ListItemText primary="전체" />
-              </MenuItem>
-              {names.map(([title, value]) => (
-                <MenuItem key={title} value={title}>
-                  <Checkbox
-                    color="primary"
-                    checked={selectedItems.indexOf(title) > -1}
-                  />
-                  <ListItemText primary={title} />
-                </MenuItem>
-              ))}
-            </Select>
-          )}
-        />
-        <hr />
-        <Button type="submit" color="primary" variant="contained">
-          SUBMIT
-        </Button>
+              {item}
+            </Button>
+          </h1>
+        ))}
       </form>
-    </section>
+    </div>
   );
-}
+};
+
+export default About;

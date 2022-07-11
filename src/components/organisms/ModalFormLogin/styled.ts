@@ -9,7 +9,7 @@ const Styled = {
       }
     `
   ),
-  FormInputWrap: styled.div(
+  RHFInputWrap: styled.div(
     () => css`
       margin-bottom: 20px;
     `
