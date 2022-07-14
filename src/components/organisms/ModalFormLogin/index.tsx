@@ -8,7 +8,7 @@ import {
   REQUIRED_NAME,
   REQUIRED_PW,
 } from "constants/text";
-import useLogin from "hooks/mutations/useLogin";
+import useLoginMutation from "hooks/mutations/useLoginMutation";
 import useUiStore from "hooks/stores/useUiStore";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
 import Form from "components/Form";
@@ -27,7 +27,7 @@ const FormLogin: FC = () => {
     shallow
   );
 
-  const { mutate, isLoading } = useLogin();
+  const { mutate, isLoading } = useLoginMutation();
 
   const handleClose = useCallback(() => {
     setIsLoginModalOpen(false);

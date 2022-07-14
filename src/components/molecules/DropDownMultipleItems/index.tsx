@@ -1,6 +1,13 @@
-import React, {useState} from "react";
-import {Controller, FieldValues, useForm} from "react-hook-form";
-import {Button, Checkbox, InputLabel, ListItemText, MenuItem, Select,} from "@material-ui/core";
+import React, { FC, useState } from "react";
+import { Controller } from "react-hook-form";
+import {
+  Checkbox,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  Select,
+} from "@material-ui/core";
+import { UseFormReturn } from "react-hook-form/dist/types";
 
 const names = [
   ["사과", "APPLE"],
@@ -8,9 +15,11 @@ const names = [
   ["복숭아", "PITCH"],
 ];
 
-const DropDownMultipleItems = () => {
-  const { control, setValue, handleSubmit } = useForm<FieldValues>();
+interface IProps extends Pick<UseFormReturn, "setValue" | "control"> {
+  name: string;
+}
 
+const DropDownMultipleItems: FC<IProps> = ({ name, control, setValue }) => {
   const [selectedItems, setSelectedItems] = useState<string[]>([""]);
 
   const handleChange = ({ target: { value } }: any) => {
@@ -20,54 +29,44 @@ const DropDownMultipleItems = () => {
     const map = new Map(names);
     const values = items.map((item: any) => map.get(item));
     setSelectedItems(items);
-    setValue("test", values);
-  };
-
-  const onSubmit = (fieldValues: FieldValues) => {
-    console.log(fieldValues);
+    setValue(name, values);
   };
 
   return (
     <section>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputLabel id="demo-multiple-checkbox-label">NAME</InputLabel>
-        <Controller
-          name="test"
-          control={control}
-          render={() => (
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              onChange={handleChange}
-              value={selectedItems}
-              variant="outlined"
-              renderValue={(selected: any) => selected.join(", ")}
-            >
-              <MenuItem value="">
+      <InputLabel id="demo-multiple-checkbox-label">{name}</InputLabel>
+      <Controller
+        name={name}
+        control={control}
+        render={() => (
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            onChange={handleChange}
+            value={selectedItems}
+            variant="outlined"
+            renderValue={(selected: any) => selected.join(", ")}
+          >
+            <MenuItem value="" defaultChecked>
+              <Checkbox
+                color="primary"
+                checked={selectedItems.some((item) => item === "")}
+              />
+              <ListItemText primary="전체" />
+            </MenuItem>
+            {names.map(([title]) => (
+              <MenuItem key={title} value={title}>
                 <Checkbox
                   color="primary"
-                  checked={selectedItems.some((item) => item === "")}
+                  checked={selectedItems.indexOf(title) > -1}
                 />
-                <ListItemText primary="전체" />
+                <ListItemText primary={title} />
               </MenuItem>
-              {names.map(([title, value]) => (
-                <MenuItem key={title} value={title}>
-                  <Checkbox
-                    color="primary"
-                    checked={selectedItems.indexOf(title) > -1}
-                  />
-                  <ListItemText primary={title} />
-                </MenuItem>
-              ))}
-            </Select>
-          )}
-        />
-        <hr />
-        <Button type="submit" color="primary" variant="contained">
-          SUBMIT
-        </Button>
-      </form>
+            ))}
+          </Select>
+        )}
+      />
     </section>
   );
 };

@@ -1,59 +1,68 @@
-import React, { useEffect } from "react";
-import DropDownMultipleItems from "components/molecules/DropDownMultipleItems";
+import React, { useCallback, useEffect } from "react";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
-import { FieldValues, useForm } from "react-hook-form";
-import { Button } from "@material-ui/core";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@material-ui/core";
+import useLoginMutation from "../../hooks/mutations/useLoginMutation";
 
 const About = () => {
   const { isLoading, data } = useUserInfoQuery();
 
-  const { reset, watch, handleSubmit, register, setValue } = useForm();
+  const { mutate } = useLoginMutation();
 
-  const values = watch();
+  const { control, reset, register, handleSubmit } = useForm<ILoginInfo>();
 
-  const handleClick = (selectedItem: string) => {
-    const list = values.list;
-    console.log(list, selectedItem);
-    console.log(list.filter((item: string) => item !== selectedItem));
-    setValue(
-      "list",
-      list.filter((item: string) => item !== selectedItem)
-    );
-  };
-
-  const onSubmit = (fieldValues: FieldValues) => {
-    console.log(fieldValues);
-  };
+  const handleSubmitForm: SubmitHandler<ILoginInfo> = useCallback(
+    (loginInfo) => {
+      mutate(loginInfo);
+    },
+    []
+  );
 
   useEffect(() => {
-    reset(data);
+    if (data) {
+      console.log(data);
+      reset(data);
+    }
   }, [data]);
 
   if (isLoading) return <div>LOADING...</div>;
 
   return (
-    <div>
-      <DropDownMultipleItems />
+    <form onSubmit={handleSubmit(handleSubmitForm)}>
+      <FormControl component="fieldset">
+        <TextField type="text" variant="outlined" {...register("pw")} />
+        <Controller
+          name="id"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup {...field} row>
+              <FormControlLabel
+                value="JORDAN"
+                label="JORDAN"
+                control={<Radio />}
+              />
+              <FormControlLabel value="JOY" label="JOY" control={<Radio />} />
+              <FormControlLabel
+                value="JOSEP"
+                label="JOSEP"
+                control={<Radio />}
+              />
+            </RadioGroup>
+          )}
+        />
+      </FormControl>
 
-      <hr />
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("id")} />
-        <input {...register("pw")} />
-
-        {values.list?.map((item: string) => (
-          <h1 key={item}>
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={() => handleClick(item)}
-            >
-              {item}
-            </Button>
-          </h1>
-        ))}
-      </form>
-    </div>
+      <Button type="submit" variant="contained" color="primary">
+        SUBMIT
+      </Button>
+    </form>
   );
 };
 

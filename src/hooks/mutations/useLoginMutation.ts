@@ -4,7 +4,7 @@ import cookieController from "libs/cookieController";
 import useUserStore from "hooks/stores/useUserStore";
 import useUiStore from "hooks/stores/useUiStore";
 
-const useLogin = () => {
+const useLoginMutation = () => {
   const [setIsLogin, setUserInfo] = useUserStore(
     ({ setIsLogin, setUserInfo }) => [setIsLogin, setUserInfo],
     shallow
@@ -15,8 +15,8 @@ const useLogin = () => {
     shallow
   );
 
-  return useMutation(
-    (loginInfo: ILoginInfo) => {
+  return useMutation<IResponse, IError, ILoginInfo>(
+    (loginInfo) => {
       console.log(loginInfo);
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -25,11 +25,8 @@ const useLogin = () => {
       });
     },
     {
-      onSuccess: (_, { id }) => {
-        setUserInfo({
-          name: id,
-          age: 0,
-        });
+      onSuccess: (_, loginInfo) => {
+        setUserInfo(loginInfo);
         setIsLogin(true);
         setIsLoginModalOpen(false);
         cookieController.set("isLogin", "true", 60 * 60 * 24 * 1000);
@@ -38,4 +35,4 @@ const useLogin = () => {
   );
 };
 
-export default useLogin;
+export default useLoginMutation;

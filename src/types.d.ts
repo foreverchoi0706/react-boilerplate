@@ -12,7 +12,11 @@ interface IUserStore {
   setIsLogin: (isLogin: boolean) => void;
 }
 
-declare interface ILoginInfo {
+interface IResponse {}
+
+interface IError {}
+
+interface ILoginInfo {
   id: string;
   pw: string;
   agreement: boolean;
