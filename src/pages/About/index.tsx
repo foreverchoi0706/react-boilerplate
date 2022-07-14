@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect } from "react";
-import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import React, { FC, useCallback, useEffect } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   Button,
   FormControl,
@@ -9,9 +8,10 @@ import {
   RadioGroup,
   TextField,
 } from "@material-ui/core";
-import useLoginMutation from "../../hooks/mutations/useLoginMutation";
+import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
+import useLoginMutation from "hooks/mutations/useLoginMutation";
 
-const About = () => {
+const About: FC = () => {
   const { isLoading, data } = useUserInfoQuery();
 
   const { mutate } = useLoginMutation();
