@@ -2,7 +2,10 @@ import styled, { css } from "styled-components";
 
 const Input = styled.input(
   ({ type }) => css`
-    ${(type === "text" || type === "password") &&
+    ${(type === "text" ||
+      type === "password" ||
+      type === "date" ||
+      type === "datetime-local") &&
     css`
       border: 1px solid lightgray;
       border-radius: 5px;

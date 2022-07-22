@@ -8,7 +8,7 @@ const StorybookFormProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <FormProvider {...methods}>
       <form
-        onSubmit={methods.handleSubmit(action("[React Hooks Form] Submit"))}
+        onSubmit={methods.handleSubmit(action("[React Hooks RHFProvider] Submit"))}
         autoComplete="off"
       >
         {children}

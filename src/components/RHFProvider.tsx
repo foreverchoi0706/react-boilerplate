@@ -1,17 +1,11 @@
-import { FC, PropsWithChildren, useEffect } from "react";
-import {
-  FieldValues,
-  FormProvider,
-  SubmitHandler,
-  useForm,
-  UseFormProps,
-} from "react-hook-form";
+import {FC, PropsWithChildren, useEffect} from "react";
+import {FormProvider, SubmitHandler, useForm, UseFormProps,} from "react-hook-form";
 
 interface IProps extends UseFormProps {
-  onSubmit: SubmitHandler<FieldValues>;
+  onSubmit: SubmitHandler<any>;
 }
 
-const Form: FC<PropsWithChildren<IProps>> = ({
+const RHFProvider: FC<PropsWithChildren<IProps>> = ({
   children,
   onSubmit,
   defaultValues,
@@ -33,4 +27,4 @@ const Form: FC<PropsWithChildren<IProps>> = ({
   );
 };
 
-export default Form;
+export default RHFProvider;

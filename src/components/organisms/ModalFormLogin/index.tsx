@@ -4,19 +4,16 @@ import shallow from "zustand/shallow";
 import { REG_NAME } from "constants/regexp";
 import {
   REQUIRED_CORRECT_NAME,
-  REQUIRED_GENDER,
   REQUIRED_NAME,
   REQUIRED_PW,
 } from "constants/text";
 import useLoginMutation from "hooks/mutations/useLoginMutation";
 import useUiStore from "hooks/stores/useUiStore";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
-import Form from "components/Form";
+import RHFProvider from "components/RHFProvider";
 import Modal from "components/organisms/Modal";
 import Button from "components/atoms/Button";
 import RHFInput from "components/molecules/RHFInput";
-import FormInputCheckbox from "components/molecules/FormInputCheckbox";
-import FormInputRadio from "components/molecules/FormInputRadio";
 import Styled from "./styled";
 
 const FormLogin: FC = () => {
@@ -46,7 +43,7 @@ const FormLogin: FC = () => {
         {isLoading ? (
           <h1>LOADING...</h1>
         ) : (
-          <Form defaultValues={data} onSubmit={handleSubmit}>
+          <RHFProvider defaultValues={data} onSubmit={handleSubmit}>
             <Styled.RHFInputWrap>
               <RHFInput
                 label="ID"
@@ -70,31 +67,31 @@ const FormLogin: FC = () => {
                 required={REQUIRED_PW}
               />
             </Styled.RHFInputWrap>
-            <Styled.RHFInputWrap>
-              <FormInputCheckbox
-                label="개인정보 수집 동의"
-                name="agreement"
-                required="개인정보 수집 동의는 필수입니다."
-              />
-            </Styled.RHFInputWrap>
-            <Styled.RHFInputWrap>
-              <FormInputRadio
-                label="남"
-                name="gender"
-                value="M"
-                required={REQUIRED_GENDER}
-              />
-              <FormInputRadio
-                label="여"
-                name="gender"
-                value="W"
-                required={REQUIRED_GENDER}
-              />
-            </Styled.RHFInputWrap>
+            {/*<Styled.RHFInputWrap>*/}
+            {/*  <FormInputCheckbox*/}
+            {/*    label="개인정보 수집 동의"*/}
+            {/*    name="agreement"*/}
+            {/*    required="개인정보 수집 동의는 필수입니다."*/}
+            {/*  />*/}
+            {/*</Styled.RHFInputWrap>*/}
+            {/*<Styled.RHFInputWrap>*/}
+            {/*  <FormInputRadio*/}
+            {/*    label="남"*/}
+            {/*    name="gender"*/}
+            {/*    value="M"*/}
+            {/*    required={REQUIRED_GENDER}*/}
+            {/*  />*/}
+            {/*  <FormInputRadio*/}
+            {/*    label="여"*/}
+            {/*    name="gender"*/}
+            {/*    value="W"*/}
+            {/*    required={REQUIRED_GENDER}*/}
+            {/*  />*/}
+            {/*</Styled.RHFInputWrap>*/}
             <Button type="submit" primary full>
               로그인
             </Button>
-          </Form>
+          </RHFProvider>
         )}
       </Styled.FormLogin>
     </Modal>

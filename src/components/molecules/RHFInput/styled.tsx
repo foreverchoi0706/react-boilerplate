@@ -1,22 +1,33 @@
 import styled, { css } from "styled-components";
+import { HTMLInputTypeAttribute } from "react";
 
 const Styled = {
-  FormInput: styled.div(
+  RHFInput: styled.div(
     () => css`
+      position: relative;
       display: flex;
       flex-direction: column;
+      margin-top: 8px;
     `
   ),
-  Label: styled.label(
-    () => css`
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: bold;
+  Label: styled.label<{ type: HTMLInputTypeAttribute }>(({ type }) => {
+    if (type === "checkbox" || type === "radio") {
+      return css`
+        font-size: 16px;
+      `;
+    }
+    return css`
+      background-color: white;
+      position: absolute;
+      padding: 0 3px;
+      left: 6px;
+      top: -8px;
+      font-size: 16px;
       > em {
         color: red;
       }
-    `
-  ),
+    `;
+  }),
   ErrorMsg: styled.em(
     () => css`
       display: inline-block;
