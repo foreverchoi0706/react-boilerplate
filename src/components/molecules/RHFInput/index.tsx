@@ -24,14 +24,12 @@ const RHFInput: FC<IProps> = memo(
       return (
         <Styled.RHFInput>
           <Styled.Label htmlFor={id} type={type}>
-            <Input
-              id={id}
-              type={type}
-              placeholder={placeholder}
-              {...register(name, rest)}
-            />
+            <Input id={id} type={type} {...register(name, rest)} />
             {label}
           </Styled.Label>
+          {errors[name] && (
+            <Styled.ErrorMsg>{errors[name].message}</Styled.ErrorMsg>
+          )}
         </Styled.RHFInput>
       );
     }

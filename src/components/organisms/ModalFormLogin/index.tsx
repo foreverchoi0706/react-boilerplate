@@ -4,6 +4,7 @@ import shallow from "zustand/shallow";
 import { REG_NAME } from "constants/regexp";
 import {
   REQUIRED_CORRECT_NAME,
+  REQUIRED_GENDER,
   REQUIRED_NAME,
   REQUIRED_PW,
 } from "constants/text";
@@ -67,27 +68,30 @@ const FormLogin: FC = () => {
                 required={REQUIRED_PW}
               />
             </Styled.RHFInputWrap>
-            {/*<Styled.RHFInputWrap>*/}
-            {/*  <FormInputCheckbox*/}
-            {/*    label="개인정보 수집 동의"*/}
-            {/*    name="agreement"*/}
-            {/*    required="개인정보 수집 동의는 필수입니다."*/}
-            {/*  />*/}
-            {/*</Styled.RHFInputWrap>*/}
-            {/*<Styled.RHFInputWrap>*/}
-            {/*  <FormInputRadio*/}
-            {/*    label="남"*/}
-            {/*    name="gender"*/}
-            {/*    value="M"*/}
-            {/*    required={REQUIRED_GENDER}*/}
-            {/*  />*/}
-            {/*  <FormInputRadio*/}
-            {/*    label="여"*/}
-            {/*    name="gender"*/}
-            {/*    value="W"*/}
-            {/*    required={REQUIRED_GENDER}*/}
-            {/*  />*/}
-            {/*</Styled.RHFInputWrap>*/}
+            <Styled.RHFInputWrap>
+              <RHFInput
+                type="checkbox"
+                label="개인정보 수집 동의"
+                name="agreement"
+                required="개인정보 수집 동의는 필수입니다."
+              />
+            </Styled.RHFInputWrap>
+            <Styled.RHFInputWrap>
+              <RHFInput
+                type="radio"
+                label="남"
+                name="gender"
+                value="M"
+                required={REQUIRED_GENDER}
+              />
+              <RHFInput
+                type="radio"
+                label="여"
+                name="gender"
+                value="W"
+                required={REQUIRED_GENDER}
+              />
+            </Styled.RHFInputWrap>
             <Button type="submit" primary full>
               로그인
             </Button>
