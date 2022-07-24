@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from "react";
-import { FieldValues } from "react-hook-form";
-import shallow from "zustand/shallow";
+import { SubmitHandler } from "react-hook-form";
 import { REG_NAME } from "constants/regexp";
 import {
   REQUIRED_CORRECT_NAME,
@@ -8,7 +7,6 @@ import {
   REQUIRED_NAME,
   REQUIRED_PW,
 } from "constants/text";
-import useUiStore from "hooks/stores/useUiStore";
 import useLoginMutation from "hooks/mutations/useLoginMutation";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
 import RHFProvider from "components/RHFProvider";
@@ -17,29 +15,20 @@ import Button from "components/atoms/Button";
 import RHFInput from "components/molecules/RHFInput";
 import Styled from "./styled";
 
-const FormLogin: FC = () => {
+const ModalFormLogin: FC = () => {
   const { data } = useUserInfoQuery();
-
-  const setIsLoginModalOpen = useUiStore(
-    (state) => state.setIsLoginModalOpen,
-    shallow
-  );
 
   const { mutate, isLoading } = useLoginMutation();
 
-  const handleClose = useCallback(() => {
-    setIsLoginModalOpen(false);
-  }, [setIsLoginModalOpen]);
-
-  const handleSubmit = useCallback(
-    (fieldValues: FieldValues) => {
-      mutate(fieldValues as ILoginInfo);
+  const handleSubmit: SubmitHandler<ILoginInfo> = useCallback(
+    (loginInfo) => {
+      mutate(loginInfo);
     },
     [mutate]
   );
 
   return (
-    <Modal title="로그인" onClose={handleClose} showCloseButton={!isLoading}>
+    <Modal title="로그인" showCloseButton={!isLoading}>
       <Styled.FormLogin>
         {isLoading ? (
           <h1>LOADING...</h1>
@@ -102,4 +91,4 @@ const FormLogin: FC = () => {
   );
 };
 
-export default memo(FormLogin);
+export default memo(ModalFormLogin);

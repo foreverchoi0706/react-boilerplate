@@ -1,10 +1,10 @@
 import { FC, memo, PropsWithChildren, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Styled from "./styled";
+import useModal from "../../../hooks/useModal";
 
 interface IProps {
   title: string;
-  onClose: () => void;
   showCloseButton?: boolean;
   heightFull?: boolean;
 }
@@ -12,14 +12,16 @@ interface IProps {
 const modal = document.querySelector("#modal") as Element;
 
 const Modal: FC<PropsWithChildren<IProps>> = memo(
-  ({ children, title, onClose, showCloseButton = true, heightFull = true }) => {
+  ({ children, title, showCloseButton = true, heightFull = true }) => {
+    const { closeModal } = useModal();
+
     const handleKeyDown = useCallback(
       ({ key }: KeyboardEvent) => {
         if (key === "Escape") {
-          onClose();
+          closeModal();
         }
       },
-      [onClose]
+      [closeModal]
     );
 
     useEffect(() => {
@@ -37,7 +39,7 @@ const Modal: FC<PropsWithChildren<IProps>> = memo(
           <Styled.Header>
             {title}
             {showCloseButton && (
-              <Styled.CloseButton onClick={onClose}>X</Styled.CloseButton>
+              <Styled.CloseButton onClick={closeModal}>X</Styled.CloseButton>
             )}
           </Styled.Header>
           <main>{children}</main>

@@ -2,26 +2,24 @@ import { FC, memo, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import shallow from "zustand/shallow";
 import cookieController from "libs/cookieController";
-import Modal from "components/organisms/Modal";
 import useMedia from "hooks/useMedia";
-import useUiStore from "hooks/stores/useUiStore";
+import useModal from "hooks/useModal";
 import useUserStore from "hooks/stores/useUserStore";
+import Modal from "components/organisms/Modal";
+import ModalFormLogin from "components/organisms/ModalFormLogin";
 import Styled from "./styled";
 
 const Gnb: FC = memo(() => {
+  const { openModal } = useModal();
+
   const [isLogin, setIsLogin] = useUserStore(
     ({ isLogin, setIsLogin }) => [isLogin, setIsLogin],
     shallow
   );
 
-  const setIsLoginModalOpen = useUiStore(
-    (state) => state.setIsLoginModalOpen,
-    shallow
-  );
-
   const handleLogin = useCallback(() => {
-    setIsLoginModalOpen(true);
-  }, [setIsLoginModalOpen]);
+    openModal(<ModalFormLogin />);
+  }, []);
 
   const handleLogin2 = useCallback(() => {
     setIsLogin(false);
@@ -58,7 +56,7 @@ const Header: FC = memo(() => {
           <>
             <button onClick={handleClick}>GNB 열기</button>
             {isGnbOpen && (
-              <Modal title="GNb" onClose={handleClick}>
+              <Modal title="GNb">
                 <Gnb />
               </Modal>
             )}

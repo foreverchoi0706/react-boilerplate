@@ -8,7 +8,9 @@ const useModal = () => {
     setModal(Modal);
   }, []);
 
-  const closeModal = useCallback(() => {}, []);
+  const closeModal = useCallback(() => {
+    setModal(null);
+  }, []);
 
   return {
     openModal,
