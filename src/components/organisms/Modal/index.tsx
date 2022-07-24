@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, PropsWithChildren, useCallback } from "react";
+import { FC, memo, PropsWithChildren, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Styled from "./styled";
 

@@ -5,16 +5,13 @@ import useUiStore from "hooks/stores/useUiStore";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
 import Home from "pages/Home";
 import About from "pages/About";
-import ErudaProvider from "./components/ErudaProvider";
+import ErudaProvider from "components/ErudaProvider";
 import Header from "components/organisms/Header";
 import Footer from "components/organisms/Footer";
-import ModalFormLogin from "components/organisms/ModalFormLogin";
 
 const App: FC = memo(() => {
-  const isLoginModalOpen = useUiStore(
-    (state) => state.isLoginModalOpen,
-    shallow
-  );
+  const Modal = useUiStore((state) => () => state.Modal, shallow);
+
   useUserInfoQuery();
 
   return (
@@ -27,7 +24,7 @@ const App: FC = memo(() => {
           <Route path="/*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
-        {isLoginModalOpen && <ModalFormLogin />}
+        {Modal && <Modal />}
       </BrowserRouter>
     </ErudaProvider>
   );
