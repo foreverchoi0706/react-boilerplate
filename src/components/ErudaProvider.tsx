@@ -7,7 +7,9 @@ const ErudaProvider: FC<PropsWithChildren<{}>> = memo(({ children }) => {
   );
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "development" && isMobile) {
+    console.log(isMobile)
+    if (process.env.NODE_ENV === "development") {
+      alert("ErudaProvider init...");
       const script = document.createElement("script");
       script.defer = true;
       script.src = "//cdn.jsdelivr.net/npm/eruda";
