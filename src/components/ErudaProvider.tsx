@@ -7,17 +7,14 @@ const ErudaProvider: FC<PropsWithChildren<{}>> = memo(({ children }) => {
   );
 
   useEffect(() => {
-    console.log(isMobile)
-    if (process.env.NODE_ENV === "development") {
-      alert("ErudaProvider init...");
-      const script = document.createElement("script");
-      script.defer = true;
-      script.src = "//cdn.jsdelivr.net/npm/eruda";
-      document.body.appendChild(script);
-      script.addEventListener("load", () => {
-        (window as any).eruda.init();
-      });
-    }
+    alert("ErudaProvider init...");
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = "//cdn.jsdelivr.net/npm/eruda";
+    document.body.appendChild(script);
+    script.addEventListener("load", () => {
+      (window as any).eruda.init();
+    });
   }, [isMobile]);
   return <>{children}</>;
 });
