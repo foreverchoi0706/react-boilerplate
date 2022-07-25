@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from "react";
+import { FC, memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import shallow from "zustand/shallow";
 import cookieController from "libs/cookieController";
@@ -38,12 +38,16 @@ const Gnb: FC = memo(() => {
 });
 
 const Header: FC = memo(() => {
+  const { openModal } = useModal();
+
   const isMobile = useMedia(680);
 
-  const [isGnbOpen, setIsGnbOpen] = useState<boolean>(false);
-
   const handleClick = useCallback(() => {
-    setIsGnbOpen((prevState) => !prevState);
+    openModal(
+      <Modal title="GNb">
+        <Gnb />
+      </Modal>
+    );
   }, []);
 
   return (
@@ -55,11 +59,6 @@ const Header: FC = memo(() => {
         {isMobile ? (
           <>
             <button onClick={handleClick}>GNB 열기</button>
-            {isGnbOpen && (
-              <Modal title="GNb">
-                <Gnb />
-              </Modal>
-            )}
           </>
         ) : (
           <Gnb />
