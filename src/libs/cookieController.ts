@@ -25,7 +25,7 @@ class CookieController {
     this.set(name, "", 0);
   };
 
-  isExist = (name: string): boolean => {
+  has = (name: string): boolean => {
     return Boolean(this.get(name));
   };
 }

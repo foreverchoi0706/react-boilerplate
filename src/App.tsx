@@ -10,9 +10,9 @@ import Header from "components/organisms/Header";
 import Footer from "components/organisms/Footer";
 
 const App: FC = memo(() => {
-  const Modal = useUiStore((state) => () => state.Modal, shallow);
-
   useUserInfoQuery();
+
+  const Modal = useUiStore((state) => () => state.Modal, shallow);
 
   return (
     <ErudaProvider>

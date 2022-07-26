@@ -4,10 +4,7 @@ import { USER_INFO } from "keys/user";
 import useUserStore from "hooks/stores/useUserStore";
 
 const useUserInfoQuery = () => {
-  const [setIsLogin, setUserInfo] = useUserStore(
-    ({ setIsLogin, setUserInfo }) => [setIsLogin, setUserInfo],
-    shallow
-  );
+  const setUserInfo = useUserStore((state) => state.setUserInfo, shallow);
 
   return useQuery<ILoginInfo>(
     [USER_INFO],
@@ -24,10 +21,8 @@ const useUserInfoQuery = () => {
       });
     },
     {
-      // enabled: cookieController.isExist("isLogin"),
       onSuccess: (loginInfo: ILoginInfo) => {
         setUserInfo(loginInfo);
-        setIsLogin(true);
       },
     }
   );

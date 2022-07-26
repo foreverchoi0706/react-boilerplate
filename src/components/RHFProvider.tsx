@@ -1,5 +1,10 @@
-import {FC, PropsWithChildren, useEffect} from "react";
-import {FormProvider, SubmitHandler, useForm, UseFormProps,} from "react-hook-form";
+import { FC, memo, PropsWithChildren, useEffect } from "react";
+import {
+  FormProvider,
+  SubmitHandler,
+  useForm,
+  UseFormProps,
+} from "react-hook-form";
 
 interface IProps extends UseFormProps {
   onSubmit: SubmitHandler<any>;
@@ -27,4 +32,4 @@ const RHFProvider: FC<PropsWithChildren<IProps>> = ({
   );
 };
 
-export default RHFProvider;
+export default memo(RHFProvider);

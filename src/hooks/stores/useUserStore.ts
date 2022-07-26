@@ -1,14 +1,15 @@
 import create, { SetState } from "zustand";
+import cookieController from "libs/cookieController";
 
 const userStore = (set: SetState<IUserStore>) => ({
+  isSignIn: cookieController.has("isLogin"),
+  setIsSignIn: (isSignIn: boolean) => set((state) => ({ ...state, isSignIn })),
   userinfo: {
     name: null,
     age: null,
   },
-  isLogin: false,
   setUserInfo: (userinfo: IUserInfo) =>
     set((state) => ({ ...state, userinfo })),
-  setIsLogin: (isLogin: boolean) => set((state) => ({ ...state, isLogin })),
 });
 
 const useUserStore = create<IUserStore>(userStore);

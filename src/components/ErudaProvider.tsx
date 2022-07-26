@@ -7,7 +7,6 @@ const ErudaProvider: FC<PropsWithChildren<{}>> = memo(({ children }) => {
   );
 
   useEffect(() => {
-    alert("ErudaProvider init...");
     const script = document.createElement("script");
     script.defer = true;
     script.src = "//cdn.jsdelivr.net/npm/eruda";

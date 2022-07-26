@@ -6,10 +6,10 @@ interface IUserInfo {
 }
 
 interface IUserStore {
+  isSignIn: boolean;
+  setIsSignIn: (isSignIn: boolean) => void;
   userinfo: IUserInfo;
-  isLogin: boolean;
   setUserInfo: (info: IInfo) => void;
-  setIsLogin: (isLogin: boolean) => void;
 }
 
 interface IResponse {}
