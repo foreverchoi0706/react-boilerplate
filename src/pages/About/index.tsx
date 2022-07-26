@@ -1,7 +1,25 @@
-import React, { FC } from "react";
+import React, { FC, memo, useCallback } from "react";
+import useSign from "hooks/useSign";
+import useModal from "hooks/useModal";
+import Button from "components/atoms/Button";
+import ModalFormLogin from "components/organisms/ModalFormLogin";
+import ModalFormSale from "components/organisms/ModalFormSale";
 
 const About: FC = () => {
-  return <main></main>;
+  const { isSignIn } = useSign();
+
+  const { openModal } = useModal();
+
+  const handleClick = useCallback(() => {
+    const modal = isSignIn ? <ModalFormSale /> : <ModalFormLogin />;
+    openModal(modal);
+  }, [isSignIn]);
+
+  return (
+    <main>
+      <Button onClick={handleClick}>CLICK</Button>
+    </main>
+  );
 };
 
-export default About;
+export default memo(About);

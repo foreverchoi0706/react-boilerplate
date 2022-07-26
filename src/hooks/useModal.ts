@@ -1,10 +1,10 @@
-import { useCallback } from "react";
+import { ReactElement, useCallback } from "react";
 import useUiStore from "hooks/stores/useUiStore";
 
 const useModal = () => {
-  const setModal = useUiStore((state) => state.setModal);
+  const setModal = useUiStore((ui) => ui.setModal);
 
-  const openModal = useCallback((Modal: any) => {
+  const openModal = useCallback((Modal: ReactElement) => {
     setModal(Modal);
   }, []);
 

@@ -4,7 +4,7 @@ import logicController from "libs/logicController";
 const useMedia = (maxWidth: number): boolean => {
   const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
 
-  const handleResize = useCallback(() => {
+  const handleResizeWindow = useCallback(() => {
     logicController.throttle(() => {
       if (innerWidth !== window.innerWidth) {
         setInnerWidth(window.innerWidth);
@@ -13,11 +13,11 @@ const useMedia = (maxWidth: number): boolean => {
   }, [innerWidth]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResizeWindow);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResizeWindow);
     };
-  }, [handleResize]);
+  }, []);
 
   return innerWidth <= maxWidth;
 };
