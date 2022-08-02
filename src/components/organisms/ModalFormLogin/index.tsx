@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
-import { REG_NAME } from "constants/regexp";
 import {
   REQUIRED_CORRECT_NAME,
   REQUIRED_GENDER,
@@ -40,12 +39,12 @@ const ModalFormLogin: FC = () => {
                 label="ID"
                 type="text"
                 name="id"
-                maxLength={10}
                 placeholder="id"
                 required={REQUIRED_NAME}
-                pattern={{
-                  value: new RegExp(REG_NAME),
-                  message: REQUIRED_CORRECT_NAME,
+                validate={{
+                  checkSpace: (value: string) => {
+                    return value.trim() ? undefined : REQUIRED_CORRECT_NAME;
+                  },
                 }}
               />
             </Styled.RHFInputWrap>
