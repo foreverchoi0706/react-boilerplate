@@ -21,9 +21,7 @@ const ModalFormLogin: FC = () => {
 
   const handleSubmit: SubmitHandler<ILoginInfo> = useCallback((loginInfo) => {
     mutate(loginInfo, {
-      onSuccess: () => {
-        closeModal();
-      },
+      onSuccess: closeModal,
     });
   }, []);
 
