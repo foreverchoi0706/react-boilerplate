@@ -1,7 +1,7 @@
-import { FC, memo, PropsWithChildren, useCallback, useEffect } from "react";
-import { createPortal } from "react-dom";
+import {FC, memo, PropsWithChildren, useCallback, useEffect,} from "react";
+import {createPortal} from "react-dom";
+import useModal from "hooks/useModal";
 import Styled from "./styled";
-import useModal from "../../../hooks/useModal";
 
 interface IProps {
   title: string;
@@ -9,7 +9,7 @@ interface IProps {
   heightFull?: boolean;
 }
 
-const modal = document.querySelector("#modal") as Element;
+const modal = document.querySelector("#modal");
 
 const Modal: FC<PropsWithChildren<IProps>> = memo(
   ({ children, title, showCloseButton = true, heightFull = true }) => {
@@ -32,6 +32,11 @@ const Modal: FC<PropsWithChildren<IProps>> = memo(
         document.body.removeEventListener("keydown", handleKeyDown);
       };
     }, [handleKeyDown]);
+
+    if (!modal) {
+      console.error("CAN NOT FIND MODAL ELEMENT");
+      return null;
+    }
 
     return createPortal(
       <Styled.Modal>

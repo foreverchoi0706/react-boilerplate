@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback } from "react";
+import React, {FC, memo, useCallback} from "react";
 import useSign from "hooks/useSign";
 import useModal from "hooks/useModal";
 import Button from "components/atoms/Button";
@@ -11,8 +11,7 @@ const About: FC = () => {
   const { openModal } = useModal();
 
   const handleClick = useCallback(() => {
-    const modal = isSignIn ? <ModalFormSale /> : <ModalFormLogin />;
-    openModal(modal);
+    openModal(isSignIn ? <ModalFormSale /> : <ModalFormLogin />);
   }, [isSignIn]);
 
   return (
