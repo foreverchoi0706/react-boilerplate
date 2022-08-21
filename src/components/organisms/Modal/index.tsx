@@ -1,5 +1,5 @@
-import {FC, memo, PropsWithChildren, useCallback, useEffect,} from "react";
-import {createPortal} from "react-dom";
+import { FC, memo, PropsWithChildren, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import useModal from "hooks/useModal";
 import Styled from "./styled";
 
@@ -34,7 +34,7 @@ const Modal: FC<PropsWithChildren<IProps>> = memo(
     }, [handleKeyDown]);
 
     if (!modal) {
-      console.error("CAN NOT FIND MODAL ELEMENT");
+      console.error("ERROR:CAN NOT FIND MODAL ELEMENT");
       return null;
     }
 

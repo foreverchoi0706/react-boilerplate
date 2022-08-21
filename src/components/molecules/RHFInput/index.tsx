@@ -5,7 +5,7 @@ import Input from "components/atoms/Input";
 import Styled from "./styled";
 
 interface IProps extends RegisterOptions {
-  label: string;
+  label?: string;
   name: string;
   type: HTMLInputTypeAttribute;
   placeholder?: string;

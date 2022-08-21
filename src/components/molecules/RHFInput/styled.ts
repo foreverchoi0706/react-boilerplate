@@ -17,6 +17,7 @@ const Styled = {
       `;
     }
     return css`
+      color: gray;
       background-color: white;
       position: absolute;
       padding: 0 3px;

@@ -1,5 +1,7 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
+import shallow from "zustand/shallow";
+import useSearchParamsStore from "hooks/stores/useListStore";
 import Styled from "./styled";
 
 interface IProps {
@@ -24,12 +26,18 @@ const Card: FC<{ item: number }> = memo(({ item }) => {
 });
 
 const CardList: FC<IProps> = memo(({ items }) => {
-  console.log("CardList");
+  console.log(CardList);
+  const searchParams = useSearchParamsStore(
+    (state) => state.searchParams,
+    shallow
+  );
   return (
     <Styled.CardList>
-      {items.map((item) => (
-        <Card key={item} item={item} />
-      ))}
+      {items
+        .filter((item) => String(item) === searchParams.keyword)
+        .map((item) => (
+          <Card key={item} item={item} />
+        ))}
     </Styled.CardList>
   );
 });
