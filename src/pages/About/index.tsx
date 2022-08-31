@@ -2,13 +2,12 @@ import React, { FC, memo, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
 import shallow from "zustand/shallow";
 import { Grid } from "@material-ui/core";
-import Button from "components/atoms/Button";
-import RHFProvider from "components/RHFProvider";
-import RHFInput from "components/molecules/RHFInput";
-import CardList from "components/organisms/CardList";
 import useSearchParamsStore, {
   ISearchParams,
-} from "../../hooks/stores/useListStore";
+} from "@/hooks/stores/useListStore";
+import Button from "@/components/atoms/Button";
+import RHFProvider from "@/components/RHFProvider";
+import RHFInput from "@/components/molecules/RHFInput";
 
 const About: FC = () => {
   const setSearchParams = useSearchParamsStore(
@@ -37,8 +36,6 @@ const About: FC = () => {
           </Grid>
         </Grid>
       </RHFProvider>
-
-      <CardList items={new Array(20).fill("").map((_, index) => index)} />
     </main>
   );
 };
