@@ -17,7 +17,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   full: false,
-  text: "Button",
 };
 
 export const Lg = Template.bind({});
@@ -42,3 +41,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
 };
+
+Disabled.parameters = {
+  jest: { disabled: true }
+}
