@@ -32,7 +32,7 @@ const About: FC = () => {
           </Grid>
           <Grid item xs={2}>
             <Button full type="submit">
-              CLICKBBB
+              CLICKAAAA
             </Button>
           </Grid>
         </Grid>
