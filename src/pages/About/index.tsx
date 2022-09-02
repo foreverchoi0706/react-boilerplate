@@ -2,7 +2,6 @@ import { FC, memo, useCallback } from "react";
 import { Center, Flex, Text } from "@chakra-ui/react";
 import { SubmitHandler } from "react-hook-form";
 import shallow from "zustand/shallow";
-import { Grid } from "@material-ui/core";
 import useSearchParamsStore, {
   ISearchParams,
 } from "@/hooks/stores/useListStore";
@@ -26,20 +25,19 @@ const About: FC = () => {
   return (
     <main>
       <RHFProvider onSubmit={handleSubmit}>
-        <Grid container alignItems="center">
-          <Grid item xs={10}>
-            <RHFInput label="검색" name="keyword" type="text" />
-          </Grid>
-          <Grid item xs={2}>
-            <Button full type="submit">
-              CLICKAAAA
-            </Button>
-          </Grid>
-        </Grid>
+        <RHFInput label="검색" name="keyword" type="text" />
+        <Button full type="submit">
+          CLICKAAAA
+        </Button>
         BBB
       </RHFProvider>
-      <Flex flexDirection="column" alignContent="space-between" gap={2}> <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
-        <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
+      <Flex flexDirection="column" alignContent="space-between" gap={2}>
+        <Center w="100px" bg="green.500">
+          <Text>dsad</Text>
+        </Center>
+        <Center w="100px" bg="green.500">
+          <Text>dsad</Text>
+        </Center>
       </Flex>
     </main>
   );
