@@ -1,4 +1,5 @@
-import React, { FC, memo, useCallback } from "react";
+import { FC, memo, useCallback } from "react";
+import { Center, Flex, Text } from "@chakra-ui/react";
 import { SubmitHandler } from "react-hook-form";
 import shallow from "zustand/shallow";
 import { Grid } from "@material-ui/core";
@@ -15,7 +16,7 @@ const About: FC = () => {
     shallow
   );
 
-  const handleSubmit: SubmitHandler<ISearchParams> = useCallback(
+  const handleSubmit = useCallback<SubmitHandler<ISearchParams>>(
     (searchParams) => {
       setSearchParams(searchParams);
     },
@@ -36,6 +37,9 @@ const About: FC = () => {
           </Grid>
         </Grid>
       </RHFProvider>
+      <Flex flexDirection="column" alignContent="space-between" gap={2}> <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
+        <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
+      </Flex>
     </main>
   );
 };

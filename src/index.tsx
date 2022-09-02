@@ -6,6 +6,7 @@ import App from "App";
 import GlobalStyle from "components/GlobalStyle";
 import theme from "theme";
 import reportWebVitals from "./reportWebVitals";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,13 +21,15 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Reset />
-      <App />
-    </ThemeProvider>
-  </QueryClientProvider>
+  <ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Reset />
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
