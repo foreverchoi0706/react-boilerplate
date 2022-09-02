@@ -32,10 +32,11 @@ const About: FC = () => {
           </Grid>
           <Grid item xs={2}>
             <Button full type="submit">
-              CLICK
+              CLICKBBB
             </Button>
           </Grid>
         </Grid>
+        BBB
       </RHFProvider>
       <Flex flexDirection="column" alignContent="space-between" gap={2}> <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
         <Center w='100px' bg='green.500'><Text>dsad</Text></Center>
