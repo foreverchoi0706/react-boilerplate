@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import useLoginMutation from "hooks/mutations/useLoginMutation";
+import useLoginMutation from "@/hooks/mutations/useSignInMutation";
 import Modal from "components/organisms/Modal";
 import Styled from "./styled";
 

@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import shallow from "zustand/shallow";
-import { USER_INFO } from "keys/user";
+import { USER_INFO } from "constants/keys/user";
 import useUserStore from "hooks/stores/useUserStore";
 
 const useUserInfoQuery = () => {

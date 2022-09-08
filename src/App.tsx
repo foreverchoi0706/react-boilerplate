@@ -1,5 +1,5 @@
-import {FC, memo} from "react";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import { FC, memo } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import shallow from "zustand/shallow";
 import useUiStore from "hooks/stores/useUiStore";
 import useUserInfoQuery from "hooks/queries/useUserInfoQuery";
@@ -8,7 +8,7 @@ import About from "pages/About";
 import Header from "components/organisms/Header";
 import Footer from "components/organisms/Footer";
 
-const App: FC = memo(() => {
+const App: FC = () => {
   useUserInfoQuery();
 
   const Modal = useUiStore((state) => () => state.Modal, shallow);
@@ -25,6 +25,6 @@ const App: FC = memo(() => {
       {Modal && <Modal />}
     </BrowserRouter>
   );
-});
+};
 
-export default App;
+export default memo(App);

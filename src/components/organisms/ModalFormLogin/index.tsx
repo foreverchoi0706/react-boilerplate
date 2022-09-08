@@ -7,7 +7,7 @@ import {
   REQUIRED_PW,
 } from "constants/text";
 import useModal from "hooks/useModal";
-import useLoginMutation from "hooks/mutations/useLoginMutation";
+import useSignInMutation from "@/hooks/mutations/useSignInMutation";
 import RHFProvider from "components/RHFProvider";
 import RHFInput from "components/molecules/RHFInput";
 import Modal from "components/organisms/Modal";
@@ -17,7 +17,7 @@ import Styled from "./styled";
 const ModalFormLogin: FC = () => {
   const { closeModal } = useModal();
 
-  const { mutate, isLoading } = useLoginMutation();
+  const { mutate, isLoading } = useSignInMutation();
 
   const handleSubmit: SubmitHandler<ILoginInfo> = useCallback((loginInfo) => {
     mutate(loginInfo, {

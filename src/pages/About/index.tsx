@@ -1,18 +1,13 @@
-import { FC, memo, useCallback } from "react";
-import { Center, Flex, Text } from "@chakra-ui/react";
-import { SubmitHandler } from "react-hook-form";
-import shallow from "zustand/shallow";
-import useSearchParamsStore, {
-  ISearchParams,
-} from "@/hooks/stores/useListStore";
-import Button from "@/components/atoms/Button";
+import {FC, memo, useCallback} from "react";
+import {Box, Button, Flex} from "@chakra-ui/react";
+import {SubmitHandler} from "react-hook-form";
+import useSearchParamsStore, {ISearchParams,} from "@/hooks/stores/useListStore";
 import RHFProvider from "@/components/RHFProvider";
-import RHFInput from "@/components/molecules/RHFInput";
+import RHFInput2 from "@/components/molecules/RHFInput2";
 
 const About: FC = () => {
   const setSearchParams = useSearchParamsStore(
-    (state) => state.setSearchParams,
-    shallow
+    ({ setSearchParams }) => setSearchParams
   );
 
   const handleSubmit = useCallback<SubmitHandler<ISearchParams>>(
@@ -25,20 +20,15 @@ const About: FC = () => {
   return (
     <main>
       <RHFProvider onSubmit={handleSubmit}>
-        <RHFInput label="검색" name="keyword" type="text" />
-        <Button full type="submit">
-          CLICKAAAA
-        </Button>
-        BBB
+        <Flex gap={2}>
+          <Box flexGrow={1}>
+            <RHFInput2 label="test" name="keyword" type="text" />
+          </Box>
+          <Box>
+            <Button type="submit">SEARCH</Button>
+          </Box>
+        </Flex>
       </RHFProvider>
-      <Flex flexDirection="column" alignContent="space-between" gap={2}>
-        <Center w="100px" bg="green.500">
-          <Text>dsad</Text>
-        </Center>
-        <Center w="100px" bg="green.500">
-          <Text>dsad</Text>
-        </Center>
-      </Flex>
     </main>
   );
 };

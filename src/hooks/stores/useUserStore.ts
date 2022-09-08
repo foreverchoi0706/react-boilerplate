@@ -1,8 +1,9 @@
 import create, { SetState } from "zustand";
-import cookieController from "libs/cookieController";
+import { KEY } from "@/constants/keys/user";
+import cookieController from "@/libs/cookieController";
 
 const userStore = (set: SetState<IUserStore>) => ({
-  isSignIn: cookieController.has("isLogin"),
+  isSignIn: cookieController.has(KEY),
   setIsSignIn: (isSignIn: boolean) => set((state) => ({ ...state, isSignIn })),
   userinfo: {
     name: null,

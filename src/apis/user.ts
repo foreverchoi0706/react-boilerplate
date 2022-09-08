@@ -1,5 +1,9 @@
-import instance from "apis/instance";
+import instance from "@/apis/instance";
 
-export const getAccountInfo = () => {
-  return instance.get("https://api.github.com/repos/tannerlinsley/react-query");
-};
+export const getAccountInfo = () => instance.get("");
+
+export const signIn = () => instance.post("");
+
+export const signOut = () => instance.post("");
+
+export const withdraw = () => instance.post("");

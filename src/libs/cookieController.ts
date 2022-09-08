@@ -3,8 +3,8 @@ class CookieController {
     console.log("CookieController init...");
   }
 
-  get = (name: string): string | null => {
-    const nameEQ = name + "=";
+  get = (key: string): string | null => {
+    const nameEQ = key + "=";
     const ca = document.cookie.split(";");
     for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
@@ -25,8 +25,8 @@ class CookieController {
     this.set(name, "", 0);
   };
 
-  has = (name: string): boolean => {
-    return Boolean(this.get(name));
+  has = (key: string): boolean => {
+    return Boolean(this.get(key));
   };
 }
 

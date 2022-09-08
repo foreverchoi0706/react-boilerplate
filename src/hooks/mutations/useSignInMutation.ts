@@ -3,7 +3,7 @@ import shallow from "zustand/shallow";
 import useSign from "hooks/useSign";
 import useUserStore from "hooks/stores/useUserStore";
 
-const useLoginMutation = () => {
+const useSignInMutation = () => {
   const { signIn } = useSign();
 
   const setUserInfo = useUserStore((state) => state.setUserInfo, shallow);
@@ -26,4 +26,4 @@ const useLoginMutation = () => {
   );
 };
 
-export default useLoginMutation;
+export default useSignInMutation;
