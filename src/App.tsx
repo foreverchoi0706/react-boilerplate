@@ -1,20 +1,21 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "@/pages/Home";
+import React, {ChakraProvider} from "@chakra-ui/react";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+
 import About from "@/pages/About";
+import Home from "@/pages/Home";
 
 const App = () => {
-  return (
-    <ChakraProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about/:id" element={<About />} />
-          <Route path="/*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
-    </ChakraProvider>
-  );
+    return (
+        <ChakraProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Home/>} path="/"/>
+                    <Route element={<About/>} path="/about/:id"/>
+                    <Route element={<Navigate replace to="/"/>} path="/*"/>
+                </Routes>
+            </BrowserRouter>
+        </ChakraProvider>
+    );
 }
 
 export default App;

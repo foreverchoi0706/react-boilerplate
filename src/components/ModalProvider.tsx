@@ -1,27 +1,27 @@
-import { FC, PropsWithChildren } from "react";
 import {
+    Button,
     Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
     ModalProps,
-    Button,
 } from '@chakra-ui/react'
+import React, {FC, PropsWithChildren} from "react";
 
 interface IProps extends ModalProps {
     title: string
 }
 
-const ModalProvider: FC<PropsWithChildren<IProps>> = ({ children, isOpen, onClose, title }) => {
+const ModalProvider: FC<PropsWithChildren<IProps>> = ({children, isOpen, onClose, title}) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
+            <ModalOverlay/>
             <ModalContent>
                 <ModalHeader>{title}</ModalHeader>
-                <ModalCloseButton />
+                <ModalCloseButton/>
                 <ModalBody>
                     {children}
                 </ModalBody>

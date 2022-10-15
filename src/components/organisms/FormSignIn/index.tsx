@@ -1,8 +1,9 @@
+import {Button, Stack} from "@chakra-ui/react";
+import React, {FC, memo, useCallback} from "react";
+import {SubmitHandler} from "react-hook-form";
+
 import * as Input from "@/components/molecules/Input";
 import RHFProvider from "@/components/RHFProvider";
-import { Stack, Button } from "@chakra-ui/react";
-import { FC, memo, useCallback } from "react";
-import { SubmitHandler } from "react-hook-form";
 
 export interface ISigInForm {
     id: string;
@@ -15,22 +16,22 @@ const FormSignIn: FC = () => {
     }, [])
 
     return <RHFProvider onSubmit={handleSubmitForm}>
-        <Stack backgroundColor="#ffffff" padding={{
+        <Stack backgroundColor="#ffffff" gap="10px" padding={{
             base: "10px",
-        }} gap="10px">
+        }}>
             <Input.Wrap name="id">
                 <Input.Label>ID</Input.Label>
-                <Input.Text type="text" registerOptions={{
+                <Input.Text registerOptions={{
                     required: "필수입력입니다."
-                }} />
-                <Input.Message />
+                }} type="text"/>
+                <Input.Message/>
             </Input.Wrap>
             <Input.Wrap name="password">
                 <Input.Label>PW</Input.Label>
-                <Input.Text type="password" registerOptions={{
+                <Input.Text registerOptions={{
                     required: "필수입력입니다."
-                }} />
-                <Input.Message />
+                }} type="password"/>
+                <Input.Message/>
             </Input.Wrap>
             <Button type="submit">SUBMIT</Button>
         </Stack>

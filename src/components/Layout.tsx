@@ -1,41 +1,35 @@
-import { FC, memo, PropsWithChildren } from "react";
-import { Link } from "react-router-dom";
-import { Box, Button, Stack, useDisclosure } from "@chakra-ui/react";
+import {Box, Button, Stack, useDisclosure} from "@chakra-ui/react";
+import React, {FC, memo, PropsWithChildren} from "react";
+import {Link} from "react-router-dom";
+
 import ModalProvider from "@/components/ModalProvider";
-import * as Gnb from "@/components/organisms/Gnb";
 import FormSignIn from "@/components/organisms/FormSignIn";
+import * as Gnb from "@/components/organisms/Gnb";
 
-export interface ISigInForm {
-    id: string;
-    password: string
-}
-
-const Main: FC<PropsWithChildren> = memo(({ children }) => {
-    const { isOpen, onClose, onOpen } = useDisclosure();
-
-
-
+const Main: FC<PropsWithChildren> = memo(({children}) => {
+    console.log(children);
+    const {isOpen, onClose, onOpen} = useDisclosure();
     return (
         <Stack backgroundColor="#e4e4e4" maxWidth="1060px">
-            <Gnb.Wrap >
+            <Gnb.Wrap>
                 <Gnb.Items>
                     <Gnb.Item><Link to="/">HOME</Link></Gnb.Item>
                 </Gnb.Items>
                 <Button onClick={() => onOpen()}>LOGIN</Button>
             </Gnb.Wrap>
-            {children}
+            <Box>{children}</Box>
             <footer>
                 asdas
             </footer>
-            {isOpen && <ModalProvider title="SignIn" isOpen={isOpen} onClose={onClose}>
-                <FormSignIn />
+            {isOpen && <ModalProvider isOpen={isOpen} onClose={onClose} title="SignIn">
+                <FormSignIn/>
             </ModalProvider>}
-        </Stack >
+        </Stack>
     )
 });
 
 
-const Logo: FC<PropsWithChildren> = memo(({ children }) => {
+const Logo: FC<PropsWithChildren> = memo(({children}) => {
     return <Box>
         {children}
     </Box>
