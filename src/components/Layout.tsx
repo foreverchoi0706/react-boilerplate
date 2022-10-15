@@ -1,12 +1,12 @@
 import {Box, Button, Stack, useDisclosure} from "@chakra-ui/react";
-import React, {FC, memo, PropsWithChildren} from "react";
+import React, {FC, PropsWithChildren} from "react";
 import {Link} from "react-router-dom";
 
 import ModalProvider from "@/components/ModalProvider";
 import FormSignIn from "@/components/organisms/FormSignIn";
 import * as Gnb from "@/components/organisms/Gnb";
 
-const Main: FC<PropsWithChildren> = memo(({children}) => {
+const Main: FC<PropsWithChildren> = ({children}) => {
     console.log(children);
     const {isOpen, onClose, onOpen} = useDisclosure();
     return (
@@ -26,14 +26,14 @@ const Main: FC<PropsWithChildren> = memo(({children}) => {
             </ModalProvider>}
         </Stack>
     )
-});
+};
 
 
-const Logo: FC<PropsWithChildren> = memo(({children}) => {
+const Logo: FC<PropsWithChildren> = ({children}) => {
     return <Box>
         {children}
     </Box>
-});
+};
 
 
 export default Object.assign({

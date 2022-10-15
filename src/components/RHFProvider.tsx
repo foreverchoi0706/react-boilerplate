@@ -1,8 +1,8 @@
 import React, {FC, PropsWithChildren} from "react";
-import {FormProvider, SubmitHandler, useForm} from "react-hook-form";
+import {FieldValues, FormProvider, SubmitHandler, useForm} from "react-hook-form";
 
 interface IProps {
-    onSubmit: SubmitHandler<any>;
+    onSubmit: SubmitHandler<FieldValues>;
 }
 
 const RHFProvider: FC<PropsWithChildren<IProps>> = ({children, onSubmit}) => {
