@@ -1,9 +1,8 @@
-import {Button, Center, Spinner, Stack, StackItem} from "@chakra-ui/react";
+import {Button, Center, Flex, Spinner, Stack, StackItem} from "@chakra-ui/react";
 import React, {FC, memo, useCallback, useState} from "react";
 import {SubmitHandler} from "react-hook-form";
 
-import {signIn} from "@/apis";
-import * as Input from "@/components/molecules/Input";
+import * as From from "@/components/molecules/Form";
 import RHFProvider from "@/components/RHFProvider";
 import useUserStore from "@/hooks/useUserStore";
 
@@ -33,22 +32,30 @@ const FormSignIn: FC = () => {
     return <RHFProvider onSubmit={handleSubmitForm}>
         <Stack backgroundColor="#ffffff" gap="10px" padding="10px">
             <StackItem>
-                <Input.Wrap name="id">
-                    <Input.Label>ID</Input.Label>
-                    <Input.Text registerOptions={{
-                        required: "필수입력입니다."
-                    }} type="text"/>
-                    <Input.Message/>
-                </Input.Wrap>
+                <From.Wrap name="id">
+                    <From.Label>ID</From.Label>
+                    <From.Input required="필수입력입니다."/>
+                    <From.Message/>
+                </From.Wrap>
             </StackItem>
             <StackItem>
-                <Input.Wrap name="password">
-                    <Input.Label>PW</Input.Label>
-                    <Input.Text registerOptions={{
-                        required: "필수입력입니다."
-                    }} type="password"/>
-                    <Input.Message/>
-                </Input.Wrap>
+                <From.Wrap name="password">
+                    <From.Label>PW</From.Label>
+                    <From.Input required="필수입력입니다."/>
+                    <From.Message/>
+                </From.Wrap>
+            </StackItem>
+            <StackItem>
+                <Flex flexDirection="row" gap="10px">
+                    <From.Wrap name="M">
+                        <From.Label>남자</From.Label>
+                        <From.Checkbox/>
+                    </From.Wrap>
+                    <From.Wrap name="W">
+                        <From.Label>여자</From.Label>
+                        <From.Checkbox/>
+                    </From.Wrap>
+                </Flex>
             </StackItem>
             <StackItem>
                 <Button type="submit" width="100%">SUBMIT</Button>
