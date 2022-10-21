@@ -4,7 +4,8 @@ import {
     FormLabelProps,
     Input as FormInput,
     Radio as FormRadio,
-    Text as FormText
+    Text as FormText,
+    Button as FormButton, ButtonProps,
 } from "@chakra-ui/react";
 import {ErrorMessage} from '@hookform/error-message';
 import React, {createContext, FC, PropsWithChildren, useContext, useId, useMemo} from "react";
@@ -25,10 +26,22 @@ export const Label: FC<PropsWithChildren<FormLabelProps>> = ({children, ...rest}
     return <FormLabel htmlFor={context.id} {...rest}>{children}</FormLabel>
 };
 
-export const Input: FC<RegisterOptions> = (props) => {
+export const InputText: FC<RegisterOptions> = (props) => {
     const {id, name} = useContext<IContext>(Context);
     const {register} = useFormContext();
-    return <FormInput id={id}  {...register(name, props)} />
+    return <FormInput id={id} type="text"  {...register(name, props)} />
+};
+
+export const InputPassword: FC<RegisterOptions> = (props) => {
+    const {id, name} = useContext<IContext>(Context);
+    const {register} = useFormContext();
+    return <FormInput id={id} type="password"  {...register(name, props)} />
+};
+
+export const Date: FC<RegisterOptions> = (props) => {
+    const {id, name} = useContext<IContext>(Context);
+    const {register} = useFormContext();
+    return <FormInput id={id} type="datetime-local"  {...register(name, props)} />
 };
 
 export const Checkbox: FC<RegisterOptions> = (props) => {
@@ -41,6 +54,10 @@ export const Radio: FC<RegisterOptions> = (props) => {
     const {id, name} = useContext<IContext>(Context);
     const {register} = useFormContext();
     return <FormRadio id={id}  {...register(name, props)} />
+};
+
+export const Button: FC<PropsWithChildren<ButtonProps>> = ({children ,...rest}) => {
+    return <FormButton {...rest}>{children}</FormButton>
 };
 
 export const Message: FC = () => {
