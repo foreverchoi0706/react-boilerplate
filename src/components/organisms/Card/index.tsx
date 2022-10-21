@@ -7,7 +7,7 @@ interface IContext {
 }
 
 const Context = createContext<IContext>({
-    id: null
+    id: null,
 });
 
 interface IViewCount {
@@ -15,28 +15,42 @@ interface IViewCount {
 }
 
 export const ViewCount: FC<IViewCount> = ({value}) => {
-    return <Text bottom="20px" position="absolute" right="20px">{value}</Text>
-}
+    return (
+        <Text bottom="20px" position="absolute" right="20px">
+            {value}
+        </Text>
+    );
+};
 
 export const Image: FC<ImgProps> = (props) => {
-    return <Img _hover={{
-        transform: "scale(1.2)",
-        transitionDuration: "0.5s"
-    }
-    } {...props}/>;
-}
+    return (
+        <Img
+            _hover={{
+                transform: "scale(1.2)",
+                transitionDuration: "0.5s",
+            }}
+            {...props}
+        />
+    );
+};
 
 export const Wrap: FC<PropsWithChildren<IContext>> = ({children, id}) => {
     const value = {id};
     return (
         <Context.Provider value={value}>
             <Link to={`/about/${id}`}>
-                <Box backgroundColor="#e4e4e4" borderRadius="10px" overflow="hidden" padding="10px" position="relative">
+                <Box
+                    backgroundColor="#e4e4e4"
+                    borderRadius="10px"
+                    overflow="hidden"
+                    padding="10px"
+                    position="relative"
+                >
                     {children}
                 </Box>
             </Link>
         </Context.Provider>
     );
-}
+};
 
 export default null;
