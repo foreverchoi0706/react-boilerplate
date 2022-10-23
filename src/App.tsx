@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import About from "@/page/About";
 import Home from "@/page/Home";
+import Intro from "@/page/Intro";
 
 export const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<About />} path="/about/:id" />
+            <Route element={<Intro />} path="/intro" />
             <Route element={<Navigate replace to="/" />} path="/*" />
           </Routes>
         </BrowserRouter>

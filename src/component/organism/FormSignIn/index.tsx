@@ -96,7 +96,13 @@ const FormSignInContents: FC<UseFormReturn<ISigInForm>> = ({
             <Flex alignItems="center" gap="10px">
               <Box flexGrow={1}>
                 <Form.Wrap name={`histories.${index}.title`}>
-                  <Form.Label>HISTORY {index + 1}</Form.Label>
+                  <Flex justifyContent="space-between">
+                    <Form.Label>HISTORY {index + 1}</Form.Label>{" "}
+                    <Button onClick={() => handleClickRemoveItem(index)}>
+                      X
+                    </Button>
+                  </Flex>
+
                   <Form.InputText />
                   <Form.Message />
                 </Form.Wrap>
@@ -105,12 +111,10 @@ const FormSignInContents: FC<UseFormReturn<ISigInForm>> = ({
                   <Form.Message />
                 </Form.Wrap>
               </Box>
-              <Box height="100%">
-                <Button onClick={() => handleClickRemoveItem(index)}>X</Button>
-              </Box>
             </Flex>
           </StackItem>
         ))}
+
         <StackItem>
           <Button onClick={handleClickAddItem} type="button">
             +

@@ -5,8 +5,9 @@ import {
   FormLabel,
   FormLabelProps,
   Input as FormInput,
+  MenuItem,
+  MenuList,
   Radio as FormRadio,
-  SelectField,
   Text as FormText,
 } from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
@@ -61,11 +62,11 @@ export const Date: FC<RegisterOptions> = (props) => {
 };
 
 export const Select: FC<PropsWithChildren> = ({ children }) => {
-  return <SelectField>{children}</SelectField>;
+  return <MenuList>{children}</MenuList>;
 };
 
 export const Option: FC<PropsWithChildren> = ({ children }) => {
-  return <option>{children}</option>;
+  return <MenuItem>{children}</MenuItem>;
 };
 
 export const Checkbox: FC<RegisterOptions> = (props) => {

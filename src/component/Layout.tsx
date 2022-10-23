@@ -23,6 +23,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
           <Gnb.Items>
             <Gnb.Item>
               <Link to="/">HOME</Link>
+              <Link to="/intro">INTRO</Link>
             </Gnb.Item>
           </Gnb.Items>
           {isSignIn ? (
