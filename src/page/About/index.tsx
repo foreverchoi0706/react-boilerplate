@@ -1,9 +1,8 @@
 import { Flex, Img } from "@chakra-ui/react";
 import React, { FC, useEffect, useRef } from "react";
 
-import test from "../../../public/test.png";
-
-import Layout from "@/components/Layout";
+import test from "@/asset/test.png";
+import Layout from "@/component/Layout";
 
 const Temp: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
