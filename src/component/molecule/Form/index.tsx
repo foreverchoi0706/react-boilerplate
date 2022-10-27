@@ -31,79 +31,7 @@ const Context = createContext<IContext>({
   name: "",
 });
 
-export const Label: FC<PropsWithChildren<FormLabelProps>> = ({
-  children,
-  ...rest
-}) => {
-  const context = useContext<IContext>(Context);
-  return (
-    <FormLabel htmlFor={context.id} {...rest}>
-      {children}
-    </FormLabel>
-  );
-};
-
-export const InputText: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormInput id={id} type="text" {...register(name, props)} />;
-};
-
-export const InputPassword: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormInput id={id} type="password" {...register(name, props)} />;
-};
-
-export const Date: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormInput id={id} type="date" {...register(name, props)} />;
-};
-
-export const Select: FC<PropsWithChildren> = ({ children }) => {
-  return <MenuList>{children}</MenuList>;
-};
-
-export const Option: FC<PropsWithChildren> = ({ children }) => {
-  return <MenuItem>{children}</MenuItem>;
-};
-
-export const Checkbox: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormCheckbox id={id} {...register(name, props)} />;
-};
-
-export const Radio: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormRadio id={id} {...register(name, props)} />;
-};
-
-export const Button: FC<PropsWithChildren<ButtonProps>> = ({
-  children,
-  ...rest
-}) => {
-  return <FormButton {...rest}>{children}</FormButton>;
-};
-
-export const Message: FC = () => {
-  const { name } = useContext<IContext>(Context);
-  const { errors } = useFormState();
-  return (
-    <ErrorMessage
-      errors={errors}
-      name={name}
-      render={({ message }) => <FormText color="red.500">{message}</FormText>}
-    />
-  );
-};
-
-export const Wrap: FC<PropsWithChildren<IContext>> = ({
-  children,
-  ...rest
-}) => {
+const Form: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
   const id = useId();
   const value = useMemo<IContext>(
     () => ({
@@ -119,4 +47,81 @@ export const Wrap: FC<PropsWithChildren<IContext>> = ({
   );
 };
 
-export default null;
+const Label: FC<PropsWithChildren<FormLabelProps>> = ({
+  children,
+  ...rest
+}) => {
+  const context = useContext<IContext>(Context);
+  return (
+    <FormLabel htmlFor={context.id} {...rest}>
+      {children}
+    </FormLabel>
+  );
+};
+
+const InputText: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <FormInput id={id} type="text" {...register(name, props)} />;
+};
+
+const InputPassword: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <FormInput id={id} type="password" {...register(name, props)} />;
+};
+
+const Date: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <FormInput id={id} type="date" {...register(name, props)} />;
+};
+
+const Select: FC<PropsWithChildren> = ({ children }) => {
+  return <MenuList>{children}</MenuList>;
+};
+
+const Option: FC<PropsWithChildren> = ({ children }) => {
+  return <MenuItem>{children}</MenuItem>;
+};
+
+const Checkbox: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <FormCheckbox id={id} {...register(name, props)} />;
+};
+
+const Radio: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <FormRadio id={id} {...register(name, props)} />;
+};
+
+const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, ...rest }) => {
+  return <FormButton {...rest}>{children}</FormButton>;
+};
+
+const Message: FC = () => {
+  const { name } = useContext<IContext>(Context);
+  const { errors } = useFormState();
+  return (
+    <ErrorMessage
+      errors={errors}
+      name={name}
+      render={({ message }) => <FormText color="red.500">{message}</FormText>}
+    />
+  );
+};
+
+export default Object.assign(Form, {
+  Button,
+  Checkbox,
+  Date,
+  InputText,
+  InputPassword,
+  Label,
+  Message,
+  Option,
+  Radio,
+  Select,
+});

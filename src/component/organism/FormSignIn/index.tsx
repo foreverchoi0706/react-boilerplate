@@ -16,7 +16,7 @@ import {
 } from "react-hook-form";
 import { UseFormReturn } from "react-hook-form/dist/types";
 
-import * as Form from "@/component/molecule/Form";
+import Form from "@/component/molecule/Form";
 import useSignInMutation from "@/hook/queries/useSignInMutation";
 import { INITIAL_HISTORY, ISigInForm } from "@/type/account";
 
@@ -55,39 +55,39 @@ const FormSignInContents: FC<UseFormReturn<ISigInForm>> = ({
     <form onSubmit={handleSubmit(handleSubmitForm)}>
       <Stack backgroundColor="#ffffff" gap="10px" padding="10px">
         <StackItem>
-          <Form.Wrap name="id">
+          <Form name="id">
             <Form.Label>ID</Form.Label>
             <Form.InputText required="필수입력입니다." />
             <Form.Message />
-          </Form.Wrap>
+          </Form>
         </StackItem>
 
         <StackItem>
-          <Form.Wrap name="password">
+          <Form name="password">
             <Form.Label>PW</Form.Label>
             <Form.InputPassword required="필수입력입니다." />
             <Form.Message />
-          </Form.Wrap>
+          </Form>
         </StackItem>
 
         <StackItem>
-          <Form.Wrap name="date">
+          <Form name="date">
             <Form.Label>DATE</Form.Label>
             <Form.Date />
             <Form.Message />
-          </Form.Wrap>
+          </Form>
         </StackItem>
 
         <StackItem>
           <Flex flexDirection="row" gap="10px">
-            <Form.Wrap name="M">
+            <Form name="M">
               <Form.Label>남자</Form.Label>
               <Form.Checkbox />
-            </Form.Wrap>
-            <Form.Wrap name="W">
+            </Form>
+            <Form name="W">
               <Form.Label>여자</Form.Label>
               <Form.Checkbox />
-            </Form.Wrap>
+            </Form>
           </Flex>
         </StackItem>
 
@@ -95,21 +95,20 @@ const FormSignInContents: FC<UseFormReturn<ISigInForm>> = ({
           <StackItem key={history.id}>
             <Flex alignItems="center" gap="10px">
               <Box flexGrow={1}>
-                <Form.Wrap name={`histories.${index}.title`}>
+                <Form name={`histories.${index}.title`}>
                   <Flex justifyContent="space-between">
                     <Form.Label>HISTORY {index + 1}</Form.Label>{" "}
                     <Button onClick={() => handleClickRemoveItem(index)}>
                       X
                     </Button>
                   </Flex>
-
                   <Form.InputText />
                   <Form.Message />
-                </Form.Wrap>
-                <Form.Wrap name={`histories.${index}.contents`}>
+                </Form>
+                <Form name={`histories.${index}.contents`}>
                   <Form.InputText />
                   <Form.Message />
-                </Form.Wrap>
+                </Form>
               </Box>
             </Flex>
           </StackItem>

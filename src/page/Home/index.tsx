@@ -2,7 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import React, { FC } from "react";
 
 import Layout from "@/component/Layout";
-import * as Card from "@/component/organism/Card";
+import CardPosition from "@/component/organism/CardPosition";
 
 const Home: FC = () => {
   return (
@@ -16,10 +16,7 @@ const Home: FC = () => {
       >
         {new Array(50).fill("").map((_, index) => (
           <GridItem key={index} margin="10px">
-            <Card.Wrap id={index}>
-              <Card.Image src="https://static-cdn.jtvnw.net/jtv_user_pictures/4f51b103-86d4-475b-806d-f3aad5bcdfc9-profile_image-300x300.png" />
-              <Card.ViewCount value={index} />
-            </Card.Wrap>
+            <CardPosition id={index} />
           </GridItem>
         ))}
       </Grid>
