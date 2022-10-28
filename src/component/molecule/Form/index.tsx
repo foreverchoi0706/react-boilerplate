@@ -19,7 +19,14 @@ import React, {
   useId,
   useMemo,
 } from "react";
-import { RegisterOptions, useFormContext, useFormState } from "react-hook-form";
+import {
+  FormProvider,
+  RegisterOptions,
+  SubmitHandler,
+  useForm,
+  useFormContext,
+  useFormState,
+} from "react-hook-form";
 
 interface IContext {
   id?: string;
@@ -31,7 +38,7 @@ const Context = createContext<IContext>({
   name: "",
 });
 
-const Form: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
+const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
   const id = useId();
   const value = useMemo<IContext>(
     () => ({
@@ -44,6 +51,26 @@ const Form: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
     <Context.Provider value={value}>
       <div>{children}</div>
     </Context.Provider>
+  );
+};
+
+interface IProvider {
+  defaultValues: any;
+  onSubmitForm: SubmitHandler<any>;
+}
+
+const Provider: FC<PropsWithChildren<IProvider>> = ({
+  children,
+  defaultValues,
+  onSubmitForm,
+}) => {
+  const methods = useForm({
+    defaultValues,
+  });
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmitForm)}>{children}</form>
+    </FormProvider>
   );
 };
 
@@ -113,15 +140,20 @@ const Message: FC = () => {
   );
 };
 
-export default Object.assign(Form, {
-  Button,
-  Checkbox,
-  Date,
-  InputText,
-  InputPassword,
-  Label,
-  Message,
-  Option,
-  Radio,
-  Select,
-});
+export default Object.assign(
+  {},
+  {
+    Button,
+    Checkbox,
+    Date,
+    Field,
+    InputText,
+    InputPassword,
+    Label,
+    Message,
+    Option,
+    Provider,
+    Radio,
+    Select,
+  }
+);

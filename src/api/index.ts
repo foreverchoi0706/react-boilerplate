@@ -1,6 +1,6 @@
-import { ISigInForm } from "@/component/organism/FormSignIn";
+import { ISignInForm } from "@/type/account";
 
-export const signIn = (singInForm: ISigInForm): Promise<ISigInForm> => {
+export const signIn = (singInForm: ISignInForm): Promise<ISignInForm> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(singInForm);

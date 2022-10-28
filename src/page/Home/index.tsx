@@ -1,26 +1,58 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Td,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import React, { FC } from "react";
 
-import Layout from "@/component/Layout";
-import CardPosition from "@/component/organism/CardPosition";
+import FormSearch from "@/component/organism/FormSearch";
 
 const Home: FC = () => {
   return (
-    <Layout.Main>
-      <Grid
-        justifyContent="space-between"
-        templateColumns={{
-          base: "repeat(auto-fill, 50%)",
-          md: "repeat(auto-fill, 33.3%)",
-        }}
+    <Box>
+      <FormSearch />
+      <TableContainer
+        border="1px solid #e4e4e4"
+        borderRadius="10px"
+        marginTop="40px"
       >
-        {new Array(50).fill("").map((_, index) => (
-          <GridItem key={index} margin="10px">
-            <CardPosition id={index} />
-          </GridItem>
-        ))}
-      </Grid>
-    </Layout.Main>
+        <Table variant="striped">
+          <TableCaption>sad</TableCaption>
+          <Thead>
+            <Tr>
+              <Th>No.</Th>
+              <Th>이름</Th>
+              <Th>아이디</Th>
+              <Th>버튼</Th>
+              <Th>이름</Th>
+              <Th>아이디</Th>
+              <Th>버튼</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {new Array(100).fill("").map((_, index) => (
+              <Tr key={index}>
+                <Td>{index}</Td>
+                <Td>asdds</Td>
+                <Td>asdds</Td>
+                <Td>asdds</Td>
+                <Td>asdds</Td>
+                <Td>asdds</Td>
+                <Td>asdds</Td>
+              </Tr>
+            ))}
+          </Tbody>
+          <Tfoot />
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 
