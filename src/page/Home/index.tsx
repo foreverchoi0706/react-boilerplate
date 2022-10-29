@@ -23,7 +23,7 @@ const Home: FC = () => {
         borderRadius="10px"
         marginTop="40px"
       >
-        <Table variant="striped">
+        <Table variant="striped" width="100%">
           <TableCaption>sad</TableCaption>
           <Thead>
             <Tr>
@@ -38,7 +38,12 @@ const Home: FC = () => {
           </Thead>
           <Tbody>
             {new Array(100).fill("").map((_, index) => (
-              <Tr key={index}>
+              <Tr
+                key={index}
+                style={{
+                  tableLayout: "fixed",
+                }}
+              >
                 <Td>{index}</Td>
                 <Td>asdds</Td>
                 <Td>asdds</Td>

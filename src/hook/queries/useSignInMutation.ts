@@ -2,20 +2,33 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { signIn } from "@/api";
-import useUserState from "@/hook/states/useUserState";
+import useGlobalState from "@/hook/states/useGlobalState";
+import useSign from "@/hook/useSign";
 import { ISignInForm } from "@/type/account";
 
 const useSignInMutation = () => {
   const navigate = useNavigate();
-  const setIsSignIn = useUserState((state) => state.setIsSignIn);
-
-  return useMutation<ISignInForm, AxiosError, ISignInForm>(signIn, {
-    onSuccess: () => {
-      setIsSignIn(true);
-      navigate("/");
+  const { signIn } = useSign();
+  const { setUserInfo } = useGlobalState();
+  return useMutation<ISignInForm, AxiosError, ISignInForm>(
+    (singInForm) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(singInForm);
+        }, 500);
+      });
     },
-  });
+    {
+      onSuccess: (singInForm) => {
+        console.log(singInForm);
+        signIn();
+        setUserInfo({
+          name: singInForm.id,
+        });
+        navigate("/");
+      },
+    }
+  );
 };
 
 export default useSignInMutation;

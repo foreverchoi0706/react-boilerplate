@@ -1,12 +1,27 @@
-import { Box, Button, Flex, Stack, StackItem, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React, { FC, PropsWithChildren } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import shallow from "zustand/shallow";
 
-import useUserState from "@/hook/states/useUserState";
+import useGlobalState from "@/hook/states/useGlobalState";
+import useSign from "@/hook/useSign";
+
+const GNB = [
+  {
+    title: "HOME",
+    link: "/",
+  },
+  {
+    title: "ABOUT",
+    link: "/about",
+  },
+];
 
 const Main: FC<PropsWithChildren> = ({ children }) => {
-  const { setIsSignIn } = useUserState((state) => state, shallow);
+  const { signOut } = useSign();
+  const name = useGlobalState((state) => state.userInfo.name, shallow);
+
+  const { pathname } = useLocation();
 
   return (
     <Flex minWidth="1200px">
@@ -23,31 +38,25 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
         top="0"
         zIndex="999"
       >
-        <Stack>
-          <StackItem>
-            <Flex alignItems="center" justifyContent="space-between">
-              <Text as="h1" fontWeight="bold">
-                테스트님 환영합니다.
+        <Flex flexDirection="column" gap="30px">
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h1" fontWeight="bold">
+              {name}님 환영합니다.
+            </Text>
+            <Button onClick={signOut}>로그아웃</Button>
+          </Flex>
+
+          {GNB.map(({ link, title }, index) => (
+            <Link key={index} to={link}>
+              <Text
+                borderBottom="1px solid lightgray"
+                fontWeight={link === pathname ? "bold" : "normal"}
+              >
+                {title}
               </Text>
-              <Button onClick={() => setIsSignIn(false)}>로그아웃</Button>
-            </Flex>
-          </StackItem>
-          <StackItem>
-            <Link to="/">HOME</Link>
-          </StackItem>
-          <StackItem>
-            <Link to="/about">ABOUT</Link>
-          </StackItem>
-          <StackItem>
-            <Link to="">AAAAA</Link>
-          </StackItem>
-          <StackItem>
-            <Link to="">AAAAA</Link>
-          </StackItem>
-          <StackItem>
-            <Link to="">AAAAA</Link>
-          </StackItem>
-        </Stack>
+            </Link>
+          ))}
+        </Flex>
       </Box>
       <Box flexGrow="1" padding="20px">
         {children}

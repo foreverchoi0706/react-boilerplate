@@ -1,11 +1,10 @@
 export interface IUserInfo {
   name: string | null;
-  age: number | null;
 }
 
-export interface IUserState {
+export interface IGlobalState {
   isSignIn: boolean;
   setIsSignIn: (isSignIn: boolean) => void;
-  userinfo: IUserInfo;
-  setUserInfo: (info: IUserInfo) => void;
+  userInfo: IUserInfo;
+  setUserInfo: (userInfo: IUserInfo) => void;
 }

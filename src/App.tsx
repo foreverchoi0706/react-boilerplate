@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Layout from "@/component/Layout";
-import useUserState from "@/hook/states/useUserState";
+import useSign from "@/hook/useSign";
 import About from "@/page/About";
 import Home from "@/page/Home";
 import SignIn from "@/page/SignIn";
@@ -12,7 +12,8 @@ import SignUp from "@/page/SignUp";
 export const queryClient = new QueryClient();
 
 const App = () => {
-  const isSignIn = useUserState(({ isSignIn }) => isSignIn);
+  const { isSignIn } = useSign();
+
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider>

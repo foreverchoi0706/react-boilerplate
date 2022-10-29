@@ -5,15 +5,16 @@ import {
   FormLabel,
   FormLabelProps,
   Input as FormInput,
-  MenuItem,
-  MenuList,
   Radio as FormRadio,
+  Select as FormSelect,
+  SelectProps,
   Text as FormText,
 } from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
 import React, {
   createContext,
   FC,
+  OptionHTMLAttributes,
   PropsWithChildren,
   useContext,
   useId,
@@ -104,12 +105,20 @@ const Date: FC<RegisterOptions> = (props) => {
   return <FormInput id={id} type="date" {...register(name, props)} />;
 };
 
-const Select: FC<PropsWithChildren> = ({ children }) => {
-  return <MenuList>{children}</MenuList>;
+const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
+  const { name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return (
+    <FormSelect {...register(name)} {...rest}>
+      {children}
+    </FormSelect>
+  );
 };
 
-const Option: FC<PropsWithChildren> = ({ children }) => {
-  return <MenuItem>{children}</MenuItem>;
+const Option: FC<
+  PropsWithChildren<OptionHTMLAttributes<HTMLOptionElement>>
+> = ({ children, ...rest }) => {
+  return <option {...rest}>{children}</option>;
 };
 
 const Checkbox: FC<RegisterOptions> = (props) => {
