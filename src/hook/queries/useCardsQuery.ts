@@ -1,15 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
-import axios, { AxiosError, AxiosResponse } from "axios";
-
-import { ICard } from "@/type/card";
+import { AxiosError } from "axios";
 
 const useCardsQuery = () => {
-  return useQuery<AxiosResponse<ICard[]>, AxiosError, ICard[]>(
-    ["CARDS"],
-    () => {
-      return axios.get<ICard[]>("test");
-    }
-  );
+  return useQuery<string[], AxiosError, string[]>(["CARDS"], () => {
+    return new Promise<string[]>((resolve) => {
+      setTimeout(() => {
+        resolve([
+          "AAA",
+          "BBB",
+          "CCC",
+          "DDD",
+          "EEE",
+          "FFF",
+          "GGG",
+          "HHH",
+          "III",
+          "JJJ",
+          "KKK",
+        ]);
+      }, 200);
+    });
+  });
 };
 
 export default useCardsQuery;

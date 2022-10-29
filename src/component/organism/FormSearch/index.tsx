@@ -3,27 +3,15 @@ import React, { FC, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
 
 import Form from "@/component/molecule/Form";
-
-const DEFAULT_VALUES = {
-  id: "1",
-  name: "",
-  companyId: "",
-  companyName: "",
-  startAt: "",
-  endAt: "",
-  status: "",
-};
+import { INITIAL_FORM_SEARCH, TFormSearch } from "@/type/account";
 
 const FormSearch: FC = () => {
-  const handleSubmitForm = useCallback<SubmitHandler<typeof DEFAULT_VALUES>>(
-    (test) => {
-      console.log(test);
-    },
-    []
-  );
+  const handleSubmitForm = useCallback<SubmitHandler<TFormSearch>>((test) => {
+    console.log(test);
+  }, []);
   return (
     <Form.Provider
-      defaultValues={DEFAULT_VALUES}
+      defaultValues={INITIAL_FORM_SEARCH}
       onSubmitForm={handleSubmitForm}
     >
       <Grid
@@ -52,7 +40,7 @@ const FormSearch: FC = () => {
         <GridItem>
           <Form.Field name="companyName">
             <Form.Label>회사명</Form.Label>
-            <Form.Date />
+            <Form.InputText />
           </Form.Field>
         </GridItem>
         <GridItem>
@@ -70,7 +58,7 @@ const FormSearch: FC = () => {
         <GridItem>
           <Form.Field name="status">
             <Form.Label>상태</Form.Label>
-            <Form.Select name="status">
+            <Form.Select>
               <Form.Option>AAA</Form.Option>
               <Form.Option>BBB</Form.Option>
               <Form.Option>CCC</Form.Option>

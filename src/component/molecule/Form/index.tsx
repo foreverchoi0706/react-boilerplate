@@ -1,10 +1,8 @@
 import {
-  Button as FormButton,
-  ButtonProps,
   Checkbox as FormCheckbox,
   FormLabel,
   FormLabelProps,
-  Input as FormInput,
+  Input,
   Radio as FormRadio,
   Select as FormSelect,
   SelectProps,
@@ -87,22 +85,22 @@ const Label: FC<PropsWithChildren<FormLabelProps>> = ({
   );
 };
 
-const InputText: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <FormInput id={id} type="text" {...register(name, props)} />;
-};
-
 const InputPassword: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <FormInput id={id} type="password" {...register(name, props)} />;
+  return <Input id={id} type="password" {...register(name, props)} />;
+};
+
+const InputText: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <Input id={id} type="text" {...register(name, props)} />;
 };
 
 const Date: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <FormInput id={id} type="date" {...register(name, props)} />;
+  return <Input id={id} type="date" {...register(name, props)} />;
 };
 
 const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
@@ -133,10 +131,6 @@ const Radio: FC<RegisterOptions> = (props) => {
   return <FormRadio id={id} {...register(name, props)} />;
 };
 
-const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, ...rest }) => {
-  return <FormButton {...rest}>{children}</FormButton>;
-};
-
 const Message: FC = () => {
   const { name } = useContext<IContext>(Context);
   const { errors } = useFormState();
@@ -152,12 +146,11 @@ const Message: FC = () => {
 export default Object.assign(
   {},
   {
-    Button,
     Checkbox,
     Date,
     Field,
-    InputText,
     InputPassword,
+    InputText,
     Label,
     Message,
     Option,

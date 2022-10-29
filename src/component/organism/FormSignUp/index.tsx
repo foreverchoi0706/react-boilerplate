@@ -1,16 +1,16 @@
-import { Button, Flex, Stack, StackItem, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Stack, StackItem, Text } from "@chakra-ui/react";
 import React, { FC, memo, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import Form from "@/component/molecule/Form";
 import useSignInMutation from "@/hook/queries/useSignInMutation";
-import { ISignUpForm } from "@/type/account";
+import { INITIAL_SIGN_IN_FORM, TSignInForm } from "@/type/account";
 
 const FormSignUp: FC = () => {
   const { isLoading } = useSignInMutation();
 
-  const handleSubmitForm = useCallback<SubmitHandler<ISignUpForm>>(
+  const handleSubmitForm = useCallback<SubmitHandler<TSignInForm>>(
     (signInForm) => {
       console.log(signInForm);
     },
@@ -18,7 +18,10 @@ const FormSignUp: FC = () => {
   );
 
   return (
-    <Form.Provider defaultValues={{}} onSubmitForm={handleSubmitForm}>
+    <Form.Provider
+      defaultValues={INITIAL_SIGN_IN_FORM}
+      onSubmitForm={handleSubmitForm}
+    >
       <Stack>
         <StackItem>
           <Text as="h1">회원가입</Text>
@@ -44,7 +47,7 @@ const FormSignUp: FC = () => {
         </StackItem>
 
         <StackItem>
-          <Form.Field name="password">
+          <Form.Field name="repassword">
             <Form.Label>패스워드 확인</Form.Label>
             <Form.InputPassword
               disabled={isLoading}
@@ -57,11 +60,15 @@ const FormSignUp: FC = () => {
         <StackItem>
           <Flex gap="10px">
             <Button disabled={isLoading} flexGrow="1" type="submit">
-              로그인
+              회원가입
             </Button>
-            <Button disabled={isLoading} flexGrow="1" type="button">
-              <Link to="/sign-in">로그인 화면으로</Link>
-            </Button>
+            <Box flexGrow="1">
+              <Link to="/sign-in">
+                <Button disabled={isLoading} type="button" width="100%">
+                  이전으로
+                </Button>
+              </Link>
+            </Box>
           </Flex>
         </StackItem>
       </Stack>

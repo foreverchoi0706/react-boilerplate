@@ -1,5 +1,6 @@
 import {
   Box,
+  Spinner,
   Table,
   TableCaption,
   TableContainer,
@@ -13,8 +14,11 @@ import {
 import React, { FC } from "react";
 
 import FormSearch from "@/component/organism/FormSearch";
+import useCardsQuery from "@/hook/queries/useCardsQuery";
 
 const Home: FC = () => {
+  const { data: cards } = useCardsQuery();
+
   return (
     <Box>
       <FormSearch />
@@ -24,7 +28,7 @@ const Home: FC = () => {
         marginTop="40px"
       >
         <Table variant="striped" width="100%">
-          <TableCaption>sad</TableCaption>
+          <TableCaption>HOME</TableCaption>
           <Thead>
             <Tr>
               <Th>No.</Th>
@@ -37,22 +41,25 @@ const Home: FC = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {new Array(100).fill("").map((_, index) => (
-              <Tr
-                key={index}
-                style={{
-                  tableLayout: "fixed",
-                }}
-              >
-                <Td>{index}</Td>
-                <Td>asdds</Td>
-                <Td>asdds</Td>
-                <Td>asdds</Td>
-                <Td>asdds</Td>
-                <Td>asdds</Td>
-                <Td>asdds</Td>
+            {cards ? (
+              cards.map((card, index) => (
+                <Tr key={index}>
+                  <Td>{index}</Td>
+                  <Td>{card}</Td>
+                  <Td>{card}</Td>
+                  <Td>{card}</Td>
+                  <Td>{card}</Td>
+                  <Td>{card}</Td>
+                  <Td>{card}</Td>
+                </Tr>
+              ))
+            ) : (
+              <Tr>
+                <Td colSpan={999} textAlign="center">
+                  <Spinner />
+                </Td>
               </Tr>
-            ))}
+            )}
           </Tbody>
           <Tfoot />
         </Table>
