@@ -4,16 +4,17 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Layout from "@/component/Layout";
 import useSign from "@/hook/useSign";
-import About from "@/page/About";
-import Home from "@/page/Home";
+import Company from "@/page/Company";
+import CompanyAbout from "@/page/CompanyAbout";
 import SignIn from "@/page/SignIn";
 import SignUp from "@/page/SignUp";
+import User from "@/page/User";
+import UserAbout from "@/page/UserAbout";
 
 export const queryClient = new QueryClient();
 
 const App = () => {
   const { isSignIn } = useSign();
-
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider>
@@ -21,9 +22,11 @@ const App = () => {
           {isSignIn ? (
             <Layout.Main>
               <Routes>
-                <Route element={<Home />} path="/" />
-                <Route element={<About />} path="/about" />
-                <Route element={<Navigate replace to="/" />} path="/*" />
+                <Route element={<User />} path="/user" />
+                <Route element={<UserAbout />} path="/user/:id" />
+                <Route element={<Company />} path="/company" />
+                <Route element={<CompanyAbout />} path="/company/:id" />
+                <Route element={<Navigate replace to="/user" />} path="/*" />
               </Routes>
             </Layout.Main>
           ) : (

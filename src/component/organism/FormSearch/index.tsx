@@ -1,14 +1,22 @@
 import { Button, Flex, Grid, GridItem } from "@chakra-ui/react";
-import React, { FC, useCallback } from "react";
+import React, { FC, memo, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
 
 import Form from "@/component/molecule/Form";
+import useQueryString from "@/hook/useQueryString";
 import { INITIAL_FORM_SEARCH, TFormSearch } from "@/type/account";
 
 const FormSearch: FC = () => {
-  const handleSubmitForm = useCallback<SubmitHandler<TFormSearch>>((test) => {
-    console.log(test);
-  }, []);
+  const { stringify } = useQueryString<TFormSearch>();
+
+  const handleSubmitForm = useCallback<SubmitHandler<TFormSearch>>(
+    (formSearch) => {
+      const temp = stringify(formSearch);
+      console.log(temp);
+    },
+    []
+  );
+
   return (
     <Form.Provider
       defaultValues={INITIAL_FORM_SEARCH}
@@ -59,9 +67,10 @@ const FormSearch: FC = () => {
           <Form.Field name="status">
             <Form.Label>상태</Form.Label>
             <Form.Select>
-              <Form.Option>AAA</Form.Option>
-              <Form.Option>BBB</Form.Option>
-              <Form.Option>CCC</Form.Option>
+              <Form.Option value="">전체</Form.Option>
+              <Form.Option value="AAA">AAA</Form.Option>
+              <Form.Option value="BBB">BBB</Form.Option>
+              <Form.Option value="CCC">CCC</Form.Option>
             </Form.Select>
           </Form.Field>
         </GridItem>
@@ -80,4 +89,4 @@ const FormSearch: FC = () => {
   );
 };
 
-export default FormSearch;
+export default memo(FormSearch);

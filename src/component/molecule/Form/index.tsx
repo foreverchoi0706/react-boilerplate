@@ -65,6 +65,7 @@ const Provider: FC<PropsWithChildren<IProvider>> = ({
 }) => {
   const methods = useForm({
     defaultValues,
+    mode: "onChange",
   });
   return (
     <FormProvider {...methods}>

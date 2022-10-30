@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import shallow from "zustand/shallow";
 
-import useGlobalState from "@/hook/states/useGlobalState";
+import useGlobalState from "@/hook/useGlobalState";
 import cookieController from "@/util/cookieController";
 
 const useSign = () => {

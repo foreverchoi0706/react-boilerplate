@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Spinner,
   Table,
   TableCaption,
@@ -12,6 +13,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 
 import FormSearch from "@/component/organism/FormSearch";
 import useCardsQuery from "@/hook/queries/useCardsQuery";
@@ -50,7 +52,11 @@ const Home: FC = () => {
                   <Td>{card}</Td>
                   <Td>{card}</Td>
                   <Td>{card}</Td>
-                  <Td>{card}</Td>
+                  <Td>
+                    <Link to={`/user/${index}`}>
+                      <Button size="sm">상세</Button>
+                    </Link>
+                  </Td>
                 </Tr>
               ))
             ) : (

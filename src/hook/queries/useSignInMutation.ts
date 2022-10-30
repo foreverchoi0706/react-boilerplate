@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
-import useGlobalState from "@/hook/states/useGlobalState";
+import useGlobalState from "@/hook/useGlobalState";
 import useSign from "@/hook/useSign";
 import { TSignInForm } from "@/type/account";
 

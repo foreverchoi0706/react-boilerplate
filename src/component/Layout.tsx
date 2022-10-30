@@ -3,17 +3,17 @@ import React, { FC, PropsWithChildren } from "react";
 import { Link, useLocation } from "react-router-dom";
 import shallow from "zustand/shallow";
 
-import useGlobalState from "@/hook/states/useGlobalState";
+import useGlobalState from "@/hook/useGlobalState";
 import useSign from "@/hook/useSign";
 
 const GNB = [
   {
-    title: "HOME",
-    link: "/",
+    title: "유저",
+    link: "/user",
   },
   {
-    title: "ABOUT",
-    link: "/about",
+    title: "회사",
+    link: "/company",
   },
 ];
 
@@ -50,7 +50,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
             <Link key={index} to={link}>
               <Text
                 borderBottom="1px solid lightgray"
-                fontWeight={link === pathname ? "bold" : "normal"}
+                fontWeight={pathname.includes(link) ? "bold" : "normal"}
               >
                 {title}
               </Text>
@@ -67,7 +67,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
 
 const Sub: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Flex height="100vh" justifyContent="center" paddingTop="300px">
+    <Flex height="100vh" justifyContent="center" paddingTop="30vh">
       <Box
         borderRadius="5%"
         boxShadow="lg"
