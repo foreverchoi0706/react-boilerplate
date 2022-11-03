@@ -20,7 +20,6 @@ const useSignInMutation = () => {
     },
     {
       onSuccess: (singInForm) => {
-        console.log(singInForm);
         signIn();
         setUserInfo({
           name: singInForm.id,

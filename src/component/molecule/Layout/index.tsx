@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React, { FC, PropsWithChildren } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import shallow from "zustand/shallow";
 
 import ROUTES from "@/constant/route";
@@ -9,6 +9,7 @@ import useSign from "@/hook/useSign";
 
 const SignIn: FC<PropsWithChildren> = ({ children }) => {
   const { signOut } = useSign();
+  const { pathname } = useLocation();
   const name = useGlobalState((state) => state.userInfo.name, shallow);
 
   return (
@@ -34,13 +35,13 @@ const SignIn: FC<PropsWithChildren> = ({ children }) => {
             <Button onClick={signOut}>로그아웃</Button>
           </Flex>
           {ROUTES.filter(({ path }) => path.split("/").length === 2).map(
-            ({ path, pathname }) => (
+            ({ name, path }) => (
               <Link key={path} to={path}>
                 <Text
-                  borderBottom="1px solid lightgray"
+                  borderBottom="1px solid #e4e4e4"
                   fontWeight={pathname.includes(path) ? "bold" : "normal"}
                 >
-                  {pathname}
+                  {name}
                 </Text>
               </Link>
             )

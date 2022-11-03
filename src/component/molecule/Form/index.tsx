@@ -26,6 +26,7 @@ import {
   useFormContext,
   useFormState,
 } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface IContext {
   id?: string;
@@ -67,9 +68,19 @@ const Provider: FC<PropsWithChildren<IProvider>> = ({
     defaultValues,
     mode: "onChange",
   });
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmitForm)}>{children}</form>
+      <form
+        onReset={() => {
+          methods.reset(defaultValues);
+          navigate(pathname);
+        }}
+        onSubmit={methods.handleSubmit(onSubmitForm)}
+      >
+        {children}
+      </form>
     </FormProvider>
   );
 };

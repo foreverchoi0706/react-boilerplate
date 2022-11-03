@@ -17,12 +17,12 @@ import { Link } from "react-router-dom";
 
 import FormSearch from "@/component/organism/FormSearchUser";
 import useUserListQuery from "@/hook/queries/useUserListQuery";
-import useQueryString from "@/hook/useQueryString";
+import useSearchForm from "@/hook/useSearchForm";
 import { TFormSearchUser } from "@/type/search";
 
 const Home: FC = () => {
-  const { queryString } = useQueryString<TFormSearchUser>();
-  const { data: userList } = useUserListQuery(queryString);
+  const searchForm = useSearchForm<TFormSearchUser>();
+  const { data: userList } = useUserListQuery(searchForm);
 
   return (
     <Flex flexDirection="column" gap="20px">
@@ -77,7 +77,7 @@ const Home: FC = () => {
                 <Flex alignItems="center" gap="20px" justifyContent="center">
                   <Button disabled>이전</Button>
                   <Text as="strong">1/1</Text>
-                  <Button>다음</Button>
+                  <Button disabled>다음</Button>
                 </Flex>
               </Td>
             </Tr>

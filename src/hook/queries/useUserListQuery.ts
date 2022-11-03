@@ -1,21 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 import useQueryString from "@/hook/useQueryString";
+import instance from "@/instance";
 import { TFormSearchUser } from "@/type/search";
 import { IUser } from "@/type/user";
 
-const useUserListQuery = (searchFormUser: TFormSearchUser) => {
-  const { stringify } = useQueryString<TFormSearchUser>();
+const useUserListQuery = (formSearchUser: TFormSearchUser) => {
+  const { queryString } = useQueryString<TFormSearchUser>(formSearchUser);
 
   return useQuery<AxiosResponse<IUser[]>, AxiosError, IUser[]>(
-    ["USER_LIST", searchFormUser],
-    () =>
-      axios.get(
-        `https://jsonplaceholder.typicode.com/users?${stringify(
-          searchFormUser
-        )}`
-      ),
+    ["USER_LIST", queryString],
+    () => instance.get(`/users?${queryString}`),
     {
       select: (data) => data.data,
     }

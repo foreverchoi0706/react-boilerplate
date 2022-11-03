@@ -1,29 +1,21 @@
-import { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useCallback, useMemo } from "react";
 
-const useQueryString = <T extends Record<string, unknown>>() => {
-  const { search } = useLocation();
+import { TFunction } from "@/type/common";
 
-  const searchParams = new URLSearchParams(search);
-
-  const queryString = useMemo<T>(
-    () => Object.fromEntries(searchParams.entries()) as T,
-    [searchParams]
-  );
-
-  const stringify = (obj: T) => {
+const useQueryString = <T extends Record<string, unknown>>(obj: T) => {
+  const parse = useCallback<TFunction<string, [T]>>((obj2) => {
     let temp = "";
-    for (const [key, value] of Object.entries(obj)) {
+    console.log(obj2);
+    for (const [key, value] of Object.entries(obj2)) {
       if (!value) continue;
       temp += `${key}=${value}&`;
     }
     return temp;
-  };
+  }, []);
 
-  return {
-    queryString,
-    stringify,
-  };
+  const queryString = useMemo<string>(() => parse(obj), [obj]);
+
+  return { parse, queryString };
 };
 
 export default useQueryString;

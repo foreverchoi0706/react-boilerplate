@@ -6,15 +6,17 @@ import { useNavigate } from "react-router-dom";
 import Form from "@/component/molecule/Form";
 import { INITIAL_FORM_SEARCH_USER } from "@/constant/search";
 import useQueryString from "@/hook/useQueryString";
+import useSearchForm from "@/hook/useSearchForm";
 import { TFormSearchUser } from "@/type/search";
 
 const FormSearch: FC = () => {
   const navigate = useNavigate();
-  const { stringify } = useQueryString<TFormSearchUser>();
+  const searchForm = useSearchForm<TFormSearchUser>();
+  const { parse } = useQueryString<TFormSearchUser>(searchForm);
 
   const handleSubmitForm = useCallback<SubmitHandler<TFormSearchUser>>(
     (formSearchUser) => {
-      navigate(`/user?${stringify(formSearchUser)}`);
+      navigate(`/user?${parse(formSearchUser)}`);
     },
     []
   );

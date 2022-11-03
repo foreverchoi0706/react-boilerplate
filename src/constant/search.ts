@@ -7,5 +7,4 @@ export const INITIAL_FORM_SEARCH_USER: TFormSearchUser = {
   name: "",
   startAt: "",
   page: "0",
-  size: "0",
 };

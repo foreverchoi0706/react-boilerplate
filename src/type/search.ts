@@ -1,6 +1,5 @@
 type TSearch = {
   page: string;
-  size: string;
 };
 
 export type TFormSearchUser = TSearch & {

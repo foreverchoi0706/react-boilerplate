@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./global.css";
 
-import Layout from "@/component/Layout";
+import Layout from "@/component/molecule/Layout";
 import ROUTES from "@/constant/route";
 import useSign from "@/hook/useSign";
 import SignIn from "@/page/SignIn";
