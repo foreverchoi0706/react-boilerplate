@@ -7,7 +7,7 @@ import ROUTES from "@/constant/route";
 import useGlobalState from "@/hook/useGlobalState";
 import useSign from "@/hook/useSign";
 
-const Main: FC<PropsWithChildren> = ({ children }) => {
+const SignIn: FC<PropsWithChildren> = ({ children }) => {
   const { signOut } = useSign();
   const name = useGlobalState((state) => state.userInfo.name, shallow);
 
@@ -54,7 +54,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-const Sub: FC<PropsWithChildren> = ({ children }) => {
+const SignOut: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Flex height="100vh" justifyContent="center" paddingTop="30vh">
       <Box
@@ -70,7 +70,10 @@ const Sub: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default Object.assign({
-  Main,
-  Sub,
-});
+export default Object.assign(
+  {},
+  {
+    SignIn,
+    SignOut,
+  }
+);

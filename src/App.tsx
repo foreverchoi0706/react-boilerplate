@@ -18,22 +18,22 @@ const App = () => {
       <ChakraProvider>
         <BrowserRouter>
           {isSignIn ? (
-            <Layout.Main>
+            <Layout.SignIn>
               <Routes>
-                {ROUTES.map(({ Element, path }) => (
-                  <Route key={path} element={<Element />} path={path} />
+                {ROUTES.map(({ Component, path }) => (
+                  <Route key={path} element={<Component />} path={path} />
                 ))}
                 <Route element={<Navigate replace to="/user" />} path="/*" />
               </Routes>
-            </Layout.Main>
+            </Layout.SignIn>
           ) : (
-            <Layout.Sub>
+            <Layout.SignOut>
               <Routes>
                 <Route element={<SignIn />} path="/sign-in" />
                 <Route element={<SignUp />} path="/sign-up" />
                 <Route element={<Navigate replace to="/sign-in" />} path="/*" />
               </Routes>
-            </Layout.Sub>
+            </Layout.SignOut>
           )}
         </BrowserRouter>
       </ChakraProvider>

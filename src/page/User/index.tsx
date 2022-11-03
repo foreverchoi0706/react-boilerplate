@@ -3,7 +3,6 @@ import {
   Flex,
   Spinner,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -26,16 +25,14 @@ const Home: FC = () => {
   const { data: userList } = useUserListQuery(queryString);
 
   return (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" gap="20px">
       <FormSearch />
       <TableContainer
         border="1px solid #e4e4e4"
         borderRadius="10px"
         flexGrow="1"
-        marginTop="40px"
       >
-        <Table variant="striped" width="100%">
-          <TableCaption>USER</TableCaption>
+        <Table variant="striped">
           <Thead>
             <Tr>
               <Th width="5%">No.</Th>

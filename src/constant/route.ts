@@ -5,22 +5,22 @@ import UserAbout from "@/page/UserAbout";
 
 const ROUTES = [
   {
-    Element: User,
+    Component: User,
     path: "/user",
     pathname: "유저",
   },
   {
-    Element: UserAbout,
+    Component: UserAbout,
     path: "/user/:id",
     pathname: "유저",
   },
   {
-    Element: Company,
+    Component: Company,
     path: "/company",
     pathname: "회사",
   },
   {
-    Element: CompanyAbout,
+    Component: CompanyAbout,
     path: "/company/:id",
     pathname: "회사",
   },
