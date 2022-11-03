@@ -1,10 +1,10 @@
 import {
-  Checkbox as FormCheckbox,
+  Checkbox as CUICheckbox,
   FormLabel,
   FormLabelProps,
   Input,
-  Radio as FormRadio,
-  Select as FormSelect,
+  Radio as CUIRadio,
+  Select as CUISelect,
   SelectProps,
   Text as FormText,
 } from "@chakra-ui/react";
@@ -54,8 +54,8 @@ const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
 };
 
 interface IProvider {
-  defaultValues: any;
-  onSubmitForm: SubmitHandler<any>;
+  defaultValues: Record<string, any>;
+  onSubmitForm: SubmitHandler<Record<string, any>>;
 }
 
 const Provider: FC<PropsWithChildren<IProvider>> = ({
@@ -108,9 +108,9 @@ const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
   const { name } = useContext<IContext>(Context);
   const { register } = useFormContext();
   return (
-    <FormSelect {...register(name)} {...rest}>
+    <CUISelect {...register(name)} {...rest}>
       {children}
-    </FormSelect>
+    </CUISelect>
   );
 };
 
@@ -123,13 +123,13 @@ const Option: FC<
 const Checkbox: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <FormCheckbox id={id} {...register(name, props)} />;
+  return <CUICheckbox id={id} {...register(name, props)} />;
 };
 
 const Radio: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <FormRadio id={id} {...register(name, props)} />;
+  return <CUIRadio id={id} {...register(name, props)} />;
 };
 
 const Message: FC = () => {

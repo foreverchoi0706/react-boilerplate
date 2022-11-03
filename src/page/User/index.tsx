@@ -1,12 +1,13 @@
 import {
-  Box,
   Button,
+  Flex,
   Spinner,
   Table,
   TableCaption,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Tfoot,
   Th,
   Thead,
@@ -15,22 +16,27 @@ import {
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-import FormSearch from "@/component/organism/FormSearch";
+import FormSearch from "@/component/organism/FormSearchUser";
 import useCardsQuery from "@/hook/queries/useCardsQuery";
+import useQueryString from "@/hook/useQueryString";
+import { TFormSearchUser } from "@/type/search";
 
 const Home: FC = () => {
-  const { data: cards } = useCardsQuery();
+  const { queryString } = useQueryString<TFormSearchUser>();
+  const { data: cards } = useCardsQuery(queryString);
 
   return (
-    <Box>
+    <Flex flexDirection="column" height="100vh" padding="20px">
       <FormSearch />
       <TableContainer
         border="1px solid #e4e4e4"
         borderRadius="10px"
+        flexGrow="1"
         marginTop="40px"
+        overflowY="scroll"
       >
         <Table variant="striped" width="100%">
-          <TableCaption>HOME</TableCaption>
+          <TableCaption>USER</TableCaption>
           <Thead>
             <Tr>
               <Th>No.</Th>
@@ -67,10 +73,20 @@ const Home: FC = () => {
               </Tr>
             )}
           </Tbody>
-          <Tfoot />
+          <Tfoot>
+            <Tr>
+              <Td colSpan={999}>
+                <Flex alignItems="center" gap="20px" justifyContent="center">
+                  <Button disabled>이전</Button>
+                  <Text as="strong">1/1</Text>
+                  <Button>다음</Button>
+                </Flex>
+              </Td>
+            </Tr>
+          </Tfoot>
         </Table>
       </TableContainer>
-    </Box>
+    </Flex>
   );
 };
 

@@ -14,17 +14,3 @@ export const INITIAL_SIGN_UP_FORM = {
   password: "",
   repassword: "",
 };
-
-export type TSignUpForm = typeof INITIAL_SIGN_UP_FORM;
-
-export const INITIAL_FORM_SEARCH = {
-  id: "",
-  name: "",
-  companyId: "",
-  companyName: "",
-  startAt: "",
-  endAt: "",
-  status: "",
-};
-
-export type TFormSearch = typeof INITIAL_FORM_SEARCH;

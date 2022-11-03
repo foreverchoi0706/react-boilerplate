@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
-const useCardsQuery = () => {
+import { TFormSearchUser } from "@/type/search";
+
+const useCardsQuery = (searchFormUser: TFormSearchUser) => {
+  console.log(searchFormUser);
   return useQuery<string[], AxiosError, string[]>(["CARDS"], () => {
     return new Promise<string[]>((resolve) => {
       setTimeout(() => {

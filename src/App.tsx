@@ -3,13 +3,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Layout from "@/component/Layout";
+import ROUTES from "@/constant/route";
 import useSign from "@/hook/useSign";
-import Company from "@/page/Company";
-import CompanyAbout from "@/page/CompanyAbout";
 import SignIn from "@/page/SignIn";
 import SignUp from "@/page/SignUp";
-import User from "@/page/User";
-import UserAbout from "@/page/UserAbout";
 
 export const queryClient = new QueryClient();
 
@@ -22,10 +19,9 @@ const App = () => {
           {isSignIn ? (
             <Layout.Main>
               <Routes>
-                <Route element={<User />} path="/user" />
-                <Route element={<UserAbout />} path="/user/:id" />
-                <Route element={<Company />} path="/company" />
-                <Route element={<CompanyAbout />} path="/company/:id" />
+                {ROUTES.map(({ Element, path }) => (
+                  <Route key={path} element={<Element />} path={path} />
+                ))}
                 <Route element={<Navigate replace to="/user" />} path="/*" />
               </Routes>
             </Layout.Main>

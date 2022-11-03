@@ -1,27 +1,15 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React, { FC, PropsWithChildren } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import shallow from "zustand/shallow";
 
+import ROUTES from "@/constant/route";
 import useGlobalState from "@/hook/useGlobalState";
 import useSign from "@/hook/useSign";
-
-const GNB = [
-  {
-    title: "유저",
-    link: "/user",
-  },
-  {
-    title: "회사",
-    link: "/company",
-  },
-];
 
 const Main: FC<PropsWithChildren> = ({ children }) => {
   const { signOut } = useSign();
   const name = useGlobalState((state) => state.userInfo.name, shallow);
-
-  const { pathname } = useLocation();
 
   return (
     <Flex minWidth="1200px">
@@ -45,22 +33,21 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
             </Text>
             <Button onClick={signOut}>로그아웃</Button>
           </Flex>
-
-          {GNB.map(({ link, title }, index) => (
-            <Link key={index} to={link}>
-              <Text
-                borderBottom="1px solid lightgray"
-                fontWeight={pathname.includes(link) ? "bold" : "normal"}
-              >
-                {title}
-              </Text>
-            </Link>
-          ))}
+          {ROUTES.filter(({ path }) => path.split("/").length === 2).map(
+            ({ path, pathname }) => (
+              <Link key={path} to={path}>
+                <Text
+                  borderBottom="1px solid lightgray"
+                  fontWeight={pathname.includes(path) ? "bold" : "normal"}
+                >
+                  {pathname}
+                </Text>
+              </Link>
+            )
+          )}
         </Flex>
       </Box>
-      <Box flexGrow="1" padding="20px">
-        {children}
-      </Box>
+      <Box flexGrow="1">{children}</Box>
     </Flex>
   );
 };

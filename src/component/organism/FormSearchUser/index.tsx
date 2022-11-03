@@ -1,25 +1,27 @@
 import { Button, Flex, Grid, GridItem } from "@chakra-ui/react";
 import React, { FC, memo, useCallback } from "react";
 import { SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import Form from "@/component/molecule/Form";
+import { INITIAL_FORM_SEARCH_USER } from "@/constant/search";
 import useQueryString from "@/hook/useQueryString";
-import { INITIAL_FORM_SEARCH, TFormSearch } from "@/type/account";
+import { TFormSearchUser } from "@/type/search";
 
 const FormSearch: FC = () => {
-  const { stringify } = useQueryString<TFormSearch>();
+  const navigate = useNavigate();
+  const { stringify } = useQueryString<TFormSearchUser>();
 
-  const handleSubmitForm = useCallback<SubmitHandler<TFormSearch>>(
-    (formSearch) => {
-      const temp = stringify(formSearch);
-      console.log(temp);
+  const handleSubmitForm = useCallback<SubmitHandler<TFormSearchUser>>(
+    (formSearchUser) => {
+      navigate(`/user?${stringify(formSearchUser)}`);
     },
     []
   );
 
   return (
     <Form.Provider
-      defaultValues={INITIAL_FORM_SEARCH}
+      defaultValues={INITIAL_FORM_SEARCH_USER}
       onSubmitForm={handleSubmitForm}
     >
       <Grid
