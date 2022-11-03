@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import useGlobalState from "@/hook/useGlobalState";
 import useSign from "@/hook/useSign";
-import { TSignInForm } from "@/type/account";
+import { ISignInForm } from "@/type/account";
 
 const useSignInMutation = () => {
   const navigate = useNavigate();
   const { signIn } = useSign();
   const { setUserInfo } = useGlobalState();
-  return useMutation<TSignInForm, AxiosError, TSignInForm>(
+  return useMutation<ISignInForm, AxiosError, ISignInForm>(
     (singInForm) => {
       return new Promise((resolve) => {
         setTimeout(() => {

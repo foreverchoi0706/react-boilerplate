@@ -17,54 +17,55 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
 import FormSearch from "@/component/organism/FormSearchUser";
-import useCardsQuery from "@/hook/queries/useCardsQuery";
+import useUserListQuery from "@/hook/queries/useUserListQuery";
 import useQueryString from "@/hook/useQueryString";
 import { TFormSearchUser } from "@/type/search";
 
 const Home: FC = () => {
   const { queryString } = useQueryString<TFormSearchUser>();
-  const { data: cards } = useCardsQuery(queryString);
+  const { data: userList } = useUserListQuery(queryString);
 
   return (
-    <Flex flexDirection="column" height="100vh" padding="20px">
+    <Flex flexDirection="column">
       <FormSearch />
       <TableContainer
         border="1px solid #e4e4e4"
         borderRadius="10px"
         flexGrow="1"
         marginTop="40px"
-        overflowY="scroll"
       >
         <Table variant="striped" width="100%">
           <TableCaption>USER</TableCaption>
           <Thead>
             <Tr>
-              <Th>No.</Th>
+              <Th width="5%">No.</Th>
               <Th>이름</Th>
               <Th>아이디</Th>
-              <Th>버튼</Th>
-              <Th>이름</Th>
-              <Th>아이디</Th>
-              <Th>버튼</Th>
+              <Th>웹사이트</Th>
+              <Th>이메일</Th>
+              <Th>휴대전화</Th>
+              <Th width="10%">버튼</Th>
             </Tr>
           </Thead>
-          <Tbody>
-            {cards ? (
-              cards.map((card, index) => (
-                <Tr key={index}>
-                  <Td>{index}</Td>
-                  <Td>{card}</Td>
-                  <Td>{card}</Td>
-                  <Td>{card}</Td>
-                  <Td>{card}</Td>
-                  <Td>{card}</Td>
-                  <Td>
-                    <Link to={`/user/${index}`}>
-                      <Button size="sm">상세</Button>
-                    </Link>
-                  </Td>
-                </Tr>
-              ))
+          <Tbody display="block">
+            {userList ? (
+              userList.map(
+                ({ id, name, website, email, phone, username }, index) => (
+                  <Tr key={id}>
+                    <Td width="5%">{index}</Td>
+                    <Td>{name}</Td>
+                    <Td>{username}</Td>
+                    <Td>{website}</Td>
+                    <Td>{email}</Td>
+                    <Td>{phone}</Td>
+                    <Td width="10%">
+                      <Link to={`/user/${index}`}>
+                        <Button size="sm">상세</Button>
+                      </Link>
+                    </Td>
+                  </Tr>
+                )
+              )
             ) : (
               <Tr>
                 <Td colSpan={999} textAlign="center">

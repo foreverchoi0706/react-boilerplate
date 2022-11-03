@@ -1,10 +1,29 @@
-export interface IUserInfo {
-  name: string | null;
+export interface IGeo {
+  lat: string;
+  lng: string;
 }
 
-export interface IGlobalState {
-  isSignIn: boolean;
-  setIsSignIn: (isSignIn: boolean) => void;
-  userInfo: IUserInfo;
-  setUserInfo: (userInfo: IUserInfo) => void;
+export interface IAddress {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: IGeo;
+}
+
+export interface ICompany {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+}
+
+export interface IUser {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: IAddress;
+  phone: string;
+  website: string;
+  company: ICompany;
 }

@@ -47,7 +47,9 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
           )}
         </Flex>
       </Box>
-      <Box flexGrow="1">{children}</Box>
+      <Box flexGrow="1" padding="20px">
+        {children}
+      </Box>
     </Flex>
   );
 };

@@ -1,16 +1,14 @@
-export const INITIAL_HISTORY = { title: "", contents: "" };
+export interface IAccountInfo {
+  name: string | null;
+}
 
-export type THistory = typeof INITIAL_HISTORY;
+export interface ISignInForm extends Record<string, string> {
+  id: string;
+  password: string;
+}
 
-export const INITIAL_SIGN_IN_FORM = {
-  id: "",
-  password: "",
-};
-
-export type TSignInForm = typeof INITIAL_SIGN_IN_FORM;
-
-export const INITIAL_SIGN_UP_FORM = {
-  id: "",
-  password: "",
-  repassword: "",
-};
+export interface ISignUpForm extends Record<string, string> {
+  id: string;
+  password: string;
+  repassword: string;
+}

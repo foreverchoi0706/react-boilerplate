@@ -55,7 +55,7 @@ const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
 
 interface IProvider {
   defaultValues: Record<string, any>;
-  onSubmitForm: SubmitHandler<Record<string, any>>;
+  onSubmitForm: SubmitHandler<any>;
 }
 
 const Provider: FC<PropsWithChildren<IProvider>> = ({

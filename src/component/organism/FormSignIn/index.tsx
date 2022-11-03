@@ -4,13 +4,14 @@ import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import Form from "@/component/molecule/Form";
+import { INITIAL_SIGN_IN_FORM } from "@/constant/account";
 import useSignInMutation from "@/hook/queries/useSignInMutation";
-import { INITIAL_SIGN_IN_FORM, TSignInForm } from "@/type/account";
+import { ISignInForm } from "@/type/account";
 
 const FormSignIn: FC = () => {
   const { isLoading, mutate } = useSignInMutation();
 
-  const handleSubmitForm = useCallback<SubmitHandler<TSignInForm>>(
+  const handleSubmitForm = useCallback<SubmitHandler<ISignInForm>>(
     (signInForm) => {
       mutate(signInForm);
     },

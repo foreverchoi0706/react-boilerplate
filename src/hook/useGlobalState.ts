@@ -1,6 +1,7 @@
 import create, { StateCreator } from "zustand";
 
-import { IGlobalState, IUserInfo } from "@/type/user";
+import { IAccountInfo } from "@/type/account";
+import { IGlobalState } from "@/type/globalState";
 import cookieController from "@/util/cookieController";
 
 const globalState: StateCreator<IGlobalState> = (set) => ({
@@ -9,7 +10,7 @@ const globalState: StateCreator<IGlobalState> = (set) => ({
   userInfo: {
     name: null,
   },
-  setUserInfo: (userInfo: IUserInfo) =>
+  setUserInfo: (userInfo: IAccountInfo) =>
     set((state) => ({ ...state, userInfo })),
 });
 
