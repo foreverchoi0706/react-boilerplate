@@ -19,10 +19,7 @@ const FormSignUp: FC = () => {
   );
 
   return (
-    <Form.Provider
-      defaultValues={INITIAL_SIGN_IN_FORM}
-      onSubmitForm={handleSubmitForm}
-    >
+    <Form defaultValues={INITIAL_SIGN_IN_FORM} onSubmitForm={handleSubmitForm}>
       <Stack>
         <StackItem>
           <Text as="h1">회원가입</Text>
@@ -73,7 +70,7 @@ const FormSignUp: FC = () => {
           </Flex>
         </StackItem>
       </Stack>
-    </Form.Provider>
+    </Form>
   );
 };
 
