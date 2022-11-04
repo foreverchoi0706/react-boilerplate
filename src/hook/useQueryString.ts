@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 
 import { TFunction } from "@/type/common";
 
-const useQueryString = <T extends Record<string, unknown>>(obj: T) => {
+const useQueryString = <T extends Record<string, any>>(target: T) => {
   const parse = useCallback<TFunction<string, [T]>>((obj2) => {
     let temp = "";
     console.log(obj2);
@@ -13,7 +13,7 @@ const useQueryString = <T extends Record<string, unknown>>(obj: T) => {
     return temp;
   }, []);
 
-  const queryString = useMemo<string>(() => parse(obj), [obj]);
+  const queryString = useMemo<string>(() => parse(target), [target]);
 
   return { parse, queryString };
 };

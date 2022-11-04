@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-const useSearchForm = <T extends Record<string, unknown>>() => {
+const useSearchForm = <T extends Record<string, any>>() => {
   const { search } = useLocation();
 
   const searchParams = new URLSearchParams(search);

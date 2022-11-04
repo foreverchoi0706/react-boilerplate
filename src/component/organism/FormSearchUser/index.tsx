@@ -7,17 +7,15 @@ import Form from "@/component/molecule/Form";
 import { INITIAL_FORM_SEARCH_USER } from "@/constant/search";
 import useQueryString from "@/hook/useQueryString";
 import useSearchForm from "@/hook/useSearchForm";
-import { TFormSearchUser } from "@/type/search";
+import { IFormSearchUser } from "@/type/search";
 
 const FormSearch: FC = () => {
   const navigate = useNavigate();
-  const searchForm = useSearchForm<TFormSearchUser>();
-  const { parse } = useQueryString<TFormSearchUser>(searchForm);
+  const searchForm = useSearchForm<IFormSearchUser>();
+  const { parse } = useQueryString<IFormSearchUser>(searchForm);
 
-  const handleSubmitForm = useCallback<SubmitHandler<TFormSearchUser>>(
-    (formSearchUser) => {
-      navigate(`/user?${parse(formSearchUser)}`);
-    },
+  const handleSubmitForm = useCallback<SubmitHandler<IFormSearchUser>>(
+    (formSearchUser) => navigate(`/user?${parse(formSearchUser)}`),
     []
   );
 

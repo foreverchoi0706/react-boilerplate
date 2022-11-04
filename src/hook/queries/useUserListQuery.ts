@@ -1,13 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
 import useQueryString from "@/hook/useQueryString";
 import instance from "@/instance";
-import { TFormSearchUser } from "@/type/search";
+import { IFormSearchUser } from "@/type/search";
 import { IUser } from "@/type/user";
+import { TFunction } from "@/type/common";
 
-const useUserListQuery = (formSearchUser: TFormSearchUser) => {
-  const { queryString } = useQueryString<TFormSearchUser>(formSearchUser);
+const useUserListQuery: TFunction<UseQueryResult<IUser[], AxiosError>, [IFormSearchUser]> = (formSearchUser) => {
+  const { queryString } = useQueryString<IFormSearchUser>(formSearchUser);
 
   return useQuery<AxiosResponse<IUser[]>, AxiosError, IUser[]>(
     ["USER_LIST", queryString],

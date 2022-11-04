@@ -1,8 +1,7 @@
-type TSearch = {
+interface IFormSearch {
   page: string;
 };
-
-export type TFormSearchUser = TSearch & {
+export interface IFormSearchUser extends IFormSearch {
   companyId: string;
   endAt: string;
   id: string;

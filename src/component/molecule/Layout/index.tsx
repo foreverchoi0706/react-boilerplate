@@ -10,7 +10,7 @@ import useSign from "@/hook/useSign";
 const SignIn: FC<PropsWithChildren> = ({ children }) => {
   const { signOut } = useSign();
   const { pathname } = useLocation();
-  const name = useGlobalState((state) => state.userInfo.name, shallow);
+  const name = useGlobalState((state) => state.accountInfo.name, shallow);
 
   return (
     <Flex minWidth="1200px">

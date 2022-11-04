@@ -9,7 +9,7 @@ import { ISignInForm } from "@/type/account";
 const useSignInMutation = () => {
   const navigate = useNavigate();
   const { signIn } = useSign();
-  const { setUserInfo } = useGlobalState();
+  const { setAccountInfo } = useGlobalState();
   return useMutation<ISignInForm, AxiosError, ISignInForm>(
     (singInForm) => {
       return new Promise((resolve) => {
@@ -21,7 +21,7 @@ const useSignInMutation = () => {
     {
       onSuccess: (singInForm) => {
         signIn();
-        setUserInfo({
+        setAccountInfo({
           name: singInForm.id,
         });
         navigate("/");

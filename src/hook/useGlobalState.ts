@@ -7,10 +7,10 @@ import cookieController from "@/util/cookieController";
 const globalState: StateCreator<IGlobalState> = (set) => ({
   isSignIn: cookieController.has("SIGN_IN"),
   setIsSignIn: (isSignIn: boolean) => set((state) => ({ ...state, isSignIn })),
-  userInfo: {
+  accountInfo: {
     name: null,
   },
-  setUserInfo: (userInfo: IAccountInfo) =>
+  setAccountInfo: (userInfo: IAccountInfo) =>
     set((state) => ({ ...state, userInfo })),
 });
 

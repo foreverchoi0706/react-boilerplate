@@ -18,10 +18,10 @@ import { Link } from "react-router-dom";
 import FormSearch from "@/component/organism/FormSearchUser";
 import useUserListQuery from "@/hook/queries/useUserListQuery";
 import useSearchForm from "@/hook/useSearchForm";
-import { TFormSearchUser } from "@/type/search";
+import { IFormSearchUser } from "@/type/search";
 
 const Home: FC = () => {
-  const searchForm = useSearchForm<TFormSearchUser>();
+  const searchForm = useSearchForm<IFormSearchUser>();
   const { data: userList } = useUserListQuery(searchForm);
 
   return (
