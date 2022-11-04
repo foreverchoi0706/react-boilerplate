@@ -20,7 +20,7 @@ const FormSearch: FC = () => {
   );
 
   return (
-    <Form.Provider
+    <Form
       defaultValues={INITIAL_FORM_SEARCH_USER}
       onSubmitForm={handleSubmitForm}
     >
@@ -87,7 +87,7 @@ const FormSearch: FC = () => {
           </Flex>
         </GridItem>
       </Grid>
-    </Form.Provider>
+    </Form>
   );
 };
 

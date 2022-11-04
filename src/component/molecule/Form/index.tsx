@@ -38,6 +38,12 @@ const Context = createContext<IContext>({
   name: "",
 });
 
+const Checkbox: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <CUICheckbox id={id} {...register(name, props)} />;
+};
+
 const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
   const id = useId();
   const value = useMemo<IContext>(
@@ -54,12 +60,12 @@ const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
   );
 };
 
-interface IProvider {
+interface IForm {
   defaultValues: Record<string, any>;
   onSubmitForm: SubmitHandler<any>;
 }
 
-const Provider: FC<PropsWithChildren<IProvider>> = ({
+const Form: FC<PropsWithChildren<IForm>> = ({
   children,
   defaultValues,
   onSubmitForm,
@@ -115,34 +121,6 @@ const Date: FC<RegisterOptions> = (props) => {
   return <Input id={id} type="date" {...register(name, props)} />;
 };
 
-const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
-  const { name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return (
-    <CUISelect {...register(name)} {...rest}>
-      {children}
-    </CUISelect>
-  );
-};
-
-const Option: FC<
-  PropsWithChildren<OptionHTMLAttributes<HTMLOptionElement>>
-> = ({ children, ...rest }) => {
-  return <option {...rest}>{children}</option>;
-};
-
-const Checkbox: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <CUICheckbox id={id} {...register(name, props)} />;
-};
-
-const Radio: FC<RegisterOptions> = (props) => {
-  const { id, name } = useContext<IContext>(Context);
-  const { register } = useFormContext();
-  return <CUIRadio id={id} {...register(name, props)} />;
-};
-
 const Message: FC = () => {
   const { name } = useContext<IContext>(Context);
   const { errors } = useFormState();
@@ -155,19 +133,37 @@ const Message: FC = () => {
   );
 };
 
-export default Object.assign(
-  {},
-  {
-    Checkbox,
-    Date,
-    Field,
-    InputPassword,
-    InputText,
-    Label,
-    Message,
-    Option,
-    Provider,
-    Radio,
-    Select,
-  }
-);
+const Option: FC<
+  PropsWithChildren<OptionHTMLAttributes<HTMLOptionElement>>
+> = ({ children, ...rest }) => {
+  return <option {...rest}>{children}</option>;
+};
+
+const Radio: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <CUIRadio id={id} {...register(name, props)} />;
+};
+
+const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
+  const { name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return (
+    <CUISelect {...register(name)} {...rest}>
+      {children}
+    </CUISelect>
+  );
+};
+
+export default Object.assign(Form, {
+  Checkbox,
+  Date,
+  Field,
+  InputPassword,
+  InputText,
+  Label,
+  Message,
+  Option,
+  Radio,
+  Select,
+});
