@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import React, { FC } from "react";
 
-const CompanyAbout: FC = () => {
+const CompanyInfo: FC = () => {
   return <Box />;
 };
 
-export default CompanyAbout;
+export default CompanyInfo;

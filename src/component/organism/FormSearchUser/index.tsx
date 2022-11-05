@@ -15,7 +15,10 @@ const FormSearch: FC = () => {
   const { parse } = useQueryString<IFormSearchUser>(searchForm);
 
   const handleSubmitForm = useCallback<SubmitHandler<IFormSearchUser>>(
-    (formSearchUser) => navigate(`/user?${parse(formSearchUser)}`),
+    (formSearchUser) => {
+      console.log(formSearchUser);
+      navigate(`/user?${parse(formSearchUser)}`);
+    },
     []
   );
 
@@ -32,7 +35,7 @@ const FormSearch: FC = () => {
         <GridItem>
           <Form.Field name="id">
             <Form.Label>아이디</Form.Label>
-            <Form.InputText />
+            <Form.InputNumber />
           </Form.Field>
         </GridItem>
         <GridItem>
@@ -44,7 +47,7 @@ const FormSearch: FC = () => {
         <GridItem>
           <Form.Field name="companyId">
             <Form.Label>회사아이디</Form.Label>
-            <Form.InputText />
+            <Form.InputNumber />
           </Form.Field>
         </GridItem>
         <GridItem>

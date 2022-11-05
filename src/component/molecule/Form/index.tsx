@@ -3,6 +3,11 @@ import {
   FormLabel,
   FormLabelProps,
   Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
   Radio as CUIRadio,
   Select as CUISelect,
   SelectProps,
@@ -103,6 +108,26 @@ const Label: FC<PropsWithChildren<FormLabelProps>> = ({
   );
 };
 
+const InputNumber: FC<RegisterOptions> = (props) => {
+  const { id, name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return (
+    <NumberInput>
+      <NumberInputField
+        id={id}
+        {...register(name, {
+          ...props,
+          valueAsNumber: true,
+        })}
+      />
+      <NumberInputStepper>
+        <NumberIncrementStepper />
+        <NumberDecrementStepper />
+      </NumberInputStepper>
+    </NumberInput>
+  );
+};
+
 const InputPassword: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
@@ -159,6 +184,7 @@ export default Object.assign(Form, {
   Checkbox,
   Date,
   Field,
+  InputNumber,
   InputPassword,
   InputText,
   Label,

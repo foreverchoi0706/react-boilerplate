@@ -35,7 +35,7 @@ const Home: FC = () => {
         <Table variant="striped">
           <Thead>
             <Tr>
-              <Th width="5%">No.</Th>
+              <Th width="10%">No.</Th>
               <Th>이름</Th>
               <Th>아이디</Th>
               <Th>웹사이트</Th>
@@ -49,7 +49,7 @@ const Home: FC = () => {
               userList.map(
                 ({ id, name, website, email, phone, username }, index) => (
                   <Tr key={id}>
-                    <Td width="5%">{index}</Td>
+                    <Td width="10%">{index}</Td>
                     <Td>{name}</Td>
                     <Td>{username}</Td>
                     <Td>{website}</Td>
