@@ -17,21 +17,14 @@ import { ErrorMessage } from "@hookform/error-message";
 import React, {
   createContext,
   FC,
+  FormHTMLAttributes,
   OptionHTMLAttributes,
   PropsWithChildren,
   useContext,
   useId,
   useMemo,
 } from "react";
-import {
-  FormProvider,
-  RegisterOptions,
-  SubmitHandler,
-  useForm,
-  useFormContext,
-  useFormState,
-} from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { RegisterOptions, useFormContext, useFormState } from "react-hook-form";
 
 interface IContext {
   id?: string;
@@ -65,35 +58,11 @@ const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
   );
 };
 
-interface IForm {
-  defaultValues: Record<string, any>;
-  onSubmitForm: SubmitHandler<any>;
-}
-
-const Form: FC<PropsWithChildren<IForm>> = ({
+const Form: FC<PropsWithChildren<FormHTMLAttributes<HTMLFormElement>>> = ({
   children,
-  defaultValues,
-  onSubmitForm,
+  ...rest
 }) => {
-  const methods = useForm({
-    defaultValues,
-    mode: "onChange",
-  });
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-  return (
-    <FormProvider {...methods}>
-      <form
-        onReset={() => {
-          methods.reset(defaultValues);
-          navigate(pathname);
-        }}
-        onSubmit={methods.handleSubmit(onSubmitForm)}
-      >
-        {children}
-      </form>
-    </FormProvider>
-  );
+  return <form {...rest}>{children}</form>;
 };
 
 const Label: FC<PropsWithChildren<FormLabelProps>> = ({

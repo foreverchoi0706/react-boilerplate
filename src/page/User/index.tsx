@@ -15,18 +15,15 @@ import {
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-import FormSearch from "@/component/organism/FormSearchUser";
+import FormSearchUser from "@/component/organism/FormSearchUser";
 import useUserListQuery from "@/hook/queries/useUserListQuery";
-import useSearchForm from "@/hook/useSearchForm";
-import { IFormSearchUser } from "@/type/search";
 
 const Home: FC = () => {
-  const searchForm = useSearchForm<IFormSearchUser>();
-  const { data: userList } = useUserListQuery(searchForm);
+  const { data: userList } = useUserListQuery();
 
   return (
     <Flex flexDirection="column" gap="20px">
-      <FormSearch />
+      <FormSearchUser />
       <TableContainer
         border="1px solid #e4e4e4"
         borderRadius="10px"
