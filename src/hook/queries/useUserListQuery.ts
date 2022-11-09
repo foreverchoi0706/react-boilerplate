@@ -8,7 +8,7 @@ import { TFunction } from "@/type/common";
 import { IFormSearchUser } from "@/type/search";
 import { IUser } from "@/type/user";
 
-const useUserListQuery: TFunction<UseQueryResult<IUser[], AxiosError>> = () => {
+const useUserListQuery: TFunction<[UseQueryResult<IUser[], AxiosError>]> = () => {
   const formSearchUser = useSearchForm<IFormSearchUser>();
   const { stringify } = useQueryString<IFormSearchUser>();
 

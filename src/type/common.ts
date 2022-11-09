@@ -1,3 +1,3 @@
-export type TFunction<R = void, A extends unknown[] = never> = (
+export type TFunction<A extends unknown[] = never, R = void> = (
   ...args: A
 ) => R;

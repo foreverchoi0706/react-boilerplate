@@ -3,7 +3,7 @@ import { TFunction } from "@/type/common";
 
 export interface IGlobalState {
   isSignIn: boolean;
-  setIsSignIn: TFunction<void, [boolean]>
+  setIsSignIn: TFunction<[boolean], void>
   accountInfo: IAccountInfo;
-  setAccountInfo: TFunction<void, [IAccountInfo]>
+  setAccountInfo: TFunction<[IAccountInfo], void>
 }
