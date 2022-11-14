@@ -18,10 +18,7 @@ const useTodoListQuery: TFunction<
   return useQuery<ITodo[], AxiosError>(
     ["USER_LIST", formSearchUser],
     () => instance.get(`/todos?${stringify(formSearchUser)}`),
-    {
-      placeholderData: [],
-      select: (data) => data,
-    }
+    {}
   );
 };
 

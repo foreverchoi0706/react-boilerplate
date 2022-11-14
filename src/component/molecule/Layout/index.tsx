@@ -48,7 +48,7 @@ const SignIn: FC<PropsWithChildren> = ({ children }) => {
           )}
         </Flex>
       </Box>
-      <Box flexGrow="1" padding="20px">
+      <Box flexGrow="1" height="100vh" padding="20px">
         {children}
       </Box>
     </Flex>

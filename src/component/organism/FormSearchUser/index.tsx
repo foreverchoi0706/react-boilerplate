@@ -67,10 +67,10 @@ const FormSearchUser: FC = () => {
           </GridItem>
           <GridItem>
             <Flex gap="20px">
-              <Button flexGrow="1" type="submit">
+              <Button colorScheme="blue" flexGrow="1" type="submit">
                 검색
               </Button>
-              <Button flexGrow="1" type="reset">
+              <Button colorScheme="red" flexGrow="1" type="reset">
                 초기화
               </Button>
             </Flex>
