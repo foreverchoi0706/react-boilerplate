@@ -6,15 +6,18 @@ import useSearchForm from "@/hook/useSearchForm";
 import instance from "@/instance";
 import { TFunction } from "@/type/common";
 import { IFormSearchUser } from "@/type/search";
-import { IUser } from "@/type/user";
+import { ITodo } from "@/type/todo";
 
-const useUserListQuery: TFunction<[UseQueryResult<IUser[], AxiosError>]> = () => {
+const useTodoListQuery: TFunction<
+  [],
+  UseQueryResult<ITodo[], AxiosError>
+> = () => {
   const formSearchUser = useSearchForm<IFormSearchUser>();
   const { stringify } = useQueryString<IFormSearchUser>();
 
-  return useQuery<IUser[], AxiosError>(
+  return useQuery<ITodo[], AxiosError>(
     ["USER_LIST", formSearchUser],
-    () => instance.get(`/users?${stringify(formSearchUser)}`),
+    () => instance.get(`/todos?${stringify(formSearchUser)}`),
     {
       placeholderData: [],
       select: (data) => data,
@@ -22,4 +25,4 @@ const useUserListQuery: TFunction<[UseQueryResult<IUser[], AxiosError>]> = () =>
   );
 };
 
-export default useUserListQuery;
+export default useTodoListQuery;

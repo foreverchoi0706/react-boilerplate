@@ -27,15 +27,9 @@ const FormSearchUser: FC = () => {
       <Form onSubmit={methods.handleSubmit(handleSubmitForm)}>
         <Grid
           alignItems="flex-end"
-          gridTemplateColumns="repeat(4,24%)"
+          gridTemplateColumns="repeat(6,15%)"
           justifyContent="space-between"
         >
-          <GridItem>
-            <Form.Field name="id">
-              <Form.Label>아이디</Form.Label>
-              <Form.InputNumber />
-            </Form.Field>
-          </GridItem>
           <GridItem>
             <Form.Field name="name">
               <Form.Label>이름</Form.Label>
@@ -44,26 +38,20 @@ const FormSearchUser: FC = () => {
           </GridItem>
           <GridItem>
             <Form.Field name="companyId">
-              <Form.Label>회사아이디</Form.Label>
-              <Form.InputNumber />
+              <Form.Label>아이디</Form.Label>
+              <Form.InputText />
             </Form.Field>
           </GridItem>
           <GridItem>
             <Form.Field name="companyName">
-              <Form.Label>회사명</Form.Label>
+              <Form.Label>웹사이트</Form.Label>
               <Form.InputText />
             </Form.Field>
           </GridItem>
           <GridItem>
             <Form.Field name="startAt">
-              <Form.Label>시작일</Form.Label>
-              <Form.Date />
-            </Form.Field>
-          </GridItem>
-          <GridItem>
-            <Form.Field name="endAt">
-              <Form.Label>종료일</Form.Label>
-              <Form.Date />
+              <Form.Label>이메일</Form.Label>
+              <Form.InputText />
             </Form.Field>
           </GridItem>
           <GridItem>

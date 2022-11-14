@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Spinner,
+  Switch,
   Table,
   TableContainer,
   Tbody,
@@ -13,13 +14,12 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
 
 import FormSearchUser from "@/component/organism/FormSearchUser";
-import useUserListQuery from "@/hook/queries/useUserListQuery";
+import useTodoListQuery from "@/hook/queries/useTodoListQuery";
 
 const Home: FC = () => {
-  const { data: userList } = useUserListQuery();
+  const { data: todoList } = useTodoListQuery();
 
   return (
     <Flex flexDirection="column" gap="20px">
@@ -33,33 +33,31 @@ const Home: FC = () => {
           <Thead>
             <Tr>
               <Th width="10%">No.</Th>
-              <Th>이름</Th>
-              <Th>아이디</Th>
-              <Th>웹사이트</Th>
-              <Th>이메일</Th>
-              <Th>휴대전화</Th>
-              <Th width="10%">버튼</Th>
+              <Th>userId</Th>
+              <Th>title</Th>
+              <Th>completed</Th>
             </Tr>
           </Thead>
           <Tbody display="block">
-            {userList ? (
-              userList.map(
-                ({ id, name, website, email, phone, username }, index) => (
-                  <Tr key={id}>
+            {todoList ? (
+              todoList.map(({ id, userId, title, completed }, index) => {
+                return (
+                  <Tr
+                    key={id}
+                    _hover={{
+                      fontWeight: "bold",
+                    }}
+                    cursor="pointer"
+                  >
                     <Td width="10%">{index}</Td>
-                    <Td>{name}</Td>
-                    <Td>{username}</Td>
-                    <Td>{website}</Td>
-                    <Td>{email}</Td>
-                    <Td>{phone}</Td>
-                    <Td width="10%">
-                      <Link to={`/user/${index}`}>
-                        <Button size="sm">상세</Button>
-                      </Link>
+                    <Td>{userId}</Td>
+                    <Td>{title}</Td>
+                    <Td>
+                      <Switch checked={completed} />
                     </Td>
                   </Tr>
-                )
-              )
+                );
+              })
             ) : (
               <Tr>
                 <Td colSpan={999} textAlign="center">

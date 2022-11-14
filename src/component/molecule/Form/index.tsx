@@ -11,6 +11,8 @@ import {
   Radio as CUIRadio,
   Select as CUISelect,
   SelectProps,
+  Switch as CUISwitch,
+  SwitchProps,
   Text as FormText,
 } from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
@@ -149,6 +151,12 @@ const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
   );
 };
 
+const Switch: FC<SwitchProps> = (props) => {
+  const { name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <CUISwitch {...register(name)} {...props} />;
+};
+
 export default Object.assign(Form, {
   Checkbox,
   Date,
@@ -161,4 +169,5 @@ export default Object.assign(Form, {
   Option,
   Radio,
   Select,
+  Switch,
 });
