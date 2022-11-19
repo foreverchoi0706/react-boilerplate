@@ -32,7 +32,9 @@ const SignIn: FC<PropsWithChildren> = ({ children }) => {
             <Text as="h1" fontWeight="bold">
               {name}님 환영합니다.
             </Text>
-            <Button onClick={signOut}>로그아웃</Button>
+            <Button colorScheme="red" onClick={signOut}>
+              로그아웃
+            </Button>
           </Flex>
           {ROUTES.filter(({ path }) => path.split("/").length === 2).map(
             ({ name, path }) => (

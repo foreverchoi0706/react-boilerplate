@@ -70,7 +70,7 @@ const FormSearchUser: FC = () => {
               <Button colorScheme="blue" flexGrow="1" type="submit">
                 검색
               </Button>
-              <Button colorScheme="red" flexGrow="1" type="reset">
+              <Button flexGrow="1" type="reset">
                 초기화
               </Button>
             </Flex>
