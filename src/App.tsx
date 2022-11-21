@@ -23,7 +23,7 @@ const App = () => {
                 {ROUTES.map(({ Component, path }) => (
                   <Route key={path} element={<Component />} path={path} />
                 ))}
-                <Route element={<Navigate replace to="/user" />} path="/*" />
+                <Route element={<Navigate replace to="/todos" />} path="/*" />
               </Routes>
             </Layout.SignIn>
           ) : (

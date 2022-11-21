@@ -1,10 +1,7 @@
-import { IFormSearchUser } from "@/type/search";
+import { IFormSearchTodos } from "@/type/search";
 
-export const INITIAL_FORM_SEARCH_USER: IFormSearchUser = {
-  companyId: "",
-  endAt: "",
-  id: "",
-  name: "",
-  startAt: "",
-  page: "0",
+export const INITIAL_FORM_SEARCH_TODOS: IFormSearchTodos = {
+  userId: 0,
+  title: "",
+  page: 1,
 };

@@ -15,11 +15,11 @@ import {
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 
-import FormSearchUser from "@/component/organism/FormSearchUser";
-import useTodoListQuery from "@/hook/queries/useTodoListQuery";
+import FormSearchUser from "@/component/organism/FormSearchTodos";
+import useTodosQuery from "@/hook/queries/useTodosQuery";
 
-const Home: FC = () => {
-  const { data: todoList, isLoading } = useTodoListQuery();
+const Todos: FC = () => {
+  const todoList = useTodosQuery();
 
   return (
     <Flex flexDirection="column" gap="20px" height="100%">
@@ -39,33 +39,35 @@ const Home: FC = () => {
             </Tr>
           </Thead>
           <Tbody display="block">
-            {isLoading ? (
-              <Tr height="100%">
-                <Td rowSpan={Infinity} textAlign="center">
-                  <Spinner />
-                </Td>
-              </Tr>
-            ) : todoList ? (
-              todoList.map(({ id, userId, title, completed }, index) => (
-                <Tr
-                  key={id}
-                  _hover={{
-                    fontWeight: "bold",
-                  }}
-                  cursor="pointer"
-                >
-                  <Td width="10%">{index}</Td>
-                  <Td>{userId}</Td>
-                  <Td>{title}</Td>
-                  <Td>
-                    <Switch checked={completed} />
+            {todoList.isSuccess ? (
+              todoList.data.length ? (
+                todoList.data.map(({ id, userId, title, completed }, index) => (
+                  <Tr
+                    key={id}
+                    _hover={{
+                      fontWeight: "bold",
+                    }}
+                    cursor="pointer"
+                  >
+                    <Td width="10%">{index}</Td>
+                    <Td>{userId}</Td>
+                    <Td>{title}</Td>
+                    <Td>
+                      <Switch checked={completed} />
+                    </Td>
+                  </Tr>
+                ))
+              ) : (
+                <Tr height="100%">
+                  <Td rowSpan={Infinity} textAlign="center">
+                    <Text>검색결과가 없습니다.</Text>
                   </Td>
                 </Tr>
-              ))
+              )
             ) : (
               <Tr height="100%">
                 <Td rowSpan={Infinity} textAlign="center">
-                  <Text>검색결과가 없습니다.</Text>
+                  <Spinner />
                 </Td>
               </Tr>
             )}
@@ -87,4 +89,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default Todos;

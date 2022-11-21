@@ -1,11 +1,8 @@
 interface IFormSearch {
-  page: string;
+  page: number;
 }
 
-export interface IFormSearchUser extends IFormSearch {
-  companyId: string;
-  endAt: string;
-  id: string;
-  name: string;
-  startAt: string;
+export interface IFormSearchTodos extends IFormSearch {
+  userId: number;
+  title: string;
 }

@@ -1,27 +1,15 @@
-import Company from "@/page/Company";
-import CompanyInfo from "@/page/CompanyInfo";
-import User from "@/page/User";
-import UserInfo from "@/page/UserInfo";
+import Todo from "@/page/Todo";
+import Todos from "@/page/Todos";
 
 const ROUTES = [
   {
-    Component: User,
-    name: "유저",
-    path: "/user",
-  },
-  {
-    Component: UserInfo,
-    name: "유저",
-    path: "/user/:id",
-  },
-  {
-    Component: Company,
+    Component: Todos,
     name: "투두",
-    path: "/todo",
+    path: "/todos",
   },
   {
-    Component: CompanyInfo,
-    name: "회사",
+    Component: Todo,
+    name: "투두",
     path: "/todo/:id",
   },
 ] as const;
