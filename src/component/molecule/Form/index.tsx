@@ -1,20 +1,4 @@
-import {
-  Checkbox as CUICheckbox,
-  FormLabel,
-  FormLabelProps,
-  Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Radio as CUIRadio,
-  Select as CUISelect,
-  SelectProps,
-  Switch as CUISwitch,
-  SwitchProps,
-  Text as FormText,
-} from "@chakra-ui/react";
+import * as CUI from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
 import React, {
   createContext,
@@ -41,7 +25,7 @@ const Context = createContext<IContext>({
 const Checkbox: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <CUICheckbox id={id} {...register(name, props)} />;
+  return <CUI.Checkbox id={id} {...register(name, props)} />;
 };
 
 const Field: FC<PropsWithChildren<IContext>> = ({ children, ...rest }) => {
@@ -67,15 +51,15 @@ const Form: FC<PropsWithChildren<FormHTMLAttributes<HTMLFormElement>>> = ({
   return <form {...rest}>{children}</form>;
 };
 
-const Label: FC<PropsWithChildren<FormLabelProps>> = ({
+const Label: FC<PropsWithChildren<CUI.FormLabelProps>> = ({
   children,
   ...rest
 }) => {
   const context = useContext<IContext>(Context);
   return (
-    <FormLabel htmlFor={context.id} {...rest}>
+    <CUI.FormLabel htmlFor={context.id} {...rest}>
       {children}
-    </FormLabel>
+    </CUI.FormLabel>
   );
 };
 
@@ -83,38 +67,38 @@ const InputNumber: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
   return (
-    <NumberInput>
-      <NumberInputField
+    <CUI.NumberInput>
+      <CUI.NumberInputField
         id={id}
         {...register(name, {
           ...props,
           valueAsNumber: true,
         })}
       />
-      <NumberInputStepper>
-        <NumberIncrementStepper />
-        <NumberDecrementStepper />
-      </NumberInputStepper>
-    </NumberInput>
+      <CUI.NumberInputStepper>
+        <CUI.NumberIncrementStepper />
+        <CUI.NumberDecrementStepper />
+      </CUI.NumberInputStepper>
+    </CUI.NumberInput>
   );
 };
 
 const InputPassword: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <Input id={id} type="password" {...register(name, props)} />;
+  return <CUI.Input id={id} type="password" {...register(name, props)} />;
 };
 
 const InputText: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <Input id={id} type="text" {...register(name, props)} />;
+  return <CUI.Input id={id} type="text" {...register(name, props)} />;
 };
 
 const Date: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <Input id={id} type="date" {...register(name, props)} />;
+  return <CUI.Input id={id} type="date" {...register(name, props)} />;
 };
 
 const Message: FC = () => {
@@ -124,7 +108,7 @@ const Message: FC = () => {
     <ErrorMessage
       errors={errors}
       name={name}
-      render={({ message }) => <FormText color="red.500">{message}</FormText>}
+      render={({ message }) => <CUI.Text color="red.500">{message}</CUI.Text>}
     />
   );
 };
@@ -138,23 +122,26 @@ const Option: FC<
 const Radio: FC<RegisterOptions> = (props) => {
   const { id, name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <CUIRadio id={id} {...register(name, props)} />;
+  return <CUI.Radio id={id} {...register(name, props)} />;
 };
 
-const Select: FC<PropsWithChildren<SelectProps>> = ({ children, ...rest }) => {
+const Select: FC<PropsWithChildren<CUI.SelectProps>> = ({
+  children,
+  ...rest
+}) => {
   const { name } = useContext<IContext>(Context);
   const { register } = useFormContext();
   return (
-    <CUISelect {...register(name)} {...rest}>
+    <CUI.Select {...register(name)} {...rest}>
       {children}
-    </CUISelect>
+    </CUI.Select>
   );
 };
 
-const Switch: FC<SwitchProps> = (props) => {
+const Switch: FC<CUI.SwitchProps> = (props) => {
   const { name } = useContext<IContext>(Context);
   const { register } = useFormContext();
-  return <CUISwitch {...register(name)} {...props} />;
+  return <CUI.Switch {...register(name)} {...props} />;
 };
 
 export default Object.assign(Form, {
