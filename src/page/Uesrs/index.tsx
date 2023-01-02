@@ -9,12 +9,16 @@ import Form from "@/component/molecule/Form";
 const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   const methods = useForm();
 
+  const handleTouchMoveDocument = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     window.document.body.style.overflow = "hidden";
-    window.document.body.style.touchAction = "none";
+    window.document.addEventListener("touchmove", handleTouchMoveDocument);
     return () => {
       window.document.body.style.overflow = "auto";
-      window.document.body.style.touchAction = "auto";
+      window.document.removeEventListener("touchmove", handleTouchMoveDocument);
     };
   }, []);
   return (
@@ -35,12 +39,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
         <FormProvider {...methods}>
           <Form>
             <Form.Field name="id">
-              <Form.Textarea
-                inputMode="none"
-                minHeight="400px"
-                resize="none"
-                width="100%"
-              />
+              <Form.Textarea minHeight="400px" resize="none" width="100%" />
             </Form.Field>
           </Form>
         </FormProvider>
