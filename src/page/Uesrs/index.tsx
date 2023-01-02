@@ -10,27 +10,49 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <Box
       backgroundColor="white"
-      padding="20px"
+      height="100vh"
+      left="0"
       position="fixed"
       top="0"
       width="100vw"
       zIndex={999}
     >
-      <Box as="header" height="50px" position="fixed" top="0" width="100%">
+      <Box
+        as="header"
+        height="50px"
+        left="0"
+        position="fixed"
+        textAlign="center"
+        top="0"
+        width="100%"
+      >
         TITLE
         <Button onClick={onClose}>X</Button>
       </Box>
-      <Box as="body" position="fixed" top="50px" width="100%">
+      <Box
+        as="body"
+        left="0"
+        padding="20px"
+        position="fixed"
+        top="50px"
+        width="100%"
+      >
         <FormProvider {...methods}>
           <Form>
             <Form.Field name="id">
-              <Form.Label>TEST</Form.Label>
               <Form.Textarea minHeight="400px" resize="none" width="100%" />
             </Form.Field>
           </Form>
         </FormProvider>
       </Box>
-      <Box as="footer" position="fixed" top="500px" width="100%">
+      <Box
+        as="footer"
+        left="0"
+        padding="20px"
+        position="fixed"
+        top="500px"
+        width="100%"
+      >
         <Button height="50px" width="100%">
           sadad
         </Button>
