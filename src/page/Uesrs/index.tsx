@@ -9,7 +9,7 @@ import Form from "@/component/molecule/Form";
 const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   const methods = useForm();
 
-  const handleTouchMoveDocument = (e) => {
+  const handleTouchMoveDocument = (e: any) => {
     e.preventDefault();
   };
 
