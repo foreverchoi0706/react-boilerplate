@@ -1,6 +1,6 @@
 import { Box, Button } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import "./index.css";
 
@@ -8,6 +8,13 @@ import Form from "@/component/molecule/Form";
 
 const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   const methods = useForm();
+
+  useEffect(() => {
+    window.document.body.style.overflow = "hidden";
+    return () => {
+      window.document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <Box className="app-container">
       <Box
