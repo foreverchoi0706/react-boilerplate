@@ -19,21 +19,20 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
     };
   }, []);
   return (
-    <Box backgroundColor="white">
-      <Box
-        as="header"
-        height="50px"
-        left="0"
-        padding="20px 0"
-        position="fixed"
-        textAlign="center"
-        top="0"
-        width="100%"
-      >
+    <Box
+      backgroundColor="white"
+      height="100vh"
+      left="0"
+      padding="10px"
+      position="fixed"
+      top="0"
+      width="100%"
+    >
+      <Box as="header" height="50px" left="0" textAlign="center">
         TITLE
         <Button onClick={onClose}>X</Button>
       </Box>
-      <Box as="main" left="0" position="fixed" top="90px" width="100%">
+      <Box as="main">
         <FormProvider {...methods}>
           <Form>
             <Form.Field name="id">
@@ -42,7 +41,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
           </Form>
         </FormProvider>
       </Box>
-      <Box as="footer" position="fixed" top="520px" width="100%">
+      <Box as="footer">
         <Button height="50px" width="100%">
           sadad
         </Button>
@@ -55,7 +54,16 @@ const Users: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
-      <Button onClick={onOpen}>asdasdsa</Button>
+      <Button
+        borderRadius="50%"
+        bottom="20px"
+        onClick={onOpen}
+        padding="20px"
+        position="fixed"
+        right="20px"
+      >
+        asdasdsa
+      </Button>
       {isOpen && <FormLayer onClose={onClose} />}
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias hic minima
       quo, magnam illum nulla eos suscipit ab. Facere culpa veritatis, maiores
