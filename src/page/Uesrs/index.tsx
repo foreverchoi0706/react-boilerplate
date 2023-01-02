@@ -12,15 +12,15 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
       backgroundColor="white"
       padding="20px"
       position="fixed"
-      top={0}
+      top="0"
       width="100vw"
       zIndex={999}
     >
-      <Box as="header" height="50px">
+      <Box as="header" height="50px" position="fixed" top="0" width="100%">
         TITLE
         <Button onClick={onClose}>X</Button>
       </Box>
-      <Box as="body">
+      <Box as="body" position="fixed" top="50px" width="100%">
         <FormProvider {...methods}>
           <Form>
             <Form.Field name="id">
@@ -30,7 +30,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
           </Form>
         </FormProvider>
       </Box>
-      <Box as="footer">
+      <Box as="footer" position="fixed" top="500px" width="100%">
         <Button height="50px" width="100%">
           sadad
         </Button>
