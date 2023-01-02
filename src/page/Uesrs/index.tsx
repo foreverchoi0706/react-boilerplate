@@ -2,21 +2,14 @@ import { Box, Button } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import "./index.css";
 
 import Form from "@/component/molecule/Form";
 
 const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   const methods = useForm();
   return (
-    <Box
-      backgroundColor="white"
-      height="100vh"
-      left="0"
-      position="fixed"
-      top="0"
-      width="100vw"
-      zIndex={999}
-    >
+    <Box className="app-container">
       <Box
         as="header"
         height="50px"
@@ -29,14 +22,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
         TITLE
         <Button onClick={onClose}>X</Button>
       </Box>
-      <Box
-        as="body"
-        left="0"
-        padding="20px"
-        position="fixed"
-        top="50px"
-        width="100%"
-      >
+      <Box as="main">
         <FormProvider {...methods}>
           <Form>
             <Form.Field name="id">
@@ -45,14 +31,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
           </Form>
         </FormProvider>
       </Box>
-      <Box
-        as="footer"
-        left="0"
-        padding="20px"
-        position="fixed"
-        top="500px"
-        width="100%"
-      >
+      <Box as="footer">
         <Button height="50px" width="100%">
           sadad
         </Button>
