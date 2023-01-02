@@ -10,13 +10,15 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
   const methods = useForm();
 
   useEffect(() => {
-    window.document.body.style.position = "fixed";
     window.document.body.style.top = `-${window.scrollY}px`;
+    window.document.body.style.position = "fixed";
     return () => {
-      window.document.body.style.position = "static";
-      window.document.body.style.top = "initial";
+      window.document.body.style.position = "";
+      window.scrollTo(0, parseInt(window.document.body.style.top || "0") * -1);
+      window.document.body.style.top = "";
     };
   }, []);
+
   return (
     <Box
       backgroundColor="white"
@@ -28,9 +30,8 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
       width="100%"
       zIndex="999"
     >
-      <Box as="header" height="50px" left="0" textAlign="center">
+      <Box as="header" left="0" padding="20px" textAlign="center">
         TITLE
-        <Button onClick={onClose}>X</Button>
       </Box>
       <Box as="main">
         <FormProvider {...methods}>
@@ -41,9 +42,12 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
           </Form>
         </FormProvider>
       </Box>
-      <Box as="footer">
-        <Button height="50px" width="100%">
+      <Box as="footer" display="flex">
+        <Button flexBasis="50%" height="50px" width="100%">
           sadad
+        </Button>
+        <Button flexBasis="50%" flexGrow="1" onClick={onClose}>
+          X
         </Button>
       </Box>
     </Box>
