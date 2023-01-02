@@ -25,7 +25,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
           <Form>
             <Form.Field name="id">
               <Form.Label>TEST</Form.Label>
-              <Form.Textarea minHeight="700px" resize="none" width="100%" />
+              <Form.Textarea minHeight="400px" resize="none" width="100%" />
             </Form.Field>
           </Form>
         </FormProvider>
