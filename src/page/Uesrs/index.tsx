@@ -11,8 +11,10 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
 
   useEffect(() => {
     window.document.body.style.overflow = "hidden";
+    window.document.body.style.touchAction = "none";
     return () => {
       window.document.body.style.overflow = "auto";
+      window.document.body.style.touchAction = "auto";
     };
   }, []);
   return (
