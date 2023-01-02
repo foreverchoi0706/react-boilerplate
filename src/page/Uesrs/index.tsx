@@ -11,11 +11,10 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
 
   useEffect(() => {
     window.document.body.style.position = "fixed";
-    // window.document.body.style.top = `-${window.scrollY}px`;
-
+    window.document.body.style.top = `-${window.scrollY}px`;
     return () => {
       window.document.body.style.position = "static";
-      // window.document.body.style.top = "";
+      window.document.body.style.top = "initial";
     };
   }, []);
   return (
@@ -27,6 +26,7 @@ const FormLayer: FC<{ onClose: () => void }> = ({ onClose }) => {
       position="fixed"
       top="0"
       width="100%"
+      zIndex="999"
     >
       <Box as="header" height="50px" left="0" textAlign="center">
         TITLE
