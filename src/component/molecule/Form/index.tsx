@@ -144,6 +144,12 @@ const Switch: FC<CUI.SwitchProps> = (props) => {
   return <CUI.Switch {...register(name)} {...props} />;
 };
 
+const Textarea: FC<CUI.TextareaProps> = (props) => {
+  const { name } = useContext<IContext>(Context);
+  const { register } = useFormContext();
+  return <CUI.Textarea {...register(name)} {...props} />;
+};
+
 export default Object.assign(Form, {
   Checkbox,
   Date,
@@ -157,4 +163,5 @@ export default Object.assign(Form, {
   Radio,
   Select,
   Switch,
+  Textarea,
 });
