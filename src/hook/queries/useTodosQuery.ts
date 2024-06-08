@@ -17,9 +17,10 @@ const useTodosQuery: TFunction<
   const { stringify } = useQueryString<IFormSearchTodos>();
 
   return useQuery<ITodo[], AxiosError>(
-    [TODOS, formSearchTodos],
-    () => instance.get(`/todos?${stringify(formSearchTodos)}`),
+
     {
+      queryKey :  [TODOS, formSearchTodos],
+    queryFn :   () => instance.get(`/todos?${stringify(formSearchTodos)}`),
       select: (response) => response || [],
     }
   );

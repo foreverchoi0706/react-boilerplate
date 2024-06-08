@@ -1,4 +1,4 @@
-import create, { StateCreator } from "zustand";
+import  { create, StateCreator } from "zustand";
 
 import { IAccountInfo } from "@/type/account";
 import { IGlobalState } from "@/type/globalState";

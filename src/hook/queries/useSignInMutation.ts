@@ -11,14 +11,15 @@ const useSignInMutation = () => {
   const { signIn } = useSign();
   const { setAccountInfo } = useGlobalState();
   return useMutation<ISignInForm, AxiosError, ISignInForm>(
-    (singInForm) => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(singInForm);
-        }, 500);
-      });
-    },
+  
     {
+      mutationFn :   (singInForm) => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(singInForm);
+          }, 500);
+        });
+      },
       onSuccess: (singInForm) => {
         signIn();
         setAccountInfo({

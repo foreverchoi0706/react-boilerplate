@@ -9,7 +9,7 @@ import useSignInMutation from "@/hook/queries/useSignInMutation";
 import { ISignInForm } from "@/type/account";
 
 const FormSignIn: FC = () => {
-  const { isLoading, mutate } = useSignInMutation();
+  const { isPending, mutate } = useSignInMutation();
 
   const methods = useForm<ISignInForm>({
     defaultValues: INITIAL_SIGN_IN_FORM,
@@ -32,7 +32,7 @@ const FormSignIn: FC = () => {
           <StackItem>
             <Form.Field name="id">
               <Form.Label>아이디</Form.Label>
-              <Form.InputText disabled={isLoading} required="필수입력입니다." />
+              <Form.InputText disabled={isPending} required="필수입력입니다." />
               <Form.Message />
             </Form.Field>
           </StackItem>
@@ -40,7 +40,7 @@ const FormSignIn: FC = () => {
             <Form.Field name="password">
               <Form.Label>패스워드</Form.Label>
               <Form.InputPassword
-                disabled={isLoading}
+                disabled={isPending}
                 required="필수입력입니다."
               />
               <Form.Message />
@@ -48,12 +48,12 @@ const FormSignIn: FC = () => {
           </StackItem>
           <StackItem>
             <Flex gap="10px">
-              <Button disabled={isLoading} flexGrow="1" type="submit">
+              <Button disabled={isPending} flexGrow="1" type="submit">
                 로그인
               </Button>
               <Box flexGrow="1">
                 <Link to="/sign-up">
-                  <Button disabled={isLoading} type="button" width="100%">
+                  <Button disabled={isPending} type="button" width="100%">
                     회원가입
                   </Button>
                 </Link>
